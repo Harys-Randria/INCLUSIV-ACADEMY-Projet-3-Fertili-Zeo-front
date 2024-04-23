@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import LogoOne from "../common/header/LogoOne";
+import "../css/LoginForm.css";
 
 function RegistrationForm({ onClose }) {
   const [formData, setFormData] = useState({
@@ -46,18 +47,20 @@ function RegistrationForm({ onClose }) {
 
     console.log(formData);
 
-    // // Récupérer les données de la session storage
-    // const storedFormData = JSON.parse(sessionStorage.getItem("formData"));
-
-    // // Utiliser les données récupérées
-    // console.log(storedFormData);
-
     onClose();
   };
 
   return (
     <div className="modal fade show" style={{ display: "block" }}>
-      <div className="modal-dialog" role="document">
+      <div
+        className="modal-dialog position-absolute start-50 translate-middle custom-modal"
+        role="document"
+        style={{
+          top: "25%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
         <div className="modal-content">
           <div className="d-flex justify-content-end align-items-end">
             <button
@@ -70,7 +73,16 @@ function RegistrationForm({ onClose }) {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div>
+          <div
+            style={{
+              height: "125px",
+              width: "225px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginLeft: "100px",
+            }}
+          >
             <LogoOne />
           </div>
           <div className="modal-header d-flex justify-content-center align-items-center ">
@@ -160,60 +172,6 @@ function RegistrationForm({ onClose }) {
                     Les mots de passe ne correspondent pas.
                   </div>
                 )}
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Numéro de téléphone:</label>
-                <input
-                  type="tel"
-                  className="form-control"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  pattern="[0-9]{10}"
-                  title="Veuillez entrer un numéro de téléphone valide (10 chiffres)"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="address">Adresse:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="nif">NIF:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="nif"
-                  name="nif"
-                  value={formData.nif}
-                  onChange={handleInputChange}
-                  required
-                  pattern="[0-9]{9}"
-                  title="Veuillez entrer un numéro de NIF valide (9 chiffres)"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="cin">CIN:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cin"
-                  name="cin"
-                  value={formData.cin}
-                  onChange={handleInputChange}
-                  required
-                  pattern="[0-9]{8}"
-                  title="Veuillez entrer un numéro de CIN valide (8 chiffres)"
-                />
               </div>
               <div>
                 <button id="Btn-inscription" type="submit">

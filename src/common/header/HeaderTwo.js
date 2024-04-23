@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 
 export default class HeaderTwo extends React.Component {

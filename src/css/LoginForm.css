@@ -70,7 +70,7 @@ button:hover {
 
 #Btn-inscription {
   padding: 10px 20px;
-  background-color: #006cff; /* Couleur d'arrière-plan du bouton */
+  background-color: #239c23; /* Couleur d'arrière-plan du bouton */
   color: #fff; /* Couleur de police du bouton */
   border: none;
   border-radius: 5px;
@@ -80,7 +80,7 @@ button:hover {
 }
 
 #Btn-inscription:hover {
-  background-color: #007dff; /* Couleur d'arrière-plan du bouton au survol */
+  background-color: #055d2b; /* Couleur d'arrière-plan du bouton au survol */
 }
 
 .modal-dialog * {
@@ -89,4 +89,9 @@ button:hover {
 
 .modal-content * {
   font-family: var(--thm-font-2);
+}
+
+.custom-modal {
+  width: 450px; /* La largeur initiale était de 225px, donc nous la doublons ici */
+  height: 250px; /* La hauteur initiale était de 125px, donc nous la doublons ici */
 }
