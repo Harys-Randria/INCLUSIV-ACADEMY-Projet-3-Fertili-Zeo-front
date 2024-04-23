@@ -4,6 +4,8 @@ import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
 
+import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
+
 export default class HeaderTwo extends React.Component {
   render() {
     let publicUrl = process.env.PUBLIC_URL + "/";
@@ -139,11 +141,7 @@ export default class HeaderTwo extends React.Component {
                             className="main-menu__search search-toggler icon-magnifying-glass"
                           ></a>
                         </div>
-                        <div className="main-header-one__bottom-right-btn">
-                          <Link to={process.env.PUBLIC_URL + `/contact`}>
-                            Se connecter
-                          </Link>
-                        </div>
+                        <ModalInscriptionAuthentification />
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,92 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.login-form {
+  width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #055d2b;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #239c23;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1e7c1e;
+}
+
+.close {
+  font-size: 30px; /* Réduire la taille de la police */
+  font-family: var(--thm-font);
+  width: 30px; /* Réduire la largeur du bouton */
+  height: 30px; /* Réduire la hauteur du bouton */
+  background-color: red; /* Ajouter une couleur rouge */
+  color: rgb(255, 0, 0); /* Changer la couleur du texte en blanc */
+  border: none; /* Supprimer la bordure */
+  margin: 5px;
+}
+
+.close:hover {
+  background-color: red; /* Ajouter un effet hover avec une couleur plus foncée */
+  color: rgb(253, 253, 253);
+  cursor: pointer; /* Changer le curseur en pointeur au survol */
+}
+
+#Btn-inscription {
+  padding: 10px 20px;
+  background-color: #006cff; /* Couleur d'arrière-plan du bouton */
+  color: #fff; /* Couleur de police du bouton */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: var(--thm-font);
+  cursor: pointer;
+}
+
+#Btn-inscription:hover {
+  background-color: #007dff; /* Couleur d'arrière-plan du bouton au survol */
+}
+
+.modal-dialog * {
+  font-family: var(--thm-font-2);
+}
+
+.modal-content * {
+  font-family: var(--thm-font-2);
+}
