@@ -20,16 +20,16 @@ const HomeTwo = () => {
       <HeaderTwo />
       <HeroTwo />
       <FeatureOne />
-      <AboutTwo />
-      <CtaOne />
-      <ServiceTwo />
-      <ProjectTwo />
-      <TeamOne />
-      <BrandTwo />
-      <WorkProcessTwo />
-      <PricingOne />
-      <TestimonialTwo />
-      <BlogTwo />
+      {/*<AboutTwo />*/}
+      {/*<CtaOne />*/}
+      {/*<ServiceTwo />*/}
+      {/*<ProjectTwo />*/}
+      {/*<TeamOne />*/}
+      {/*<BrandTwo />*/}
+      {/*<WorkProcessTwo />*/}
+      {/*<PricingOne />*/}
+      {/*<TestimonialTwo />*/}
+      {/*<BlogTwo />*/}
       <FooterOne />
     </>
   );

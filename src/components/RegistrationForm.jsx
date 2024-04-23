@@ -37,7 +37,20 @@ function RegistrationForm({ onClose }) {
     }
 
     try {
-      await axios.post("/add/users", formData);
+      await axios
+        .post("http://localhost:8080/compte/add/users", {
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          type: 1,
+          isEnable: false,
+        })
+        .then((res) => {
+          console.log("ok");
+        })
+        .catch((error) => {
+          console.log("tsy tafa ");
+        });
       onClose();
     } catch (error) {
       console.error("Error submitting form:", error);
