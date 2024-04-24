@@ -3,6 +3,9 @@ import axios from "axios";
 import LogoOne from "../common/header/LogoOne";
 import "../css/LoginForm.css";
 
+import SignupGoogle from './googleauth/signup';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 function RegistrationForm({ onClose }) {
   const [formData, setFormData] = useState({
     name: "",
@@ -186,11 +189,18 @@ function RegistrationForm({ onClose }) {
                   </div>
                 )}
               </div>
-              <div>
-                <button id="Btn-inscription" type="submit">
-                  S'inscrire
-                </button>
-              </div>
+              <div className="text-center">
+  <button id="Btn-inscription" type="submit">
+    S'inscrire
+  </button>
+  <p>ou</p>
+  <GoogleOAuthProvider clientId="813308362434-06gj12366fs5uphq25ui5cu3jor9ot5h.apps.googleusercontent.com">
+    <div className="container-fluid">
+      <SignupGoogle />
+    </div>
+  </GoogleOAuthProvider>
+</div>
+
             </form>
           </div>
         </div>
