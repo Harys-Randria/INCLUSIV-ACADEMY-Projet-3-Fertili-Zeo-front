@@ -71,7 +71,7 @@ export default class HeroTwo extends React.Component {
                     backgroundImage:
                       "url(" +
                       publicUrl +
-                      "assets/images/slides/slider-v2-img2.jpg)",
+                      "assets/images/backgrounds/Fond2.png)",
                   }}
                 ></div>
                 <div className="shape1"></div>

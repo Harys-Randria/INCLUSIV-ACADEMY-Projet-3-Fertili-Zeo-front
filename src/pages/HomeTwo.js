@@ -19,7 +19,7 @@ const HomeTwo = () => {
     <>
       <HeaderTwo />
       <HeroTwo />
-      <FeatureOne />
+      {/* <FeatureOne /> */}
       {/*<AboutTwo />*/}
       {/*<CtaOne />*/}
       {/*<ServiceTwo />*/}
@@ -30,7 +30,7 @@ const HomeTwo = () => {
       {/*<PricingOne />*/}
       {/*<TestimonialTwo />*/}
       {/*<BlogTwo />*/}
-      <FooterOne />
+      {/* <FooterOne /> */}
     </>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import RegistrationForm from "./RegistrationForm";
+import Login from "./Login";
 
 function ModalInscriptionAuthentification() {
   const [showModal, setShowModal] = useState(false);
@@ -43,7 +44,7 @@ function ModalInscriptionAuthentification() {
             <RegistrationForm onClose={handleCloseModal} />
           )}
           {selectedOption === "authentification" && (
-            <RegistrationForm onClose={handleCloseModal} />
+            <Login onClose={handleCloseModal} />
           )}
         </>
       )}
