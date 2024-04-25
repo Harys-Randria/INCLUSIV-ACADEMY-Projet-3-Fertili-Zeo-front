@@ -2691,7 +2691,7 @@ Main Header Three
 }
 
 .main-header-three .container-fluid {
-  padding-left: 80px;
+  padding-left: 800px;
   padding-right: 0px;
 }
 
@@ -6886,6 +6886,11 @@ Features One
 .logoFerti {
   width: 35px;
   height: 75px;
+}
+.logoferti{
+  width: 200px;
+  height: 75px;
+  
 }
 
 .features-one__bg {
