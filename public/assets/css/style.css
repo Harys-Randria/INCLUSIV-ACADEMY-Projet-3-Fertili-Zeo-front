@@ -2094,6 +2094,9 @@ Main Header One
 .logo-box-one {
   position: relative;
   display: block;
+  height: 75px;
+  width: 300px;
+  margin: 0;
 }
 
 .logo-box-one a {

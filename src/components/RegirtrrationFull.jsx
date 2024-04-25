@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import axios from "axios";
-import LogoOne from "../common/header/LogoOne";
+import Swal from "sweetalert2";
 import "../css/LoginForm.css";
-import SignupGoogle from "./googleauth/signup";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import LogoOne from "../common/header/LogoOne";
+import SignupGoogle from "./googleauth/signup";
 
-function RegistrationForm({ onClose }) {
+function RegistrationFull({ onClose }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,86 +17,104 @@ function RegistrationForm({ onClose }) {
     address: "",
     nif: "",
     cin: "",
-    compte_type: "", // Nouvel attribut ajouté pour le choix de type de compte
+    compte_type: "",
   });
 
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
 
-    if (e.target.name === "password" || e.target.name === "confirmPassword") {
-      setPasswordMatch(formData.password === e.target.value);
+    if (name === "password" || name === "confirmPassword") {
+      setPasswordMatch(formData.password === value);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
+
+    const { name, email, password, compte_type } = formData;
+
+    if (password !== formData.confirmPassword) {
       setPasswordMatch(false);
       return;
     }
 
     try {
-      await axios
-        .post("http://localhost:8080/compte/add/users", {
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-          type: 1,
-          isEnable: false,
-        })
-        .then((res) => {
-          console.log("ok");
-        })
-        .catch((error) => {
-          console.log("tsy tafa ");
-        });
+      await axios.post("http://localhost:8080/compte/add/users", {
+        name,
+        email,
+        password,
+        type: 1,
+        isEnable: false,
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+        phone: "",
+        address: "",
+        nif: "",
+        cin: "",
+        compte_type: "",
+      });
+
       onClose();
+      Swal.fire({
+        icon: "success",
+        title: "Confirmation réussie !",
+        text: "Buenvenue Chez Fertili'zeo.",
+      });
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Erreur lors de la soumission du formulaire:", error);
+      Swal.fire({
+        icon: "success",
+        title: "Inscription réussie !",
+        text: "Vous êtes inscrit avec succès. Un mail de confirmation a été envoyé à votre adresse email.",
+      });
     }
-
-    sessionStorage.setItem("formData", JSON.stringify(formData));
-
-    console.log(formData);
-
-    onClose();
   };
 
   return (
-    <div className="modal fade show" style={{ display: "block" }}>
-      <div
-        className="modal-dialog position-absolute start-50 translate-middle custom-modal"
-        role="document"
-        style={{
-          top: "25%",
-          left: "50%",
-          transform: "translate(0%, 0%)",
-        }}
-      >
-        <div className="modal-content">
-          <div className="d-flex justify-content-end align-items-end">
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onClick={onClose}
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
+    <Modal isOpen={true} fullscreen>
+      <ModalBody className="d-flex flex-row">
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: 400,
+            height: 400,
+          }}
+        >
+          <img
+            src={
+              process.env.PUBLIC_URL + "assets/images/resources/inscription.jpg"
+            }
+            alt="Inscription"
+            style={{ width: "50%", height: "150%", marginTop: "400px" }}
+          />
+        </div>
 
-          <div className="modal-body">
+        <div style={{ flex: 1, padding: "20px" }}>
+          <ModalHeader className="d-flex justify-content-center align-items-center mb-4">
+            <LogoOne />
+            <h1 className="ml-5 mt-1">Inscription</h1>
+          </ModalHeader>
+
+          <ModalBody>
             <form onSubmit={handleSubmit} id="Formulaire">
-              <div className="form-group" style={{ fontFamily: "kitchen" }}>
-                <label htmlFor="compte-type">Type d'utilisateur:</label>
+              <div className="form-group">
+                <label htmlFor="compte_type">Type d'utilisateur:</label>
                 <select
-                  id="compte-type"
+                  id="compte_type"
                   name="compte_type"
                   className="form-control"
                   value={formData.compte_type}
@@ -179,18 +199,18 @@ function RegistrationForm({ onClose }) {
                   S'inscrire
                 </button>
                 <p>ou</p>
-                <GoogleOAuthProvider clientId="813308362434-06gj12366fs5uphq25ui5cu3jor9ot5h.apps.googleusercontent.com">
+                <GoogleOAuthProvider clientId="Votre_ID_Client_Google">
                   <div className="container-fluid">
                     <SignupGoogle />
                   </div>
                 </GoogleOAuthProvider>
               </div>
             </form>
-          </div>
+          </ModalBody>
         </div>
-      </div>
-    </div>
+      </ModalBody>
+    </Modal>
   );
 }
 
-export default RegistrationForm;
+export default RegistrationFull;
