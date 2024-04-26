@@ -60,7 +60,6 @@ export default class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li> */}
-
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -76,7 +75,6 @@ export default class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li>
-
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -90,12 +88,10 @@ export default class HeaderTwo extends React.Component {
                     </li>
                   </ul>
                 </div>
-
                 <div className="main-header-two__top-social-links">
                   <div className="title-box">
                     <h4>Suivez-nous</h4>
                   </div>
-
                   <ul className="social-links">
                     <li>
                       <a href="#">
@@ -143,14 +139,12 @@ export default class HeaderTwo extends React.Component {
                       <div className="main-header-one__bottom-left">
                         <LogoTwo />
                       </div>
-
                       <div className="main-header-one__bottom-middle">
                         <div className="main-menu-box">
                           <MobileMenu />
                           <Nav />
                         </div>
                       </div>
-
                       <div className="main-header-one__bottom-right">
                         <div className="header-search-box">
                           <a
@@ -158,9 +152,41 @@ export default class HeaderTwo extends React.Component {
                             className="main-menu__search search-toggler icon-magnifying-glass"
                           ></a>
                         </div>
-
-                        <div className="main-header-one__bottom-right-btn sticky-xxl-top">
-                          <ModalInscriptionAuthentification />
+                        <ModalInscriptionAuthentification />
+                        <div
+                          style={{
+                            marginLeft: "50px",
+                            width: "200px",
+                            display: "flex",
+                            width: "200px",
+                            flexDirection: "column",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Link>
+                            <img
+                              className="logoFerti"
+                              src={
+                                publicUrl +
+                                "assets/images/resources/Profils.png"
+                              }
+                              alt="Awesome Logo"
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+                                cursor: "pointer",
+                              }}
+                              onClick={this.handleProfileClick}
+                            />
+                          </Link>
+                          <h5
+                            style={{
+                              color: "white",
+                            }}
+                          >
+                            {this.state.userName}
+                          </h5>
                         </div>
                       </div>
                     </div>
