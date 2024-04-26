@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 
 export default class HeaderTwo extends React.Component {
   constructor(props) {
@@ -24,9 +23,6 @@ export default class HeaderTwo extends React.Component {
     // Rediriger vers la page de profil de l'utilisateur
     window.location.href = "/contact";
   };
-
-
-
 
   render() {
     let publicUrl = process.env.PUBLIC_URL + "/";
@@ -162,49 +158,10 @@ export default class HeaderTwo extends React.Component {
                             className="main-menu__search search-toggler icon-magnifying-glass"
                           ></a>
                         </div>
-                        <ModalInscriptionAuthentification />
 
-
-                        <div
-                          style={{
-                            marginLeft: "50px",
-                            width: "200px",
-                            display: "flex",
-                            width: "200px",
-                            flexDirection: "column",
-                            alignItems: "center",
-                          }}
-                        >
-                          <Link>
-                            <img
-                              className="logoFerti"
-                              src={
-                                publicUrl + "assets/images/resources/Profils.png"
-                              }
-                              alt="Awesome Logo"
-                              style={{
-                                width: "40px",
-                                height: "40px",
-                                borderRadius: "50%",
-                                cursor: "pointer",
-                              }}
-                              onClick={this.handleProfileClick}
-                            />
-                          
-                          </Link>
-                          <h5
-                            style={{
-                              color: "white",
-                            }}
-                          >
-                            {this.state.userName}
-                          </h5>
+                        <div className="main-header-one__bottom-right-btn sticky-xxl-top">
+                          <ModalInscriptionAuthentification />
                         </div>
-
-
-
-
-
                       </div>
                     </div>
                   </div>
