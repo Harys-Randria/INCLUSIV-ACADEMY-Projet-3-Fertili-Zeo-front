@@ -25,6 +25,7 @@ import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
 import ScrollToTopRoute from "./components/scroll-to-top-route/ScrollToTopRoute";
 
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -126,6 +127,7 @@ function App() {
           exact
           element={<Contact />}
         />
+        
       </Routes>
       <ScrollToTop
         className="scrollUp"

@@ -4,9 +4,11 @@ import axios from "axios";
 function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [resetPasswordRequested, setResetPasswordRequested] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       const response = await axios.post("http://localhost:8080/compte/signin", {
         email,
@@ -16,6 +18,22 @@ function LoginModal({ onClose }) {
       onClose();
     } catch (error) {
       console.error("Erreur de connexion:", error);
+    }
+  };
+
+  const handleResetPassword = () => {
+    setResetPasswordRequested(true);
+  };
+
+  const handleResetPasswordSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Envoyer la demande de réinitialisation du mot de passe
+      await axios.post("http://localhost:8080/compte/forgot-password", { email });
+      // Afficher un message de succès ou rediriger l'utilisateur
+      alert("Un e-mail de réinitialisation de mot de passe a été envoyé.");
+    } catch (error) {
+      console.error("Erreur lors de la demande de réinitialisation du mot de passe:", error);
     }
   };
 
@@ -35,15 +53,16 @@ function LoginModal({ onClose }) {
               onClick={onClose}
             ></button>
           </div>
-          <div className="modal-body">
+          <div className="modal-body ">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
                 <input
                   type="email"
                   className="form-control"
-                  placeholder="Adresse e-mail"
+                  placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="mb-3">
@@ -55,9 +74,12 @@ function LoginModal({ onClose }) {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-success">
                 Se connecter
               </button>
+              <div className="text-center">
+                <a className=" text-black-50" href="#" onClick={handleResetPassword} >Mot de passe oublié?</a>
+              </div>
             </form>
           </div>
         </div>
