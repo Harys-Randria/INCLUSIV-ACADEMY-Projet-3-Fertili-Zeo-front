@@ -105,7 +105,7 @@ const Nav = () => {
       </li>
       <li>
         <Link to={process.env.PUBLIC_URL + `/contact`}>
-          Contact <span className="line"></span>
+          Profile <span className="line"></span>
         </Link>
       </li>
     </ul>

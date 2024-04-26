@@ -8,7 +8,7 @@ export default class LogoThree extends React.Component {
             <>
                 <div className="logo-box-one">
                     <Link to={process.env.PUBLIC_URL + `/`}>
-                        <img src={publicUrl+"assets/images/resources/logo-3.png"} alt="Awesome Logo" title="" />
+                        <img src={publicUrl+"assets/images/resources/logoAccueil.png"} alt="Awesome Logo" title="" />
                     </Link>
                 </div>
             </>

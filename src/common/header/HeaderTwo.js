@@ -6,6 +6,28 @@ import Nav from "./Nav";
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 
 export default class HeaderTwo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: sessionStorage.getItem("name") || "", // Récupérer le nom de l'utilisateur du sessionStorage ou utiliser "Ravelomanana" par défaut
+    };
+  }
+  handleLogout = () => {
+    // Effacer les informations d'identification de l'utilisateur
+    sessionStorage.clear();
+
+    // Mettre à jour l'état d'authentification à false
+    this.setState({ isAuthenticated: false });
+    window.location.reload();
+  };
+  handleProfileClick = () => {
+    // Rediriger vers la page de profil de l'utilisateur
+    window.location.href = "/contact";
+  };
+
+
+
+
   render() {
     let publicUrl = process.env.PUBLIC_URL + "/";
     return (
@@ -141,6 +163,48 @@ export default class HeaderTwo extends React.Component {
                           ></a>
                         </div>
                         <ModalInscriptionAuthentification />
+
+
+                        <div
+                          style={{
+                            marginLeft: "50px",
+                            width: "200px",
+                            display: "flex",
+                            width: "200px",
+                            flexDirection: "column",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Link>
+                            <img
+                              className="logoFerti"
+                              src={
+                                publicUrl + "assets/images/resources/Profils.png"
+                              }
+                              alt="Awesome Logo"
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                borderRadius: "50%",
+                                cursor: "pointer",
+                              }}
+                              onClick={this.handleProfileClick}
+                            />
+                          
+                          </Link>
+                          <h5
+                            style={{
+                              color: "white",
+                            }}
+                          >
+                            {this.state.userName}
+                          </h5>
+                        </div>
+
+
+
+
+
                       </div>
                     </div>
                   </div>

@@ -30,6 +30,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "./components/contact/styless.css";
 
 function App() {
   useEffect(() => {

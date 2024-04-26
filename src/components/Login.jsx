@@ -15,7 +15,15 @@ function LoginModal({ onClose }) {
         password,
       });
       sessionStorage.setItem("token", response.data.token);
+      sessionStorage.setItem("name", response.data.name);
+      sessionStorage.setItem("email", response.data.email);
+      sessionStorage.setItem("type", response.data.type);
+      sessionStorage.setItem("id", response.data.id);
+
+      console.log(sessionStorage.getItem("token"));
+
       onClose();
+      window.location.reload();
     } catch (error) {
       console.error("Erreur de connexion:", error);
     }

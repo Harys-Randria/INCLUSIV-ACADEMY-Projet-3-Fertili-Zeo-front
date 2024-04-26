@@ -69,10 +69,10 @@ export default class FooterOne extends React.Component {
                                                     </div>
                                                     <div class="footer-one__right-single-links">
                                                         <ul class="footer-one__right-single-list">
-                                                            <li><Link to={process.env.PUBLIC_URL + `/about`}>About Us</Link></li>
+                                                            <li><Link to={process.env.PUBLIC_URL + `/about`}>A propos de nous </Link></li>
                                                             <li><Link to={process.env.PUBLIC_URL + `/team`}>Our Team</Link></li>
-                                                            <li><Link to={process.env.PUBLIC_URL + `/contact`}>Contact Us</Link></li>
-                                                            <li><Link to={process.env.PUBLIC_URL + `/`}>Our History</Link></li>
+                                                            <li><Link to={process.env.PUBLIC_URL + `/contact`}> Nous Contacter</Link></li>
+                                                            <li><Link to={process.env.PUBLIC_URL + `/`}>Historique</Link></li>
                                                             <li><Link to={process.env.PUBLIC_URL + `/`}>Testimonials</Link></li>
                                                         </ul>
                                                     </div>
@@ -87,9 +87,9 @@ export default class FooterOne extends React.Component {
                                                         <h2>Contact</h2>
                                                     </div>
                                                     <div class="footer-one__right-single-contact">
-                                                        <p> <a href="mailto:yourmail@email.com">needhelp@company.com</a>
-                                                            <br /> 80 Broklyn Road Street <br />
-                                                            New York. USA</p>
+                                                        <p> <a href="mailto:yourmail@email.com">fertilizeo0@gmail.com</a>
+                                                            <br />  <br />
+                                                            </p>
                                                         <a href=" mailto:yourmail@email.com">info@example.com</a>
                                                     </div>
                                                 </div>

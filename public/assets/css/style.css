@@ -2094,6 +2094,9 @@ Main Header One
 .logo-box-one {
   position: relative;
   display: block;
+  height: 75px;
+  width: 300px;
+  margin: 0;
 }
 
 .logo-box-one a {
@@ -2691,7 +2694,7 @@ Main Header Three
 }
 
 .main-header-three .container-fluid {
-  padding-left: 80px;
+  padding-left: 800px;
   padding-right: 0px;
 }
 
@@ -6886,6 +6889,11 @@ Features One
 .logoFerti {
   width: 35px;
   height: 75px;
+}
+.logoferti{
+  width: 200px;
+  height: 75px;
+  
 }
 
 .features-one__bg {

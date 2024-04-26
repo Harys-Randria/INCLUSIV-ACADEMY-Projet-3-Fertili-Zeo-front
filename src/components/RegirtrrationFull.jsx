@@ -53,10 +53,11 @@ function RegistrationFull({ onClose }) {
       })
       .then((res) => {
         Swal.fire({
-          icon: "success",
-          title: "Confirmation réussie !",
-          text: "Bienvenue Chez Fertili'zeo.",
+          icon: "info",
+          title: "Inscription réussie !",
+          text: "Un e-mail de confirmation a été envoyé à votre adresse. Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation pour activer votre compte.",
         });
+        
       })
       .catch((error) => {
         Swal.fire({

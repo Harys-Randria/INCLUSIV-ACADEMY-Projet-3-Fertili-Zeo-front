@@ -92,6 +92,27 @@ button:hover {
 }
 
 .custom-modal {
-  width: 450px; /* La largeur initiale était de 225px, donc nous la doublons ici */
-  height: 250px; /* La hauteur initiale était de 125px, donc nous la doublons ici */
+  width: 100vw; /* Double de la largeur initiale de 450px */
+  height: 250px; /* Conserve la même hauteur de 250px */
+}
+
+#logo_place {
+  height: "35px";
+  width: "150px";
+  display: "flex";
+  margin: 0;
+}
+
+/* Styles pour le conteneur flex et ses enfants */
+.d_flex {
+  display: flex;
+  flex-direction: row; /* Disposition horizontale des éléments enfants */
+}
+
+/* Style pour chaque div enfant */
+.d_flex > div {
+  flex: 1; /* Chaque div prendra une part égale de l'espace disponible */
+  padding: 20px; /* Ajoute un espacement intérieur */
+  margin: 50px; /* ajouter un espacement extérieur */
+  box-sizing: border-box; /* Inclut le padding dans le calcul de la largeur */
 }
