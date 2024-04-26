@@ -1,8 +1,8 @@
-import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
-import RegistrationForm from "./RegistrationForm";
 import Login from "./Login";
+import RegistrationForm from "./RegistrationForm";
 
 function ModalInscriptionAuthentification() {
   const [showModal, setShowModal] = useState(false);
@@ -18,36 +18,40 @@ function ModalInscriptionAuthentification() {
   };
 
   return (
-    <div className="container my-5 Btn-inscription">
-      <DropdownButton
-        id="inscription-dropdown"
-        title="Se Connecter"
-        variant="primary"
-      >
-        <Dropdown.Item
-          as="button"
-          onClick={() => handleOpenModal("inscription")}
+    <div>
+      <div className="Btn-inscription text-white">
+        <DropdownButton
+          id="inscription-dropdown"
+          title="Se Connecter"
+          variant="#28732E"
         >
-          S'Inscrire
-        </Dropdown.Item>
-        <Dropdown.Item
-          as="button"
-          onClick={() => handleOpenModal("authentification")}
-        >
-          S'Authentifier
-        </Dropdown.Item>
-      </DropdownButton>
+          <Dropdown.Item
+            as="button"
+            hover="#28732E"
+            onClick={() => handleOpenModal("inscription")}
+          >
+            S'Inscrire
+          </Dropdown.Item>
+          <Dropdown.Item
+            as="button"
+            hover="#28732E"
+            onClick={() => handleOpenModal("authentification")}
+          >
+            S'Authentifier
+          </Dropdown.Item>
+        </DropdownButton>
 
-      {showModal && (
-        <>
-          {selectedOption === "inscription" && (
-            <RegistrationForm onClose={handleCloseModal} />
-          )}
-          {selectedOption === "authentification" && (
-            <Login onClose={handleCloseModal} />
-          )}
-        </>
-      )}
+        {showModal && (
+          <>
+            {selectedOption === "inscription" && (
+              <RegistrationForm onClose={handleCloseModal} />
+            )}
+            {selectedOption === "authentification" && (
+              <Login onClose={handleCloseModal} />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

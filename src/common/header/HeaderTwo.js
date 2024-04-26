@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 
 export default class HeaderTwo extends React.Component {
   render() {
@@ -140,7 +139,10 @@ export default class HeaderTwo extends React.Component {
                             className="main-menu__search search-toggler icon-magnifying-glass"
                           ></a>
                         </div>
-                        <ModalInscriptionAuthentification />
+
+                        <div className="main-header-one__bottom-right-btn sticky-xxl-top">
+                          <ModalInscriptionAuthentification />
+                        </div>
                       </div>
                     </div>
                   </div>

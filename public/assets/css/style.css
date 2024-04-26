@@ -2152,20 +2152,6 @@ Main Header One
   margin-left: 40px;
 }
 
-.main-header-one__bottom-right-btn a {
-  position: relative;
-  display: inline-block;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 400;
-  background: var(--thm-base);
-  padding: 15px 60px 15px;
-  transition: all 200ms linear;
-  transition-delay: 0.1s;
-  font-family: var(--thm-font-2);
-  z-index: 1;
-}
-
 .main-header-one__bottom-right-btn a::before {
   position: absolute;
   top: 0;
@@ -6468,9 +6454,10 @@ Footer One
 .footer-one {
   position: relative;
   display: block;
-  padding: 120px 0px 0px;
+  padding: 0px 0px 0px;
   background: var(--thm-black);
   z-index: 1;
+  height: auto;
 }
 
 .footer-one .shape1 {
@@ -6484,7 +6471,7 @@ Footer One
 .footer-one .shape2 {
   position: absolute;
   right: 0;
-  bottom: 150px;
+  bottom: 0px;
   z-index: -1;
 }
 
@@ -6495,7 +6482,7 @@ Footer One
   right: 0;
   background-repeat: repeat-x;
   background-position: left bottom;
-  height: 80px;
+  height: auto;
   opacity: 0.05;
   animation: slide 50s linear infinite;
   -webkit-animation: slide 50s linear infinite;
@@ -6505,7 +6492,7 @@ Footer One
 .footer {
   position: relative;
   display: block;
-  padding-bottom: 117px;
+  padding-bottom: px;
 }
 
 .footer-widget__single {
@@ -6813,7 +6800,7 @@ Footer One
   align-items: center;
   justify-content: space-between;
   background: rgba(255, 255, 255, 0.1);
-  padding: 30px 45px 30px;
+  padding: 5px 5px 5px;
 }
 
 .footer-one__bottom .bottom-inner .copyright {
@@ -6836,8 +6823,8 @@ Footer One
 .footer-one__bottom-menu li {
   position: relative;
   display: inline-block;
-  padding-right: 10px;
-  margin-right: 5px;
+  padding-right: 0px;
+  margin-right: 0px;
 }
 
 .footer-one__bottom-menu li::before {
@@ -6886,6 +6873,19 @@ Features One
 .logoFerti {
   width: 35px;
   height: 75px;
+}
+.nouveau-bouton-style {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  background: var(--thm-primary);
+  padding: 15px 50px 15px;
+  transition: all 200ms linear;
+  transition-delay: 0.1s;
+  font-family: var(--thm-font);
+  z-index: 1;
 }
 
 .features-one__bg {

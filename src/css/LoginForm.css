@@ -24,30 +24,30 @@
   margin-bottom: 15px;
 }
 
-label {
+.label {
   display: block;
   margin-bottom: 5px;
   color: #333333;
 }
 
-input {
+.input {
   width: 100%;
   padding: 8px;
   border: 1px solid #cccccc;
   border-radius: 4px;
 }
 
-button {
+.button {
   width: 100%;
   padding: 10px;
   border: none;
   border-radius: 4px;
   background-color: #239c23;
-  color: #ffffff;
+  color: white !important;
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   background-color: #1e7c1e;
 }
 
@@ -68,19 +68,33 @@ button:hover {
   cursor: pointer; /* Changer le curseur en pointeur au survol */
 }
 
-#Btn-inscription {
-  padding: 10px 20px;
-  background-color: #239c23; /* Couleur d'arrière-plan du bouton */
-  color: #fff; /* Couleur de police du bouton */
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
+.Btn-inscription {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 400;
+  background: var(--thm-primary);
+  padding: 15px 50px 15px;
+  padding-top: 15px;
+  padding-right: 50px;
+  padding-bottom: 15px;
+  padding-left: 50px;
+  transition: all 200ms linear;
+  transition-delay: 0.1s;
   font-family: var(--thm-font);
-  cursor: pointer;
 }
 
-#Btn-inscription:hover {
-  background-color: #055d2b; /* Couleur d'arrière-plan du bouton au survol */
+#inscription-dropdown {
+  color: #ffffff !important;
+}
+
+.Btn-inscription {
+  text-decoration-color: #ffffff;
+}
+
+.Btn-inscription:hover {
+  background-color: #099746; /* Couleur d'arrière-plan du bouton au survol */
 }
 
 .modal-dialog * {
