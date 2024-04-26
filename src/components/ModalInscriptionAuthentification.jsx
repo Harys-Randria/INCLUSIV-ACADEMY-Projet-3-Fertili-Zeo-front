@@ -18,7 +18,7 @@ function ModalInscriptionAuthentification() {
   };
 
   return (
-    <div>
+    <>
       <div className="Btn-inscription text-white">
         <DropdownButton
           id="inscription-dropdown"
@@ -41,17 +41,18 @@ function ModalInscriptionAuthentification() {
           </Dropdown.Item>
         </DropdownButton>
 
-      {showModal && (
-        <>
-          {selectedOption === "inscription" && (
-            <RegistrationFull onClose={handleCloseModal} />
-          )}
-          {selectedOption === "authentification" && (
-            <Login onClose={handleCloseModal} />
-          )}
-        </>
-      )}
-    </div>
+        {showModal && (
+          <>
+            {selectedOption === "inscription" && (
+              <RegistrationFull onClose={handleCloseModal} />
+            )}
+            {selectedOption === "authentification" && (
+              <Login onClose={handleCloseModal} />
+            )}
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
