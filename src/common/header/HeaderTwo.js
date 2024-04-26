@@ -163,7 +163,7 @@ export default class HeaderTwo extends React.Component {
                             alignItems: "center",
                           }}
                         >
-                          <Link>
+                          {/* <Link> */}
                             <img
                               className="logoFerti"
                               src={
@@ -179,7 +179,7 @@ export default class HeaderTwo extends React.Component {
                               }}
                               onClick={this.handleProfileClick}
                             />
-                          </Link>
+                          {/* </Link> */}
                           <h5
                             style={{
                               color: "white",
