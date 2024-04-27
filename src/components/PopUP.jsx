@@ -49,7 +49,7 @@ function PopUp(props) {
           </h1>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Button color="#055D2B" onClick={toggle}>
             Close
           </Button>
         </ModalFooter>

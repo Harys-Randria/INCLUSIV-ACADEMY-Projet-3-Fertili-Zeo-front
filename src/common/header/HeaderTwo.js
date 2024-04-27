@@ -69,7 +69,7 @@ export default class HeaderTwo extends React.Component {
                           <p>Send email </p>
                           <h6>
                             <a href="mailto:yourmail@email.com">
-                              fertilizeo@company.com
+                              fertilizeo0@gmail.com
                             </a>
                           </h6>
                         </div>
@@ -145,18 +145,19 @@ export default class HeaderTwo extends React.Component {
                           <Nav />
                         </div>
                       </div>
-                      <div className="main-header-one__bottom-right">
-                        <div className="header-search-box">
-                          <a
+                      <div style={{marginLeft:"10px"}} className="main-header-one__bottom-right">
+                        <div className="header-search-box" style={{ marginRight: "100px" }}>
+                         {/*<a
                             href="#"
                             className="main-menu__search search-toggler icon-magnifying-glass"
-                          ></a>
-                        </div>
+                          ></a>*/}
+                        </div> 
+                        <div style={{ marginRight: "100px" }}>
                         <ModalInscriptionAuthentification />
+                        </div>
                         <div
                           style={{
-                            marginLeft: "50px",
-                            width: "200px",
+                            marginRight: "50px",
                             display: "flex",
                             width: "200px",
                             flexDirection: "column",
