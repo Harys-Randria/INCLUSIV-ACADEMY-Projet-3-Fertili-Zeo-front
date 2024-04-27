@@ -197,7 +197,7 @@ function RegistrationFull({ onClose }) {
                 )}
               </div>
               <div className="text-center">
-                <button id="Btn-inscription" type="submit">
+                <button id="btn btn-success" type="submit">
                   S'inscrire
                 </button>
                 <p>ou</p>

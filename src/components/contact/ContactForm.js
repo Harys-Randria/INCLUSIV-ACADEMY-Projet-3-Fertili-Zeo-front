@@ -7,11 +7,20 @@ export default class ContactForm extends React.Component {
         this.state = {
             imageUrl: process.env.PUBLIC_URL + '/assets/images/resources/user.png', // L'image par défaut
             typeCompte: '', // Nouveau state pour le type de compte
-            nifStat: '', // Nouveau state pour le Nif_Stat
+            nifStat: sessionStorage.getItem("nif_stat"), // Nouveau state pour le Nif_Stat
             nifStatError: '', // Nouveau state pour gérer l'erreur de Nif_Stat
             isSubmitted: false, // Nouveau state pour suivre l'état de soumission du formulaire
+            userName: sessionStorage.getItem("name"),
+            phone: sessionStorage.getItem("phone"),
+            email: sessionStorage.getItem("email"),
+            cin: sessionStorage.getItem("cin"),
+            address: sessionStorage.getItem("address"),
+            type: sessionStorage.getItem("type"),
+            id: sessionStorage.getItem("id")
         };
     }
+
+
 
     handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -58,7 +67,6 @@ export default class ContactForm extends React.Component {
     }
 
     render() {
-        let publicUrl = process.env.PUBLIC_URL + '/';
         return (
             
                 <section className="contact-page">
@@ -78,12 +86,12 @@ export default class ContactForm extends React.Component {
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
-                                                    <input type="text" name="name" placeholder="Nom" required="" className="form-control" />
+                                                    <input type="text" name="name" placeholder="Nom" required="" className="form-control" value={this.state.userName ||''} onChange={(e) => this.setState({ userName: e.target.value })}/>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
-                                                    <input type="email" name="email" placeholder="Email" required="" className="form-control" />
+                                                    <input type="email" name="email" placeholder="Email" required="" className="form-control" value={this.state.email ||''} onChange={(e) => this.setState({ email: e.target.value })}/>
                                                 </div>
                                             </div>
                                         </div>
@@ -91,13 +99,13 @@ export default class ContactForm extends React.Component {
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
-                                                    <input type="text" placeholder="Télephone" name="phone" className="form-control" />
+                                                    <input type="text" placeholder="Télephone" name="phone" className="form-control" value={this.state.phone !==null ? this.state.phone :''} onChange={(e) => this.setState({ phone: e.target.value })}/>
                                                 </div>
                                             </div>
 
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
-                                                    <input type="text" placeholder="Adresse" name="Adresse" className="form-control" />
+                                                    <input type="text" placeholder="Adresse" name="Adresse" className="form-control" value={this.state.address ||''} onChange={(e) => this.setState({ address: e.target.value })} />
                                                 </div>
                                             </div>
                                         </div>
@@ -106,14 +114,14 @@ export default class ContactForm extends React.Component {
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
-                                                    <input type="text" name="nifStat" placeholder="Nif_Stat" value={this.state.nifStat} onChange={this.handleNifStatChange} className={`form-control ${this.state.isSubmitted && this.state.nifStat.length !== 12 && 'is-invalid'}`} />
+                                                    <input type="text" name="nifStat" placeholder="Nif_Stat" value={this.state.nifStat ||''} onChange={this.handleNifStatChange} className={`form-control ${this.state.isSubmitted && this.state.nifStat.length !== 12 && 'is-invalid'}`} />
                                                     {this.state.isSubmitted && this.state.nifStat.length !== 12 && <div className="invalid-feedback">Le Nif_Stat doit contenir exactement 12 chiffres.</div>}
                                                 </div>
                                             </div>
 
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
-                                                    <input type="text" name="cin" placeholder="CIN" className="form-control" />
+                                                    <input type="text" name="cin" placeholder="CIN" className="form-control" value={this.state.cin ||''} onChange={(e) => this.setState({ cin: e.target.value })}/>
                                                 </div>
                                             </div>
                                         </div>

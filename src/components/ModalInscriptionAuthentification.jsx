@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Dropdown, DropdownButton } from "react-bootstrap";
 import Login from "./Login";
 import RegistrationFull from "./RegirtrrationFull";
+import "./stylecssbouttonseconnecter.css";
 
 function ModalInscriptionAuthentification() {
   const [showModal, setShowModal] = useState(false);
@@ -16,14 +17,16 @@ function ModalInscriptionAuthentification() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  
 
   return (
     <>
-      <div className="Btn-inscription text-white">
+      <div className="Btn-inscription text-white custom-margin">
         <DropdownButton
           id="inscription-dropdown"
           title="Se Connecter"
           variant="#28732E"
+          
         >
           <Dropdown.Item
             as="button"
