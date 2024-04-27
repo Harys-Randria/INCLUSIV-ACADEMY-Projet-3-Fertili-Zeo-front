@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../css/LoginForm.css";
 
 function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
@@ -17,8 +18,10 @@ function LoginModal({ onClose }) {
       sessionStorage.setItem("email", response.data.email);
       sessionStorage.setItem("type", response.data.type);
       sessionStorage.setItem("id", response.data.id);
-
-      console.log(sessionStorage.getItem("token"));
+      sessionStorage.setItem("cin", response.data.cin);
+      sessionStorage.setItem("phone", response.data.phone);
+      sessionStorage.setItem("address", response.data.address);
+      sessionStorage.setItem("nif_stat", response.data.nif_stat);
 
       onClose();
       window.location.reload();
@@ -63,7 +66,7 @@ function LoginModal({ onClose }) {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-success">
                 Se connecter
               </button>
             </form>

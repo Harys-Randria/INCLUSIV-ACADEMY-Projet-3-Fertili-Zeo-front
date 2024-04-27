@@ -6,6 +6,11 @@
   background-color: #f1f1f1;
 }
 
+.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important;
+}
+
 .login-form {
   width: 300px;
   padding: 20px;
