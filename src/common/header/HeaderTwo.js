@@ -1,9 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 
 export default class HeaderTwo extends React.Component {
   constructor(props) {
@@ -24,9 +23,6 @@ export default class HeaderTwo extends React.Component {
     // Rediriger vers la page de profil de l'utilisateur
     window.location.href = "/contact";
   };
-
-
-
 
   render() {
     let publicUrl = process.env.PUBLIC_URL + "/";
@@ -64,7 +60,6 @@ export default class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li> */}
-
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -80,7 +75,6 @@ export default class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li>
-
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -94,12 +88,10 @@ export default class HeaderTwo extends React.Component {
                     </li>
                   </ul>
                 </div>
-
                 <div className="main-header-two__top-social-links">
                   <div className="title-box">
                     <h4>Suivez-nous</h4>
                   </div>
-
                   <ul className="social-links">
                     <li>
                       <a href="#">
@@ -147,14 +139,12 @@ export default class HeaderTwo extends React.Component {
                       <div className="main-header-one__bottom-left">
                         <LogoTwo />
                       </div>
-
                       <div className="main-header-one__bottom-middle">
                         <div className="main-menu-box">
                           <MobileMenu />
                           <Nav />
                         </div>
                       </div>
-
                       <div className="main-header-one__bottom-right">
                         <div className="header-search-box">
                           <a
@@ -163,8 +153,6 @@ export default class HeaderTwo extends React.Component {
                           ></a>
                         </div>
                         <ModalInscriptionAuthentification />
-
-
                         <div
                           style={{
                             marginLeft: "50px",
@@ -175,11 +163,12 @@ export default class HeaderTwo extends React.Component {
                             alignItems: "center",
                           }}
                         >
-                          <Link>
+                          {/* <Link> */}
                             <img
                               className="logoFerti"
                               src={
-                                publicUrl + "assets/images/resources/Profils.png"
+                                publicUrl +
+                                "assets/images/resources/Profils.png"
                               }
                               alt="Awesome Logo"
                               style={{
@@ -190,8 +179,7 @@ export default class HeaderTwo extends React.Component {
                               }}
                               onClick={this.handleProfileClick}
                             />
-                          
-                          </Link>
+                          {/* </Link> */}
                           <h5
                             style={{
                               color: "white",
@@ -200,11 +188,6 @@ export default class HeaderTwo extends React.Component {
                             {this.state.userName}
                           </h5>
                         </div>
-
-
-
-
-
                       </div>
                     </div>
                   </div>
