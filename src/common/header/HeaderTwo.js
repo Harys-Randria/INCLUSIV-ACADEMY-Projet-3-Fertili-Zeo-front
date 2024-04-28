@@ -3,12 +3,14 @@ import ModalInscriptionAuthentification from "../../components/ModalInscriptionA
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
+import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
+
 
 export default class HeaderTwo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userName: sessionStorage.getItem("name") || "", // Récupérer le nom de l'utilisateur du sessionStorage ou utiliser "Ravelomanana" par défaut
+      userName: sessionStorage.getItem("name") || "Compte", // Récupérer le nom de l'utilisateur du sessionStorage ou utiliser "Ravelomanana" par défaut
     };
   }
   handleLogout = () => {
@@ -146,11 +148,8 @@ export default class HeaderTwo extends React.Component {
                         </div>
                       </div>
                       <div className="main-header-one__bottom-right">
-                        <div className="header-search-box">
-                          <a
-                            href="#"
-                            className="main-menu__search search-toggler icon-magnifying-glass"
-                          ></a>
+                        <div className="header-search-box ">
+                        
                         </div>
                         <ModalInscriptionAuthentification />
                         <div
@@ -172,8 +171,8 @@ export default class HeaderTwo extends React.Component {
                               }
                               alt="Awesome Logo"
                               style={{
-                                width: "40px",
-                                height: "40px",
+                                width: "60px",
+                                height: "60px",
                                 borderRadius: "50%",
                                 cursor: "pointer",
                               }}
@@ -183,6 +182,7 @@ export default class HeaderTwo extends React.Component {
                           <h5
                             style={{
                               color: "white",
+                              marginRight: "75px",
                             }}
                           >
                             {this.state.userName}

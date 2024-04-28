@@ -30,6 +30,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "./components/contact/styless.css";
+import ProductDetails from "./components/Produits/ProductDetails";
 
 function App() {
   useEffect(() => {
@@ -97,7 +98,7 @@ function App() {
           element={<TeamDetails />}
         />
         <Route
-          path={`${process.env.PUBLIC_URL}/portfolio-1`}
+          path={`${process.env.PUBLIC_URL}/product-details`}
           exact
           element={<PortfolioOne />}
         />
@@ -127,6 +128,9 @@ function App() {
           exact
           element={<Contact />}
         />
+        <Route path={`${process.env.PUBLIC_URL}/produit`}
+          exact
+          element={<ProductDetails />} />
       </Routes>
       <ScrollToTop
         className="scrollUp"
