@@ -86,11 +86,13 @@ export default class ContactForm extends React.Component {
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
+                                                    <label className="label-text" htmlFor='name'> Nom</label>
                                                     <input type="text" name="name" placeholder="Nom" required="" className="form-control" value={this.state.userName ||''} onChange={(e) => this.setState({ userName: e.target.value })}/>
                                                 </div>
                                             </div>
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
+                                                <label className="label-text" htmlFor='email'> Email</label>
                                                     <input type="email" name="email" placeholder="Email" required="" className="form-control" value={this.state.email ||''} onChange={(e) => this.setState({ email: e.target.value })}/>
                                                 </div>
                                             </div>
@@ -99,12 +101,14 @@ export default class ContactForm extends React.Component {
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
+                                                    <label className="label-text" htmlFor='phone'> Télephone</label>
                                                     <input type="text" placeholder="Télephone" name="phone" className="form-control" value={this.state.phone !==null ? this.state.phone :''} onChange={(e) => this.setState({ phone: e.target.value })}/>
                                                 </div>
                                             </div>
 
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
+                                                    <label className="label-text" htmlFor='Adresse'> Adresse</label>
                                                     <input type="text" placeholder="Adresse" name="Adresse" className="form-control" value={this.state.address ||''} onChange={(e) => this.setState({ address: e.target.value })} />
                                                 </div>
                                             </div>
@@ -114,6 +118,7 @@ export default class ContactForm extends React.Component {
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
+                                                    <label className="text-label" htmlFor='nifStat'> Nif</label>
                                                     <input type="text" name="nifStat" placeholder="Nif_Stat" value={this.state.nifStat ||''} onChange={this.handleNifStatChange} className={`form-control ${this.state.isSubmitted && this.state.nifStat.length !== 12 && 'is-invalid'}`} />
                                                     {this.state.isSubmitted && this.state.nifStat.length !== 12 && <div className="invalid-feedback">Le Nif_Stat doit contenir exactement 12 chiffres.</div>}
                                                 </div>
@@ -121,6 +126,7 @@ export default class ContactForm extends React.Component {
 
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">
+                                                    <label className="text-label" htmlFor='cin'> CIN</label>
                                                     <input type="text" name="cin" placeholder="CIN" className="form-control" value={this.state.cin ||''} onChange={(e) => this.setState({ cin: e.target.value })}/>
                                                 </div>
                                             </div>

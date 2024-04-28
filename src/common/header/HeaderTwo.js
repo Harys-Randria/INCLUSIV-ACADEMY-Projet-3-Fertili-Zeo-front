@@ -139,25 +139,25 @@ export default class HeaderTwo extends React.Component {
                       <div className="main-header-one__bottom-left">
                         <LogoTwo />
                       </div>
-                      <div className="main-header-one__bottom-middle">
+                      <div  className="main-header-one__bottom-middle">
                         <div className="main-menu-box">
                           <MobileMenu />
                           <Nav />
                         </div>
                       </div>
-                      <div style={{marginLeft:"10px"}} className="main-header-one__bottom-right">
-                        <div className="header-search-box" style={{ marginRight: "100px" }}>
-                         {/*<a
+                      <div style={{ display: "flex", justifyContent: "center" }} className="main-header-one__bottom-right">
+                       {/*<div className="header-search-box">
+                         <a
                             href="#"
                             className="main-menu__search search-toggler icon-magnifying-glass"
-                          ></a>*/}
-                        </div> 
-                        <div style={{ marginRight: "100px" }}>
+                          ></a>
+                        </div> */}
+                        <div>
                         <ModalInscriptionAuthentification />
                         </div>
                         <div
                           style={{
-                            marginRight: "50px",
+                            marginRight: "300px",
                             display: "flex",
                             width: "200px",
                             flexDirection: "column",

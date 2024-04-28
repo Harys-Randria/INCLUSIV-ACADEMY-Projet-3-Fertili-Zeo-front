@@ -32,21 +32,7 @@ function LoginModal({ onClose }) {
     }
   };
 
-  const handleResetPassword = () => {
-    setResetPasswordRequested(true);
-  };
 
-  const handleResetPasswordSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Envoyer la demande de réinitialisation du mot de passe
-      await axios.post("http://localhost:8080/compte/forgot-password", { email });
-      // Afficher un message de succès ou rediriger l'utilisateur
-      alert("Un e-mail de réinitialisation de mot de passe a été envoyé.");
-    } catch (error) {
-      console.error("Erreur lors de la demande de réinitialisation du mot de passe:", error);
-    }
-  };
 
   return (
     <div className="modal show" style={{ display: "block" }}>
@@ -89,7 +75,7 @@ function LoginModal({ onClose }) {
                 Se connecter
               </button>
               <div className="text-center">
-                <a className=" text-black-50" href="#" onClick={handleResetPassword} >Mot de passe oublié?</a>
+                <a className=" text-black-50" href="#" >Mot de passe oublié?</a>
               </div>
             </form>
           </div>
