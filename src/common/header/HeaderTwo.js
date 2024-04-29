@@ -1,11 +1,16 @@
 import React from "react";
-import { Link } from 'react-router-dom'; // Importer Link et withRouter
-import { withRouter } from 'react-router-dom';
-import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
+
+import { Link } from "react-router-dom";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-import './dropdowncss.css';
+
+import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
+import "./dropdowncss.css";
+import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
+import CategoryDropdown from "../../components/CategoryDropdown";
+
+
 
 class HeaderTwo extends React.Component {
   constructor(props) {
@@ -54,6 +59,21 @@ class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li>
+                    {/* 
+                    <li>
+                      <div className="inner">
+                        <div className="icon-box">
+                          <span className="icon-phone-call-1"></span>
+                        </div>
+                        <div className="text-box">
+                          <p>Call anytime </p>
+                          <h6>
+                            <a href="tel:980009630">+ 98 (000) - 9630</a>
+                          </h6>
+                        </div>
+                      </div>
+                    </li> */}
+
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -69,6 +89,7 @@ class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li>
+
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -81,10 +102,12 @@ class HeaderTwo extends React.Component {
                     </li>
                   </ul>
                 </div>
+
                 <div className="main-header-two__top-social-links">
                   <div className="title-box">
                     <h4>Suivez-nous</h4>
                   </div>
+
                   <ul className="social-links">
                     <li>
                       <a href="#">
@@ -116,12 +139,17 @@ class HeaderTwo extends React.Component {
                       <div className="main-header-one__bottom-left">
                         <LogoTwo />
                       </div>
+
                       <div  className="main-header-one__bottom-middle">
+
+
+
                         <div className="main-menu-box">
                           <MobileMenu />
                           <Nav />
                         </div>
                       </div>
+
                       <div className="main-header-one__bottom-right">
                         <div style={{ backgroundColor: "#0b3d2c" }} className="sidebar__single sidebar__search wow animated col-6 ">
                           <form action="#" className="sidebar__search-form">
@@ -133,8 +161,10 @@ class HeaderTwo extends React.Component {
 
 
                         {isAuthenticated && (
+
                           <div style={{ display: "flex", alignItems: "center" }} className="main-header-one__bottom-right">
                             <div
+
                               style={{
                                 width: "200px",
                                 display: "flex",
@@ -169,10 +199,13 @@ class HeaderTwo extends React.Component {
                               {/* Utilisez la classe CSS 'btn-logout' pour le bouton */}
                               <button className="btn-logout red " onClick={this.handleLogout}>
                                 Se déconnecter
+
+
                               </button>
                             </h6>
                           </div>
                         )}
+                        <CategoryDropdown />
                       </div>
                     </div>
                   </div>
