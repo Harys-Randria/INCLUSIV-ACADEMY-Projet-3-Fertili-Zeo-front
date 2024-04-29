@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-<<<<<<< Updated upstream
+
 import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
-import './dropdowncss.css'
-=======
+import "./dropdowncss.css";
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 import CategoryDropdown from "../../components/CategoryDropdown";
->>>>>>> Stashed changes
 
 export default class HeaderTwo extends React.Component {
   constructor(props) {
@@ -58,8 +56,6 @@ export default class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li>
-<<<<<<< Updated upstream
-=======
                     {/* 
                     <li>
                       <div className="inner">
@@ -75,7 +71,6 @@ export default class HeaderTwo extends React.Component {
                       </div>
                     </li> */}
 
->>>>>>> Stashed changes
                     <li>
                       <div className="inner">
                         <div className="icon-box">
@@ -154,7 +149,6 @@ export default class HeaderTwo extends React.Component {
                       <div className="main-header-one__bottom-right">
                         <div className="header-search-box "></div>
                         <ModalInscriptionAuthentification />
-<<<<<<< Updated upstream
                         {isAuthenticated && (
                           <div
                             style={{
@@ -167,7 +161,10 @@ export default class HeaderTwo extends React.Component {
                           >
                             <img
                               className="logoFerti margin-icon-profil"
-                              src={publicUrl + "assets/images/resources/Profils.png"}
+                              src={
+                                publicUrl +
+                                "assets/images/resources/Profils.png"
+                              }
                               alt="Awesome Logo"
                               style={{
                                 width: "60px",
@@ -184,15 +181,16 @@ export default class HeaderTwo extends React.Component {
                               }}
                             >
                               {/* Utilisez la classe CSS 'btn-logout' pour le bouton */}
-                              <button className="btn-logout red" onClick={this.handleLogout}>
+                              <button
+                                className="btn-logout red"
+                                onClick={this.handleLogout}
+                              >
                                 Déconnexion
                               </button>
                             </h5>
                           </div>
                         )}
-=======
                         <CategoryDropdown />
->>>>>>> Stashed changes
                       </div>
                     </div>
                   </div>
