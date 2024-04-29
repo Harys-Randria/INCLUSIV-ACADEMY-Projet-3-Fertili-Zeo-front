@@ -82,7 +82,7 @@ export default class ContactForm extends React.Component {
 
                                     <form id="contact-form" className="default-form2 contact-form-validated" onSubmit={this.handleSubmit}>
 
-
+,q                 
                                         <div className="row">
                                             <div className="col-xl-6 col-lg-6 col-md-6">
                                                 <div className="input-box">

@@ -21,7 +21,7 @@ function ModalInscriptionAuthentification() {
 
   return (
     <>
-      <div className="Btn-inscription text-white custom-margin">
+      <div className="Btn-inscription text-white">
         <DropdownButton
           id="inscription-dropdown"
           title="Se Connecter"

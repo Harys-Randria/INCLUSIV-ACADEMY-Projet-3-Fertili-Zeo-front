@@ -118,85 +118,67 @@ export default class HeaderTwo extends React.Component {
               </div>
             </div>
           </div>
-          {/* End Main Header Two Top */}
-
           {/* Start Main Header One Bottom */}
-          <div className="main-header-one__bottom">
-            <div
-              className="main-header-two__bottom-bg"
-              style={{
-                backgroundImage:
-                  "url(" +
-                  publicUrl +
-                  "assets/images/shapes/main-header-v2-bg.png)",
-              }}
-            ></div>
-            <div className="main-header-one__bottom-inner">
-              <nav className="main-menu main-menu-one">
-                <div className="main-menu__wrapper clearfix">
-                  <div className="auto-container">
-                    <div className="main-menu__wrapper-inner">
-                      <div className="main-header-one__bottom-left">
-                        <LogoTwo />
-                      </div>
-                      <div  className="main-header-one__bottom-middle">
-                        <div className="main-menu-box">
-                          <MobileMenu />
-                          <Nav />
-                        </div>
-                      </div>
-                      <div style={{ display: "flex", justifyContent: "center" }} className="main-header-one__bottom-right">
-                       {/*<div className="header-search-box">
-                         <a
-                            href="#"
-                            className="main-menu__search search-toggler icon-magnifying-glass"
-                          ></a>
-                        </div> */}
-                        <div>
-                        <ModalInscriptionAuthentification />
-                        </div>
-                        <div
-                          style={{
-                            marginRight: "300px",
-                            display: "flex",
-                            width: "200px",
-                            flexDirection: "column",
-                            alignItems: "center",
-                          }}
-                        >
-                          
-                            <img
-                              className="logoFerti margin-icon-profil"
-                              src={
-                                publicUrl +
-                                "assets/images/resources/Profils.png"
-                              }
-                              alt="Awesome Logo"
-                              style={{
-                                width: "40px",
-                                height: "40px",
-                                borderRadius: "50%",
-                                cursor: "pointer",
-                              }}
-                              onClick={this.handleProfileClick}
-                            />
-                          
-                          <h5
-                            style={{
-                              color: "white",
-                            }}
-                          >
-                            {this.state.userName}
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </nav>
+<div className="main-header-one__bottom">
+  <div className="main-header-two__bottom-bg" style={{ backgroundImage: "url(" + publicUrl + "assets/images/shapes/main-header-v2-bg.png)" }}></div>
+  
+  <nav className="main-menu main-menu-one">
+    <div className="main-menu__wrapper clearfix">
+      <div className="auto-container">
+        <div className="main-menu__wrapper-inner">
+          <div className="main-header-one__bottom-left">
+            <LogoTwo />
+          </div>
+          <div className="main-header-one__bottom-middle">
+            <div className="main-menu-box">
+              <MobileMenu />
+              <Nav />
             </div>
           </div>
-          {/* End Main Header Two Bottom */}
+          <div className="main-header-one__bottom-right">
+            <div style={{ backgroundColor:"#0b3d2c", marginLeft: "10%"}} className="fadeInUp">
+              <form action="#" className="sidebar__search-form">
+                <input type="search" placeholder="Recherche" />
+                <button type="submit"><i className="fa fa-search"></i></button>
+              </form>
+            </div>
+            <div style={{marginLeft: "10%"}}>
+            
+              <ModalInscriptionAuthentification />
+
+            </div>
+            <div>
+              <img
+                className="logoFerti margin-icon-profil"
+                src={publicUrl + "assets/images/resources/Profils.png"}
+                alt="Awesome Logo"
+                style={{
+                  marginLeft: "100%",
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  
+                }}
+                onClick={this.handleProfileClick}
+              />
+              <h5
+                style={{
+                  color: "white",
+                  marginLeft: "5px", // Ajustement de la marge à gauche
+                }}
+              >
+                {this.state.userName}
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+{/* End Main Header Two Bottom */}
+
         </header>
       </>
     );
