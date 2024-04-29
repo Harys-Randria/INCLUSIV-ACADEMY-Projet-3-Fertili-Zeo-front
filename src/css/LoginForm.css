@@ -135,3 +135,59 @@
   margin: 50px; /* ajouter un espacement extérieur */
   box-sizing: border-box; /* Inclut le padding dans le calcul de la largeur */
 }
+
+#fertilizer-dropdown.bootstrap-select
+  .btn-light:not(:disabled):not(.disabled).active,
+#fertilizer-dropdown.bootstrap-select
+  .btn-light:not(:disabled):not(.disabled):active,
+#fertilizer-dropdown.bootstrap-select .show > .btn-light.dropdown-toggle {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+#fertilizer-dropdown.bootstrap-select > .dropdown-toggle {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+#fertilizer-dropdown.bootstrap-select .dropdown-toggle:focus,
+#fertilizer-dropdown.bootstrap-select
+  > select.mobile-device:focus
+  + .dropdown-toggle {
+  outline: none !important;
+}
+
+#fertilizer-dropdown.bootstrap-select .dropdown-menu {
+  border: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  z-index: 991;
+  border-radius: 0;
+}
+
+#fertilizer-dropdown.bootstrap-select .dropdown-menu > li + li > a {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#fertilizer-dropdown.bootstrap-select .dropdown-menu > li.selected > a {
+  background: var(--brote-primary);
+  color: #fff;
+}
+
+#fertilizer-dropdown.bootstrap-select .dropdown-menu > li > a {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 20px;
+  color: #ffffff;
+  background: var(--brote-base);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#fertilizer-dropdown.bootstrap-select .dropdown-menu > li > a:hover {
+  background: var(--brote-white);
+  color: var(--brote-base);
+  cursor: pointer;
+}
