@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from 'react-router-dom'; // Importer Link et withRouter
+import { withRouter } from 'react-router-dom';
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
-import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
-import './dropdowncss.css'
+import './dropdowncss.css';
 
-export default class HeaderTwo extends React.Component {
+class HeaderTwo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,15 +27,15 @@ export default class HeaderTwo extends React.Component {
 
   handleProfileClick = () => {
     // Rediriger vers la page de profil de l'utilisateur
-    window.location.href = "/contact";
+    this.props.history.push('/contact');
   };
 
   render() {
     let publicUrl = process.env.PUBLIC_URL + "/";
-    const { isAuthenticated } = this.state;
+    const { isAuthenticated, userName } = this.state;
 
     return (
-      <>
+      <div>
         <header className="main-header main-header-one main-header-two">
           {/* Start Main Header Two Top */}
           <div className="main-header-two__top">
@@ -59,7 +60,7 @@ export default class HeaderTwo extends React.Component {
                           <span className="icon-message"></span>
                         </div>
                         <div className="text-box">
-                          <p>Send email </p>
+                          <p>Nous envoyer email </p>
                           <h6>
                             <a href="mailto:yourmail@email.com">
                               fertilizeo0@gmail.com
@@ -115,48 +116,61 @@ export default class HeaderTwo extends React.Component {
                       <div className="main-header-one__bottom-left">
                         <LogoTwo />
                       </div>
-                      <div className="main-header-one__bottom-middle">
+                      <div  className="main-header-one__bottom-middle">
                         <div className="main-menu-box">
                           <MobileMenu />
                           <Nav />
                         </div>
                       </div>
                       <div className="main-header-one__bottom-right">
-                        <div className="header-search-box "></div>
-                        <ModalInscriptionAuthentification />
+                        <div style={{ backgroundColor: "#0b3d2c" }} className="sidebar__single sidebar__search wow animated col-6 ">
+                          <form action="#" className="sidebar__search-form">
+                            <input type="search" placeholder="Search..." />
+                            <button type="submit"><i className="fa fa-search"></i></button>
+                          </form>
+                        </div>
+                        {!isAuthenticated && (<ModalInscriptionAuthentification />)}
+
+
                         {isAuthenticated && (
-                          <div
-                            style={{
-                              marginLeft: "50px",
-                              width: "200px",
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "center",
-                            }}
-                          >
-                            <img
-                              className="logoFerti margin-icon-profil"
-                              src={publicUrl + "assets/images/resources/Profils.png"}
-                              alt="Awesome Logo"
+                          <div style={{ display: "flex", alignItems: "center" }} className="main-header-one__bottom-right">
+                            <div
                               style={{
-                                width: "60px",
-                                height: "60px",
-                                borderRadius: "50%",
-                                cursor: "pointer",
+                                width: "200px",
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
                               }}
-                              onClick={this.handleProfileClick}
-                            />
-                            <h5
+                            >
+                              {/* Utilisez la balise Link avec le logo utilisateur */}
+                              <Link style={{ textDecoration: "none"}} to={process.env.PUBLIC_URL + `/contact`} className="logoFerti icon-profil">
+                                <img
+                                  src={publicUrl + "assets/images/resources/Profils.png"}
+                                  alt="Awesome Logo"
+                                  style={{
+                                    width: "50px",
+                                    height: "50px",
+                                    borderRadius: "50%",
+                                    cursor: "pointer",
+                                    marginTop: "10px",
+
+                                  }}
+                                />
+                                <p style={{fontFamily:"poppins",textDecoration: "none", color: "white", marginTop: "5px" }}>{userName}</p>
+                              </Link>
+
+                            </div>
+                            <h6
                               style={{
                                 color: "white",
-                                marginRight: "75px",
+                                marginLeft: "70px",
                               }}
                             >
                               {/* Utilisez la classe CSS 'btn-logout' pour le bouton */}
-                              <button className="btn-logout red" onClick={this.handleLogout}>
-                                Déconnexion
+                              <button className="btn-logout red " onClick={this.handleLogout}>
+                                Se déconnecter
                               </button>
-                            </h5>
+                            </h6>
                           </div>
                         )}
                       </div>
@@ -168,7 +182,8 @@ export default class HeaderTwo extends React.Component {
           </div>
           {/* End Main Header Two Bottom */}
         </header>
-      </>
+      </div>
     );
   }
 }
+export default HeaderTwo;

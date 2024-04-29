@@ -4,6 +4,7 @@ import Nav from './Nav';
 import MobileMenu from './MobileMenu';
 import SearchButton from './SearchButton';
 import LogoOne from './LogoOne';
+import BlogSix from '../../components/blog/BlogSix';
 
 export default class HeaderOne extends React.Component {
     render(){
@@ -107,6 +108,7 @@ export default class HeaderOne extends React.Component {
                     </div>
                     {/* End Main Header One Bottom */}
                 </header>
+                
             </>
         )
     }

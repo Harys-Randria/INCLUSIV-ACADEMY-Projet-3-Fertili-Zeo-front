@@ -150,9 +150,9 @@ export default class FooterOne extends React.Component {
                               </a>
                               <br /> <br />
                             </p>
-                            <a href=" mailto:yourmail@email.com">
+                            {/*<a href=" mailto:yourmail@email.com">
                               info@example.com
-                            </a>
+                            </a> */}
                           </div>
                         </div>
                       </div>
@@ -191,9 +191,9 @@ export default class FooterOne extends React.Component {
                           <span class="icon-phone-call"></span>
                         </div>
                         <div class="content-box">
-                          <p>Call Anytime</p>
+                          <p>Contacter nous </p>
                           <h4>
-                            <a href="tel:9288006780">+92 ( 8800 ) - 6780</a>
+                            <a href="tel:9288006780">+261 34 37 681 56</a>
                           </h4>
                         </div>
                       </div>
