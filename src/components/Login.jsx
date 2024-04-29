@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../css/LoginForm.css";
+import './LoginForm.css';
 
 function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
@@ -31,21 +31,20 @@ function LoginModal({ onClose }) {
   };
 
   return (
-    <div className="modal show" style={{ display: "block" }}>
-      <div
-        className="modal-dialog position-absolute top-50 start-50 translate-middle custom-modal"
-        role="document"
-      >
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Connexion</h5>
-            <button
-              type="button"
-              className="btn-close"
-              aria-label="Close"
-              onClick={onClose}
-            ></button>
-          </div>
+    <div className="modal" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div className="custom-modal-dialog" role="document" style={{ width: "50%", maxWidth: "600px", minWidth: "300px", margin: "auto", borderRadius: "10px" }}>
+        <div className="custom-modal-content" style={{ padding: "20px", backgroundColor: "#fff", borderRadius: "10px" }}>
+        <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={onClose}
+        
+
+          ></button>
+          <h5 className="modal-titlecon text-center">Connexion</h5>
+          
+
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
@@ -55,6 +54,7 @@ function LoginModal({ onClose }) {
                   placeholder="Adresse e-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  style={{ minHeight: "40px" }}
                 />
               </div>
               <div className="mb-3">
@@ -64,11 +64,14 @@ function LoginModal({ onClose }) {
                   placeholder="Mot de passe"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  style={{ minHeight: "40px" }}
                 />
               </div>
-              <button type="submit" className="btn btn-success">
-                Se connecter
-              </button>
+              <div className="text-center">
+                <button type="submit" className="thm-btn ms-5">
+                  Se connecter
+                </button>
+              </div>
             </form>
           </div>
         </div>
