@@ -1,0 +1,24 @@
+// Import des variables Sass Bootstrap
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/utilities";
+
+
+// Définition des couleurs Bootstrap
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "danger":     $danger,
+  "warning":    $warning,
+  "info":       $info,
+  "light":      $light,
+  "dark":       $dark,
+  "green-700":  $green-700
+);
+
+// Import de Bootstrap après la définition des couleurs
+@import "~bootstrap/scss/bootstrap";
+
+// Vos styles personnalisés ici
