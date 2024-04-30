@@ -1,53 +1,48 @@
- 
-
- 
- // Import des variables Sass Bootstrap
- @import "~bootstrap/scss/functions";
- @import "~bootstrap/scss/variables";
- @import "~bootstrap/scss/mixins";
- // Import de Bootstrap après la définition des couleurs
+// Import des variables Sass Bootstrap
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+// Import de Bootstrap après la définition des couleurs
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/bootstrap";
 
- // Définition des couleurs Bootstrap
- $theme-colors: (
-   "primary":    $primary,
-   "secondary":  $secondary,
-   "success":    $success,
-   "danger":     $danger,
-   "warning":    $warning,
-   "info":       $info,
-   "light":      $light,
-   "dark":       $dark,
+// Définition des couleurs Bootstrap
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "danger": $danger,
+  "warning": $warning,
+  "info": $info,
+  "light": $light,
+  "dark": $dark,
 
-   "green-100":  $green-100,
-   "green-200":  $green-200,
-   "green-300":  $green-300,
-   "green-400":  $green-400,
-   "green-500":  $green-500,
-   "green-600":  $green-600,
-   "green-700":  $green-700,
-   "green-800":  $green-800,
-   "green-900":  $green-900,
-   "teal-100":   $teal-100,
-   "teal-200":   $teal-200,
-   "teal-300":   $teal-300,
-   "teal-400":   $teal-400,
-   "teal-500":   $teal-500,
-   "teal-600":   $teal-600,
-   "teal-700":   $teal-700,
-   "teal-800":   $teal-800,
-   "teal-900":   $teal-900,
- );
- 
- // Import de Bootstrap après la définition des couleurs
- @import "~bootstrap/scss/bootstrap";
+  "green-100": $green-100,
+  "green-200": $green-200,
+  "green-300": $green-300,
+  "green-400": $green-400,
+  "green-500": $green-500,
+  "green-600": $green-600,
+  "green-700": $green-700,
+  "green-800": $green-800,
+  "green-900": $green-900,
+  "teal-100": $teal-100,
+  "teal-200": $teal-200,
+  "teal-300": $teal-300,
+  "teal-400": $teal-400,
+  "teal-500": $teal-500,
+  "teal-600": $teal-600,
+  "teal-700": $teal-700,
+  "teal-800": $teal-800,
+  "teal-900": $teal-900,
+);
 
- $danger-dark: darken($danger, 10%); 
- 
+// Import de Bootstrap après la définition des couleurs
+@import "~bootstrap/scss/bootstrap";
 
+$danger-dark: darken($danger, 10%);
 
 /* produit.scss */
 /* produit.scss */
@@ -71,11 +66,6 @@ body {
   background-color: #5f9060; /* Couleur de fond de votre choix pour la première carte */
   color: #fff; /* Couleur du texte en fonction de la couleur de fond */
 }
-
-
-
-
-
 
 .btn-danger {
   background-color: $danger; /* Couleur de fond initiale du bouton */
@@ -127,8 +117,6 @@ $danger-dark: darken($danger, 10%);
   color: #151313; /* Couleur du texte initiale du bouton */
   transition: background-color 0.3s ease, color 0.3s ease; /* Animation de transition */
 }
-
-
 
 .btn-danger {
   background-color: $danger; /* Couleur de fond initiale du bouton */
