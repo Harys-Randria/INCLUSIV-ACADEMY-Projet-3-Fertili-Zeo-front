@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Image, Card, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Image, Card, Button, Form, Modal } from 'react-bootstrap';
+
 import { toast } from 'react-toastify'; // Import de la librairie react-toastify pour les notifications
 import 'react-toastify/dist/ReactToastify.css'; // Styles pour les notifications
 import axios from 'axios'; // Assurez-vous d'installer axios avec npm install axios
 import './produit.scss'
 
 const ProductPage = () => {
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
   const [product, setProduct] = useState(null);
   const [editMode, setEditMode] = useState(false); // État pour gérer le mode d'édition
   const [formData, setFormData] = useState({
@@ -17,21 +20,27 @@ const ProductPage = () => {
     description: ''
   });
   const handleDeleteProduct = () => {
-    axios.delete('http://localhost:8080/produit/supprimer/2')
+    axios.delete('http://localhost:8080/produit/supprimer/8')
       .then(response => {
         console.log('Product deleted successfully:', response.data);
         toast.success('Produit supprimé avec succès !');
-       
+        setProduct(null); // Mettre à jour l'état du produit pour qu'il soit null
+        handleCloseModal();  // Fermer le modal après la suppression
       })
       .catch(error => {
         console.error('Error deleting product:', error);
         toast.error('Erreur lors de la suppression du produit.');
+        handleCloseModal();  // Fermer le modal en cas d'erreur également
       });
-  };
+};
+
+  const handleDeleteClick = () => setShowDeleteConfirm(true);
+const handleCloseModal = () => setShowDeleteConfirm(false);
+
   
 
   useEffect(() => {
-    axios.get('http://localhost:8080/produit/2')
+    axios.get('http://localhost:8080/produit/8')
       .then(response => {
         setProduct(response.data);
         setFormData({
@@ -57,7 +66,7 @@ const ProductPage = () => {
   };
 
   const handleUpdateProduct = () => {
-    axios.put(`http://localhost:8080/produit/modifier/2`, formData)
+    axios.put(`http://localhost:8080/produit/modifier/8`, formData)
       .then(response => {
         console.log('Product updated successfully:', response.data);
         setProduct(response.data);
@@ -70,16 +79,28 @@ const ProductPage = () => {
       });
   };
 
-  if (!product) return <div>Loading...</div>;
+  if (!product) {
+    return (
+      <div className="text-center">
+        
+        <img src={`
+        ${process.env.PUBLIC_URL}/../assets/images/produits/Add.png`} alt="Ajouter produit" />
+      </div>
+    );
+  }
+  
   let publicUrl = process.env.PUBLIC_URL+'/assets/images/produits/';
 
   return (
     <div>
       <Container className="my-5">
         <Row>
-          <Col md={6}>
-          <img src={publicUrl + product.imageUrl} alt="" /> 
-          </Col>
+        <Col md={6}>
+  <div className="image-container">
+    <img src={publicUrl + product.imageUrl} alt={product.name} />
+  </div>
+</Col>
+
           <Col md={6}>
             <Card className="border border-success shadow">
               <Card.Body>
@@ -163,7 +184,8 @@ const ProductPage = () => {
                 {editMode ? null : ( // Afficher les boutons Modifier et Supprimer uniquement si editMode est faux
                   <>
                     <Button className="btn-green-700" onClick={() => setEditMode(true)}>Modifier</Button>
-                    <Button variant="danger" className="ms-2" onClick={handleDeleteProduct}>Supprimer produit</Button>
+                    <Button variant="danger" className="ms-2" onClick={handleDeleteClick}>Supprimer produit</Button>
+
                   </>
                 )}
               </Card.Body>
@@ -175,6 +197,21 @@ const ProductPage = () => {
           </Col>
         </Row>
       </Container>
+      <Modal show={showDeleteConfirm} onHide={handleCloseModal}>
+  <Modal.Header closeButton>
+    <Modal.Title>Confirmer la suppression</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>Êtes-vous sûr de vouloir supprimer ce produit ? Cette action est irréversible.</Modal.Body>
+  <Modal.Footer>
+    <Button variant="secondary" onClick={handleCloseModal}>
+      Annuler
+    </Button>
+    <Button variant="danger" onClick={handleDeleteProduct}>
+      Supprimer
+    </Button>
+  </Modal.Footer>
+</Modal>
+
     </div>
   );
 };
