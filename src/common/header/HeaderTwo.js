@@ -205,7 +205,7 @@ class HeaderTwo extends React.Component {
                             </h6>
                           </div>
                         )}
-                        <CategoryDropdown />
+                        
                       </div>
                     </div>
                   </div>

@@ -12,7 +12,7 @@ const BlogGrid = () => {
                 heading="Blog Grid"
                 currentPage="Blog Grid" 
             />
-            <BlogSix />
+           {/*} <BlogSix />*/}
             <FooterOne />
         </>
     )

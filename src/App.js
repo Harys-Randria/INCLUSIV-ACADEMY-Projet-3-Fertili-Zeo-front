@@ -32,6 +32,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import "./components/contact/styless.css";
 import ProductDetails from "./components/Produits/ProductDetails";
+import ProduitDetails from "./pages/ProduitDetails";
 
 function App() {
   useEffect(() => {
@@ -43,6 +44,8 @@ function App() {
     <Router>
       <ScrollToTopRoute />
       <Routes>
+      
+      
         <Route
           path={`${process.env.PUBLIC_URL}/`}
           exact
@@ -99,9 +102,9 @@ function App() {
           element={<TeamDetails />}
         />
         <Route
-          path={`${process.env.PUBLIC_URL}/product-details`}
+          path="/product-details/:id" 
           exact
-          element={<PortfolioOne />}
+          element={<ProduitDetails />}
         />
         <Route
           path={`${process.env.PUBLIC_URL}/portfolio-2`}

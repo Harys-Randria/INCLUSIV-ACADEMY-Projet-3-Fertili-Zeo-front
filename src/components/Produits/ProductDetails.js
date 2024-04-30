@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { Container, Row, Col, Image, Card, Button, Form, Modal } from 'react-bootstrap';
 
 import { toast } from 'react-toastify'; // Import de la librairie react-toastify pour les notifications
@@ -6,11 +7,15 @@ import 'react-toastify/dist/ReactToastify.css'; // Styles pour les notifications
 import axios from 'axios'; // Assurez-vous d'installer axios avec npm install axios
 import './produit.scss'
 
+import { useParams } from 'react-router-dom';
+
+
+
 const ProductPage = () => {
-    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const { id } = useParams();
 
   const [product, setProduct] = useState(null);
-  const [editMode, setEditMode] = useState(false); // État pour gérer le mode d'édition
+  const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({
     category: '',
     type: '',
@@ -19,19 +24,24 @@ const ProductPage = () => {
     expirationDate: '',
     description: ''
   });
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
   const handleDeleteProduct = () => {
-    axios.delete('http://localhost:8080/produit/supprimer/8')
+
+    axios.delete(`http://localhost:8080/produit/supprimer/${id}`)
       .then(response => {
         console.log('Product deleted successfully:', response.data);
         toast.success('Produit supprimé avec succès !');
         setProduct(null); // Mettre à jour l'état du produit pour qu'il soit null
-        handleCloseModal();  // Fermer le modal après la suppression
+        handleCloseModal();
+
       })
       .catch(error => {
         console.error('Error deleting product:', error);
         toast.error('Erreur lors de la suppression du produit.');
         handleCloseModal();  // Fermer le modal en cas d'erreur également
       });
+
 };
 
   const handleDeleteClick = () => setShowDeleteConfirm(true);
@@ -39,8 +49,12 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
 
   
 
+ 
+  
+
   useEffect(() => {
-    axios.get('http://localhost:8080/produit/8')
+    axios.get(`http://localhost:8080/produit/${id}`)
+
       .then(response => {
         setProduct(response.data);
         setFormData({
@@ -55,7 +69,7 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
       .catch(error => {
         console.error('There was an error!', error);
       });
-  }, []);
+  }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -65,17 +79,20 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
     });
   };
 
-  const handleUpdateProduct = () => {
-    axios.put(`http://localhost:8080/produit/modifier/8`, formData)
+
+  const handleUpdateProduct = (e) => {
+    e.preventDefault();
+    axios.put(`http://localhost:8080/produit/modifier/${id}`, formData)
+
       .then(response => {
         console.log('Product updated successfully:', response.data);
         setProduct(response.data);
-        setEditMode(false); // Sortir du mode d'édition après la mise à jour
-        toast.success('Modifications enregistrées avec succès !'); // Notification de succès
+        setEditMode(false);
+        toast.success('Modifications enregistrées avec succès !');
       })
       .catch(error => {
         console.error('Error updating product:', error);
-        toast.error('Erreur lors de la mise à jour du produit.'); // Notification d'erreur
+        toast.error('Erreur lors de la mise à jour du produit.');
       });
   };
 
@@ -95,19 +112,21 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
     <div>
       <Container className="my-5">
         <Row>
+
         <Col md={6}>
   <div className="image-container">
     <img src={publicUrl + product.imageUrl} alt={product.name} />
   </div>
 </Col>
 
+
           <Col md={6}>
             <Card className="border border-success shadow">
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
 
-                {editMode ? ( // Afficher les champs de formulaire en mode édition
-                  <Form>
+                {editMode ? (
+                  <Form onSubmit={handleUpdateProduct}>
                     <Form.Group controlId="formCategory">
                       <Form.Label>Catégorie</Form.Label>
                       <Form.Control
@@ -169,7 +188,7 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
                         onChange={handleInputChange}
                       />
                     </Form.Group>
-                    <Button variant="success" onClick={handleUpdateProduct}>Enregistrer</Button>
+                    <Button type="submit" variant="success">Enregistrer</Button>
                   </Form>
                 ) : (
                   <>
@@ -181,7 +200,7 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
                   </>
                 )}
 
-                {editMode ? null : ( // Afficher les boutons Modifier et Supprimer uniquement si editMode est faux
+                {editMode ? null : (
                   <>
                     <Button className="btn-green-700" onClick={() => setEditMode(true)}>Modifier</Button>
                     <Button variant="danger" className="ms-2" onClick={handleDeleteClick}>Supprimer produit</Button>

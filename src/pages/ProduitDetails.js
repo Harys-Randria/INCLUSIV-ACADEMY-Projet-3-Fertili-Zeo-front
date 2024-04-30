@@ -13,7 +13,11 @@ const ProduitDetails = () => {
     return (
         <>
             <HeaderTwo/>
-            {/* <HeroTwo/> */}
+
+  
+
+            {/*<HeroTwo/> */}
+
 
             <ProductDetails />
 
