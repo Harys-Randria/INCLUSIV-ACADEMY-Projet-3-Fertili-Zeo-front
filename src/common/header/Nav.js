@@ -12,13 +12,13 @@ const Nav = () => {
       </li>
       <li>
         <Link to={process.env.PUBLIC_URL + `/about`}>
-          A propos <span className="line"></span>
+          A&nbsp;propos <span className="line"></span>
         </Link>
       </li>
 
       <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
-          Nos offres <span className="line"></span>
+        Nos&nbsp;offres <span className="line"></span>
         </Link>
         <ul>
           <li>
@@ -57,7 +57,7 @@ const Nav = () => {
         </ul>
       </li>
 
-      <li className="dropdown">
+      {/*<li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Pages <span className="line"></span>
         </Link>
@@ -84,7 +84,7 @@ const Nav = () => {
             <Link to={process.env.PUBLIC_URL + `/faq`}>Faq</Link>
           </li>
         </ul>
-      </li>
+      </li> */}
 
       <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>

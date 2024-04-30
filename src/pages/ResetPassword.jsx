@@ -4,28 +4,22 @@ import Breadcrumb from '../common/breadcrumb/Breadcrumb';
 import ContactForm from '../components/contact/ContactForm';
 import ContactMap from '../components/contact/ContactMap';
 import FooterOne from '../common/footer/FooterOne';
-
-import ProductDetails from '../components/Produits/ProductDetails';
 import HeaderTwo from '../common/header/HeaderTwo';
-import HeroTwo from '../components/hero/HeroTwo';
+import ResetPasswordPage from '../components/ResetPass';
 
-const ProduitDetails = () => {
+
+const ResetPassword = () => {
     return (
         <>
-            <HeaderTwo/>
+            <HeaderTwo />
 
-  
-
-            {/*<HeroTwo/> */}
-
-
-            <ProductDetails />
-
-           
-            
+            <ResetPasswordPage />
+            <div>
+                <br/>
+            </div>
             <FooterOne />
         </>
     )
 }
 
-export default ProduitDetails;
+export default ResetPassword;

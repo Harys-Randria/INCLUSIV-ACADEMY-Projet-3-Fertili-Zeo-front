@@ -17,27 +17,26 @@ function RegistrationFull({ onClose }) {
     address: "",
     nif: "",
     cin: "",
-    compte_type: "",
+    type: parseInt(""),
   });
 
   const [passwordMatch, setPasswordMatch] = useState(true);
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
 
-    if (name === "password" || name === "confirmPassword") {
-      setPasswordMatch(formData.password === value);
+    if (e.target.name === "password" || e.target.name === "confirmPassword") {
+      setPasswordMatch(formData.password === e.target.value);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { name, email, password, compte_type } = formData;
+    const { name, email, password, type } = formData;
 
     if (password !== formData.confirmPassword) {
       setPasswordMatch(false);
@@ -49,35 +48,31 @@ function RegistrationFull({ onClose }) {
         name,
         email,
         password,
-        type: 1,
+        type,
         isEnable: false,
+      })
+      .then((res) => {
+        Swal.fire({
+          icon: "info",
+          title: "Inscription réussie !",
+          text: "Un e-mail de confirmation a été envoyé à votre adresse. Veuillez vérifier votre boîte de réception et cliquer sur le lien de confirmation pour activer votre compte.",
+          confirmButtonColor: '#055D2B', // Exemple de couleur rouge
+          
+        });
+        
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Une erreur est survenue lors de la soumission du formulaire.",
+        });
+        console.log(error);
       });
-
-      setFormData({
-        name: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-        phone: "",
-        address: "",
-        nif: "",
-        cin: "",
-        compte_type: "",
-      });
-
+      
       onClose();
-      Swal.fire({
-        icon: "success",
-        title: "Confirmation réussie !",
-        text: "Buenvenue Chez Fertili'zeo.",
-      });
     } catch (error) {
-      console.error("Erreur lors de la soumission du formulaire:", error);
-      Swal.fire({
-        icon: "success",
-        title: "Inscription réussie !",
-        text: "Vous êtes inscrit avec succès. Un mail de confirmation a été envoyé à votre adresse email.",
-      });
+      console.error("Une erreur s'est produite :", error);
     }
   };
 
@@ -102,7 +97,16 @@ function RegistrationFull({ onClose }) {
             style={{ width: "50%", height: "150%", marginTop: "400px" }}
           />
         </div>
-
+        <div className=""><button
+              type="button"
+              className="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              onClick={onClose}
+              style={{ position: "absolute", top: "10px", right: "10px" }}
+            >
+              <span aria-hidden="true">&times;</span>
+            </button></div>
         <div style={{ flex: 1, padding: "20px" }}>
           <ModalHeader className="d-flex justify-content-center align-items-center mb-4">
             <LogoOne />
@@ -112,19 +116,19 @@ function RegistrationFull({ onClose }) {
           <ModalBody>
             <form onSubmit={handleSubmit} id="Formulaire">
               <div className="form-group">
-                <label htmlFor="compte_type">Type d'utilisateur:</label>
+                <label htmlFor="type">Type d'utilisateur:</label>
                 <select
-                  id="compte_type"
-                  name="compte_type"
+                  id="type"
+                  name="type"
                   className="form-control"
-                  value={formData.compte_type}
+                  value={formData.type}
                   onChange={handleInputChange}
                   required
                 >
                   <option value="">Sélectionnez un type d'utilisateur</option>
-                  <option value="CLIENT">Client</option>
-                  <option value="FOURNISSEUR">Fournisseur</option>
-                  <option value="PRODUCTEUR">Producteur</option>
+                  <option value="1">Client</option>
+                  <option value="2">Fournisseur</option>
+                  <option value="4">Producteur</option>
                 </select>
               </div>
               <div className="form-group">

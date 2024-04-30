@@ -5,9 +5,11 @@ import './LoginForm.css';
 function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [resetPasswordRequested, setResetPasswordRequested] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       const response = await axios.post("http://localhost:8080/compte/signin", {
         email,
@@ -30,6 +32,8 @@ function LoginModal({ onClose }) {
     }
   };
 
+
+
   return (
     <div className="modal" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
       <div className="custom-modal-dialog" role="document" style={{ width: "50%", maxWidth: "600px", minWidth: "300px", margin: "auto", borderRadius: "10px" }}>
@@ -51,7 +55,7 @@ function LoginModal({ onClose }) {
                 <input
                   type="email"
                   className="form-control"
-                  placeholder="Adresse e-mail"
+                  placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   style={{ minHeight: "40px" }}

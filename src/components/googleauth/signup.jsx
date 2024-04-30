@@ -60,4 +60,8 @@ function SignupGoogle() {
   );
 }
 
-export default SignupGoogle;
+
+
+
+
+export default SignupGoogle ;
