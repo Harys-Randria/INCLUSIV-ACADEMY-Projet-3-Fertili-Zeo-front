@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './LoginForm.css';
+import "./LoginForm.css";
 
 function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ function LoginModal({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await axios.post("http://localhost:8080/compte/signin", {
         email,
@@ -24,6 +24,7 @@ function LoginModal({ onClose }) {
       sessionStorage.setItem("phone", response.data.phone);
       sessionStorage.setItem("address", response.data.address);
       sessionStorage.setItem("nif_stat", response.data.nif_stat);
+      sessionStorage.setItem("photo", response.data.photo);
 
       onClose();
       window.location.reload();
@@ -32,22 +33,41 @@ function LoginModal({ onClose }) {
     }
   };
 
-
-
   return (
-    <div className="modal" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div className="custom-modal-dialog" role="document" style={{ width: "50%", maxWidth: "600px", minWidth: "300px", margin: "auto", borderRadius: "10px" }}>
-        <div className="custom-modal-content" style={{ padding: "20px", backgroundColor: "#fff", borderRadius: "10px" }}>
-        <button
+    <div
+      className="modal"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        className="custom-modal-dialog"
+        role="document"
+        style={{
+          width: "50%",
+          maxWidth: "600px",
+          minWidth: "300px",
+          margin: "auto",
+          borderRadius: "10px",
+        }}
+      >
+        <div
+          className="custom-modal-content"
+          style={{
+            padding: "20px",
+            backgroundColor: "#fff",
+            borderRadius: "10px",
+          }}
+        >
+          <button
             type="button"
             className="btn-close"
             aria-label="Close"
             onClick={onClose}
-        
-
           ></button>
           <h5 className="modal-titlecon text-center">Connexion</h5>
-          
 
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
