@@ -33,12 +33,15 @@ const ProductPage = () => {
         console.log('Product deleted successfully:', response.data);
         toast.success('Produit supprimé avec succès !');
         setProduct(null); // Mettre à jour l'état du produit pour qu'il soit null
+        setShowDeleteConfirm(false);
+        
         handleCloseModal();
 
       })
       .catch(error => {
         console.error('Error deleting product:', error);
         toast.error('Erreur lors de la suppression du produit.');
+        setShowDeleteConfirm(false);
         handleCloseModal();  // Fermer le modal en cas d'erreur également
       });
 
@@ -109,24 +112,20 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
   let publicUrl = process.env.PUBLIC_URL+'/assets/images/produits/';
 
   return (
-    <div>
+    <div className="product-page-wrapper">
       <Container className="my-5">
         <Row>
-
-        <Col md={6}>
-  <div className="image-container">
-    <img src={publicUrl + product.imageUrl} alt={product.name} />
-  </div>
-</Col>
-
-
+          <Col md={6}>
+            <div className="image-container">
+              <img src={publicUrl + product.imageUrl} alt={product.name} />
+            </div>
+          </Col>
           <Col md={6}>
             <Card className="border border-success shadow">
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-
                 {editMode ? (
-                  <Form onSubmit={handleUpdateProduct}>
+                  <Form>
                     <Form.Group controlId="formCategory">
                       <Form.Label>Catégorie</Form.Label>
                       <Form.Control
@@ -177,60 +176,103 @@ const handleCloseModal = () => setShowDeleteConfirm(false);
                         onChange={handleInputChange}
                       />
                     </Form.Group>
-                    <Form.Group controlId="formDescription">
-                      <Form.Label>Description</Form.Label>
-                      <Form.Control
-                        as="textarea"
-                        rows={3}
-                        placeholder="Entrez la description"
-                        name="description"
-                        value={formData.description}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                    <Button type="submit" variant="success">Enregistrer</Button>
+                    <div className="d-flex justify-content-start">
+  <Button variant="secondary" onClick={() => {
+    setEditMode(false);
+    setFormData({
+      category: product.category,
+      type: product.type,
+      price: product.price,
+      quantity: product.quantity,
+      expirationDate: product.expirationDate,
+      description: product.description
+    });
+  }}>Annuler</Button>
+
+  <Button variant="success" onClick={handleUpdateProduct}>Enregistrer</Button>
+</div>
+
                   </Form>
                 ) : (
                   <>
-                    <Card.Text>Catégorie : {product.category} </Card.Text>
-                    <Card.Text>Type de produit :{product.type}</Card.Text>
-                    <Card.Text>Prix : {product.price} Ar</Card.Text>
-                    <Card.Text>Quantité : {product.quantity} kg</Card.Text>
-                    <Card.Text>Date d'expiration : {product.expirationDate} </Card.Text>
+                    <Form.Group controlId="formCategory">
+                      <Form.Label>Catégorie</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={product.category}
+                        readOnly
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formType">
+                      <Form.Label>Type de produit</Form.Label>
+                      <Form.Control
+                        type="text"
+                        value={product.type}
+                        readOnly
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formPrice">
+                      <Form.Label>Prix</Form.Label>
+                      <Form.Control
+                        type="number"
+                        value={product.price}
+                        readOnly
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formQuantity">
+                      <Form.Label>Quantité</Form.Label>
+                      <Form.Control
+                        type="number"
+                        value={product.quantity}
+                        readOnly
+                      />
+                    </Form.Group>
+                    <Form.Group controlId="formExpirationDate">
+                      <Form.Label>Date d'expiration</Form.Label>
+                      <Form.Control
+                        type="date"
+                        value={product.expirationDate}
+                        readOnly
+                      />
+                    </Form.Group>
+                   
                   </>
                 )}
-
-                {editMode ? null : (
+                {!editMode && (
                   <>
-                    <Button className="btn-green-700" onClick={() => setEditMode(true)}>Modifier</Button>
-                    <Button variant="danger" className="ms-2" onClick={handleDeleteClick}>Supprimer produit</Button>
-
+                    {/* Code des champs en lecture seule */}
+                    <Button className="btn-green-700" variant='success' onClick={() => setEditMode(true)}>Modifier</Button>
+                    <Button className="btn-red-700" variant='danger' onClick={handleDeleteClick}>Supprimer</Button>
                   </>
                 )}
               </Card.Body>
             </Card>
             <Card className="my-3 p-3 border border-success shadow custom-card">
-              <Card.Text className="text">Description :</Card.Text>
-              <Card.Text className="text"> {product.description}</Card.Text>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                value={formData.description}
+                readOnly={!editMode} // Toujours éditable lorsque le mode édition est activé
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+              />
             </Card>
           </Col>
         </Row>
       </Container>
       <Modal show={showDeleteConfirm} onHide={handleCloseModal}>
-  <Modal.Header closeButton>
-    <Modal.Title>Confirmer la suppression</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>Êtes-vous sûr de vouloir supprimer ce produit ? Cette action est irréversible.</Modal.Body>
-  <Modal.Footer>
-    <Button variant="secondary" onClick={handleCloseModal}>
-      Annuler
-    </Button>
-    <Button variant="danger" onClick={handleDeleteProduct}>
-      Supprimer
-    </Button>
-  </Modal.Footer>
-</Modal>
-
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmer la suppression</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Êtes-vous sûr de vouloir supprimer ce produit ? Cette action est irréversible.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Annuler
+          </Button>
+          <Button variant="danger" onClick={handleDeleteProduct}>
+            Supprimer
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
