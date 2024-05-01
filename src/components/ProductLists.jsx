@@ -81,7 +81,7 @@ const ProductsList = () => {
   // Fonction pour augmenter la quantité d'un produit
   const handleIncreaseQuantity = (product) => {
     axios
-      .post(`/augmenter/${product.id}`, null, {
+      .post(`http://localhost:8080/stock/augmenter/${product.id}`, null, {
         params: { quantity: 1 },
       })
       .then((response) => {
@@ -97,7 +97,7 @@ const ProductsList = () => {
   // Fonction pour diminuer la quantité d'un produit
   const handleDecreaseQuantity = (product) => {
     axios
-      .post(`/diminuer/${product.id}`, null, {
+      .post(`http://localhost:8080/stock/diminuer/${product.id}`, null, {
         params: { quantity: 1 },
       })
       .then((response) => {
@@ -146,19 +146,26 @@ const ProductsList = () => {
               <td>{product.category}</td>
               <td>{product.description}</td>
               <td>{product.stockQuantity} pcs</td>
-              <td>
-                <button
-                  onClick={() => handleDecreaseQuantity(product)}
-                  className="btn btn-danger"
-                >
-                  -
-                </button>
-                <button
-                  onClick={() => handleIncreaseQuantity(product)}
-                  className="btn btn-success me-2"
-                >
-                  +
-                </button>
+              <td className="d-flex justify-content-center align-items-center mt-2 ">
+                <textarea
+                  placeholder="Entrez une note..."
+                  value={product.quantity}
+                  // onChange={(e) => handleNoteChange(product, e.target.value)}
+                />
+                <div className="mt-2">
+                  <button
+                    onClick={() => handleDecreaseQuantity(product)}
+                    className="btn btn-danger me-2"
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => handleIncreaseQuantity(product)}
+                    className="btn btn-success"
+                  >
+                    +
+                  </button>
+                </div>
               </td>
             </tr>
           ))}
