@@ -24,6 +24,8 @@ function LoginModal({ onClose }) {
       sessionStorage.setItem("phone", response.data.phone);
       sessionStorage.setItem("address", response.data.address);
       sessionStorage.setItem("nif_stat", response.data.nif_stat);
+      sessionStorage.setItem("photo", response.data.photo);
+      sessionStorage.setItem("imageProfil", null);
 
       onClose();
       window.location.reload();
