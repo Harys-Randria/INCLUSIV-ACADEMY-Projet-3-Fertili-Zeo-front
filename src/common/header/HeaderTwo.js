@@ -10,8 +10,6 @@ import "./dropdowncss.css";
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
 import CategoryDropdown from "../../components/CategoryDropdown";
 
-
-
 class HeaderTwo extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +30,7 @@ class HeaderTwo extends React.Component {
 
   handleProfileClick = () => {
     // Rediriger vers la page de profil de l'utilisateur
-    this.props.history.push('/contact');
+    this.props.history.push("/contact");
   };
 
   render() {
@@ -140,10 +138,7 @@ class HeaderTwo extends React.Component {
                         <LogoTwo />
                       </div>
 
-                      <div  className="main-header-one__bottom-middle">
-
-
-
+                      <div className="main-header-one__bottom-middle">
                         <div className="main-menu-box">
                           <MobileMenu />
                           <Nav />
@@ -151,20 +146,28 @@ class HeaderTwo extends React.Component {
                       </div>
 
                       <div className="main-header-one__bottom-right">
-                        <div style={{ backgroundColor: "#0b3d2c" }} className="sidebar__single sidebar__search wow animated col-6 ">
+                        <div
+                          style={{ backgroundColor: "#0b3d2c" }}
+                          className="sidebar__single sidebar__search wow animated col-6 "
+                        >
                           <form action="#" className="sidebar__search-form">
                             <input type="search" placeholder="Search..." />
-                            <button type="submit"><i className="fa fa-search"></i></button>
+                            <button type="submit">
+                              <i className="fa fa-search"></i>
+                            </button>
                           </form>
                         </div>
-                        {!isAuthenticated && (<ModalInscriptionAuthentification />)}
 
+                        {!isAuthenticated && (
+                          <ModalInscriptionAuthentification />
+                        )}
 
                         {isAuthenticated && (
-
-                          <div style={{ display: "flex", alignItems: "center" }} className="main-header-one__bottom-right">
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                            className="main-header-one__bottom-right"
+                          >
                             <div
-
                               style={{
                                 width: "200px",
                                 display: "flex",
@@ -173,22 +176,35 @@ class HeaderTwo extends React.Component {
                               }}
                             >
                               {/* Utilisez la balise Link avec le logo utilisateur */}
-                              <Link style={{ textDecoration: "none"}} to={process.env.PUBLIC_URL + `/contact`} className="logoFerti icon-profil">
+                              <Link
+                                style={{ textDecoration: "none" }}
+                                to={process.env.PUBLIC_URL + `/contact`}
+                                className="logoFerti icon-profil"
+                              >
                                 <img
-                                  src={publicUrl + "assets/images/resources/Profils.png"}
+                                  src={
+                                    publicUrl +
+                                    "assets/images/resources/Profils.png"
+                                  }
                                   alt="Awesome Logo"
                                   style={{
-                                    width: "50px",
-                                    height: "50px",
+                                    width: "40px",
+                                    height: "40px",
                                     borderRadius: "50%",
                                     cursor: "pointer",
-                                    marginTop: "10px",
-
                                   }}
                                 />
-                                <p style={{fontFamily:"poppins",textDecoration: "none", color: "white", marginTop: "5px" }}>{userName}</p>
+                                <p
+                                  style={{
+                                    fontFamily: "poppins",
+                                    textDecoration: "none",
+                                    color: "white",
+                                    marginTop: "5px",
+                                  }}
+                                >
+                                  {userName}
+                                </p>
                               </Link>
-
                             </div>
                             <h6
                               style={{
@@ -197,15 +213,15 @@ class HeaderTwo extends React.Component {
                               }}
                             >
                               {/* Utilisez la classe CSS 'btn-logout' pour le bouton */}
-                              <button className="btn-logout red " onClick={this.handleLogout}>
+                              <button
+                                className="btn-logout red "
+                                onClick={this.handleLogout}
+                              >
                                 Se déconnecter
-
-
                               </button>
                             </h6>
                           </div>
                         )}
-                        
                       </div>
                     </div>
                   </div>
