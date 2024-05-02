@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
 
 const Nav = () => {
   return (

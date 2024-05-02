@@ -23,24 +23,29 @@ function ModalInscriptionAuthentification() {
       <DropdownButton
         id="inscription-dropdown"
         title="Se Connecter"
-        variant="#28732E"
+        variant="success" // Remplacez "#28732E" par la variante souhaitée (par exemple, "success", "primary", etc.)
         style={{
           marginRight: "25px",
           marginLeft: "25px",
-          fontFamily: "Fredoka One",
+          fontFamily: "poppins",
+          fontSize: "14px",
+          textDecoration: "underline",
+          backgroundColor: "#239c23",
         }}
         className="btn-login"
       >
         <Dropdown.Item
           as="button"
           onClick={() => handleOpenModal("inscription")}
-         style={{ fontFamily: "Poppins" }}>
+          style={{ fontFamily: "poppins", fontSize: "14px" }}
+        >
           S'Inscrire
         </Dropdown.Item>
         <Dropdown.Item
           as="button"
           onClick={() => handleOpenModal("authentification")}
-          style={{ fontFamily: "Poppins" }}>
+          style={{ fontFamily: "poppins", fontSize: "14px" }}
+        >
           S'Authentifier
         </Dropdown.Item>
       </DropdownButton>
