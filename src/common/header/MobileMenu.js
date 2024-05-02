@@ -4,32 +4,14 @@ import { AiOutlineBars } from "react-icons/ai";
 import { CgChevronDown, CgChevronLeft } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-<<<<<<< Updated upstream
 import LogoTwo from "./LogoTwo";
-=======
->>>>>>> Stashed changes
 
 const menuData = [
   {
     title: "Home",
-    path: "/",
+    path: "/home-two",
     iconClosed: <CgChevronLeft />,
     iconOpened: <CgChevronDown />,
-
-    subNav: [
-      {
-        title: "Home One",
-        path: "/",
-      },
-      {
-        title: "Home Two",
-        path: "/home-two",
-      },
-      {
-        title: "Home Three",
-        path: "/home-three",
-      },
-    ],
   },
   {
     title: "About",
@@ -48,64 +30,6 @@ const menuData = [
         title: "Services",
         path: "/services",
         cName: "sub-nav",
-      },
-      {
-        title: "Arbor Management",
-        path: "/arbor-management",
-        cName: "sub-nav",
-      },
-      {
-        title: "Garden Management",
-        path: "/garden-management",
-      },
-      {
-        title: "Nursery & Tree Farm",
-        path: "/nursery",
-      },
-      {
-        title: "Trimming & Pruning",
-        path: "/trimming",
-      },
-      {
-        title: "Pests & Weeds Control",
-        path: "/weeds-control",
-      },
-      {
-        title: "Fruits & Flowers Garden",
-        path: "/flowers-garden",
-      },
-    ],
-  },
-
-  {
-    title: "Pages",
-    path: "#",
-
-    iconClosed: <CgChevronLeft />,
-    iconOpened: <CgChevronDown />,
-
-    subNav: [
-      {
-        title: "Team",
-        path: "/team",
-        cName: "sub-nav",
-      },
-      {
-        title: "Team Details",
-        path: "/team-details",
-        cName: "sub-nav",
-      },
-      {
-        title: "Portfolio 01",
-        path: "/portfolio-1",
-      },
-      {
-        title: "Portfolio 02",
-        path: "/portfolio-2",
-      },
-      {
-        title: "Faq",
-        path: "/faq",
       },
     ],
   },
@@ -281,12 +205,8 @@ const MobileMenu = () => {
                 <li>
                   <i className="fa fa-envelope" aria-hidden="true"></i>
                   <a href="mailto:needhelp@packageName__.com">
-                    needhelp@const.com
+                    fertilizeo0@gmail.com
                   </a>
-                </li>
-                <li>
-                  <i className="fa fa-phone" aria-hidden="true"></i>
-                  <a href="tel:666-888-0000">666 888 0000</a>
                 </li>
               </ul>
               <div className="mobile-nav__top">

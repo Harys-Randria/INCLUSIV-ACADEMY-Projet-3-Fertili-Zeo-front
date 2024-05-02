@@ -5,10 +5,8 @@ import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
 
-import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
 import "./dropdowncss.css";
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
-import CategoryDropdown from "../../components/CategoryDropdown";
 
 class HeaderTwo extends React.Component {
   constructor(props) {
@@ -155,7 +153,7 @@ class HeaderTwo extends React.Component {
                           >
                             <div
                               style={{
-                                width: "100px",
+                                width: "200px",
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
@@ -168,14 +166,16 @@ class HeaderTwo extends React.Component {
                                 className="logoFerti icon-profil"
                               >
                                 <img
-                                  src={sessionStorage.getItem("imageProfil")}
+                                  src={
+                                    publicUrl +
+                                    "assets/images/resources/Profils.png"
+                                  }
                                   alt="Awesome Logo"
                                   style={{
                                     width: "40px",
-                                    height: "35px",
+                                    height: "40px",
                                     borderRadius: "50%",
                                     cursor: "pointer",
-                                    marginTop: "15px",
                                   }}
                                 />
                                 <p
@@ -198,21 +198,12 @@ class HeaderTwo extends React.Component {
                             >
                               {/* Utilisez la classe CSS 'btn-logout' pour le bouton */}
                               <button
+                                className="btn-logout red "
+                                onClick={this.handleLogout}
                                 style={{
                                   fontFamily: "poppins",
                                   fontSize: "14px",
-                                  width: "200px",
-                                  height: "30px",
-                                  backgroundColor: "#0b3d2c",
-                                  borderRadius: "5px",
-                                  border: "none",
-                                  cursor: "pointer",
-                                  textDecoration: "none",
-                                  color: "white",
-                                  marginTop: "5px",
-                                  paddingRight: "100px",
                                 }}
-                                onClick={this.handleLogout}
                               >
                                 Se déconnecter
                               </button>
