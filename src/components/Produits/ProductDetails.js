@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
-  Container,
-  Row,
-  Col,
-  Image,
-  Card,
   Button,
+  Card,
+  Col,
+  Container,
   Form,
   Modal,
+  Row,
 } from "react-bootstrap";
 
+import axios from "axios"; // Assurez-vous d'installer axios avec npm install axios
 import { toast } from "react-toastify"; // Import de la librairie react-toastify pour les notifications
 import "react-toastify/dist/ReactToastify.css"; // Styles pour les notifications
-import axios from "axios"; // Assurez-vous d'installer axios avec npm install axios
-import "./produit.scss";
 
 import { useParams } from "react-router-dom";
 
