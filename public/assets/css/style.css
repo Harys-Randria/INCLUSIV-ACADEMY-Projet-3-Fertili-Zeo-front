@@ -6457,7 +6457,7 @@ Footer One
 .footer-one {
   position: relative;
   display: block;
-  padding: 0px 0px 0px;
+  padding: 100px 0px 0px;
   background: var(--thm-black);
   z-index: 1;
   height: auto;

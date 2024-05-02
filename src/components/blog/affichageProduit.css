@@ -1,0 +1,5 @@
+.product-image {
+  width: 100%; /* Redimensionner l'image pour remplir la largeur du conteneur */
+  height: auto; /* Garder le rapport hauteur/largeur de l'image */
+  object-fit: cover; /* Redimensionner l'image pour couvrir tout le conteneur, sans déformer */
+}

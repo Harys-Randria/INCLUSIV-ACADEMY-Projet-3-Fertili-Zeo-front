@@ -18,7 +18,7 @@ const Nav = () => {
 
       <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
-        Nos&nbsp;offres <span className="line"></span>
+          Nos&nbsp;offres <span className="line"></span>
         </Link>
         <ul>
           <li>
@@ -105,14 +105,11 @@ const Nav = () => {
         </ul>
       </li>
       <li>
-        <Link to={process.env.PUBLIC_URL + `/contact`}>
-          Profile <span className="line"></span>
+        <Link to={process.env.PUBLIC_URL + `/dashboard`}>
+          Dashboard <span className="line"></span>
         </Link>
       </li>
-      
     </ul>
-    
-    
   );
 };
 

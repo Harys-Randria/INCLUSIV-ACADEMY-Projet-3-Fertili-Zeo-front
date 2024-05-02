@@ -169,7 +169,7 @@ class HeaderTwo extends React.Component {
                           >
                             <div
                               style={{
-                                width: "200px",
+                                width: "100px",
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
@@ -182,16 +182,14 @@ class HeaderTwo extends React.Component {
                                 className="logoFerti icon-profil"
                               >
                                 <img
-                                  src={
-                                    publicUrl +
-                                    "assets/images/resources/Profils.png"
-                                  }
+                                  src={sessionStorage.getItem("imageProfil")}
                                   alt="Awesome Logo"
                                   style={{
                                     width: "40px",
-                                    height: "40px",
+                                    height: "35px",
                                     borderRadius: "50%",
                                     cursor: "pointer",
+                                    marginTop: "15px",
                                   }}
                                 />
                                 <p
@@ -214,7 +212,20 @@ class HeaderTwo extends React.Component {
                             >
                               {/* Utilisez la classe CSS 'btn-logout' pour le bouton */}
                               <button
-                                className="btn-logout red "
+                                style={{
+                                  fontFamily: "poppins",
+                                  fontSize: "14px",
+                                  width: "200px",
+                                  height: "30px",
+                                  backgroundColor: "#0b3d2c",
+                                  borderRadius: "5px",
+                                  border: "none",
+                                  cursor: "pointer",
+                                  textDecoration: "none",
+                                  color: "white",
+                                  marginTop: "5px",
+                                  paddingRight: "100px",
+                                }}
                                 onClick={this.handleLogout}
                               >
                                 Se déconnecter

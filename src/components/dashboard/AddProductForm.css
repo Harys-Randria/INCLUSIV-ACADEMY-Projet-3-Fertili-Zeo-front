@@ -1,0 +1,197 @@
+.add-product-contenair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  transition: height 0.5s ease-in-out;
+}
+
+.form-shown {
+  height: auto;
+}
+
+.add-product-form {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: transparent;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 1fr auto; /* Flexible label and input area */
+  grid-gap: 20px;
+  width: 40%;
+  margin: 0;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.add-product-form.form-shown {
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.add-product-form button {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #3cab41;
+  color: #fff;
+  padding: 0px 45px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  height: 50px;
+}
+
+.add-product-form h3 {
+  font-family: "Poppins", sans-serif;
+  color: #0b3d2c;
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0;
+  margin-bottom: 40px;
+}
+
+.add-product-form button:hover {
+  background-color: #0b3d2c;
+}
+
+.add-product-form input {
+  position: relative;
+  display: block;
+  background: transparent;
+  height: 60px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #dcdfe2;
+  border-radius: 3px;
+  color: #878c8f;
+  transition: all 500ms ease;
+}
+
+.add-product-form input:hover {
+  border-color: #3cab41;
+}
+
+.add-product-form textarea {
+  resize: none;
+  padding: 12px 20px 20px;
+  text-transform: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 60px;
+  border: 1px solid #dcdfe2;
+  border-radius: 3px;
+  color: #878c8f;
+  background-color: transparent;
+}
+
+.add-product-form textarea:hover {
+  border-color: #3cab41;
+}
+
+.add-product-form input[type="submit"] {
+  background-color: #055d2b; /* Green submit button */
+}
+
+.add-product-form input[type="file"] {
+  font-family: "Poppins", sans-serif;
+  border: none;
+  color: #878c8f;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+  height: 60px;
+}
+
+.image-upload:hover {
+  /* Hover effect */
+  background-color: #f2f2f2; /* Light gray background on hover */
+}
+
+.add-product-form select {
+  font-family: "Poppins", sans-serif; /* Choose a professional font */
+  border: 1px solid #dcdfe2;
+  font-size: 12px;
+  padding: 10px 15px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a light border */
+  border-radius: 3px; /* Add rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  background-color: #fff; /* Set background color */
+  height: 60px;
+}
+
+.add-product-form select:hover {
+  border-color: #3cab41; /* Change border color on hover */
+}
+
+.drop-container {
+  font-family: "Poppins", sans-serif;
+  height: 200px;
+  border-radius: 3px;
+  border: 1px dashed #ddd;
+  color: #444;
+  cursor: pointer;
+}
+
+.drop-container:hover {
+  background: #eee;
+  border-color: #3cab41;
+}
+
+input[type="file"]::file-selector-button {
+  font-family: "Poppins", sans-serif;
+  margin-right: 8px;
+  border: none;
+  background: #055d2b;
+  padding: 8px 12px;
+  color: #fff;
+  cursor: pointer;
+  initial-value: "Upload";
+}
+
+.button-container-left {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 240px;
+}
+
+.button-container-left button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  background-color: transparent;
+  padding: 0px 45px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: left;
+  height: 50px;
+}
+
+.button-container-left button:hover {
+  background-color: #055d2b;
+  color: #fff;
+}
