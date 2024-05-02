@@ -40,7 +40,7 @@ export default class FooterOne extends React.Component {
                   <div class="footer-widget__single">
                     <div class="footer-widget__single-about">
                       <div class="logo-box">
-                        {/* <Link to={process.env.PUBLIC_URL + `/`}>
+                        <Link to={process.env.PUBLIC_URL + `/`}>
                           <img
                             src={
                               publicUrl +
@@ -48,20 +48,27 @@ export default class FooterOne extends React.Component {
                             }
                             alt="#"
                           />
-                        </Link> */}
+                        </Link>
                       </div>
 
-                      {/* <form class="footer-widget__subscribe-box">
-                                                <div class="title-box">
-                                                    <h5>Subsrcibe for Latest Articles and Resources</h5>
-                                                </div>
-                                                <div class="footer-widget__subscribe-input-box">
-                                                    <input type="email" placeholder="Email Address" name="email" />
-                                                    <button type="submit" class="footer-widget__subscribe-btn">
-                                                        <span>Go</span>
-                                                    </button>
-                                                </div>
-                                            </form> */}
+                      <form class="footer-widget__subscribe-box">
+                        <div class="title-box">
+                          <h5>Subsrcibe for Latest Articles and Resources</h5>
+                        </div>
+                        <div class="footer-widget__subscribe-input-box">
+                          <input
+                            type="email"
+                            placeholder="Email Address"
+                            name="email"
+                          />
+                          <button
+                            type="submit"
+                            class="footer-widget__subscribe-btn"
+                          >
+                            <span>Go</span>
+                          </button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -72,24 +79,46 @@ export default class FooterOne extends React.Component {
                   <div class="footer-one__right">
                     <div class="row">
                       {/* Start Footer One Right Single */}
-                      {/* <div class="col-xl-4 col-lg-4 wow animated fadeInUp" data-wow-delay="0.2s">
-                                                <div class="footer-one__right-single mb50">
-                                                    <div class="title">
-                                                        <h2>Our Services</h2>
-                                                    </div>
-                                                    <div class="footer-one__right-single-services">
-                                                        <ul class="footer-one__right-single-list">
-                                                            <li><Link to={process.env.PUBLIC_URL + `/services`}>Lawn Moving</Link></li>
-                                                            <li><Link to={process.env.PUBLIC_URL + `/services`}>Hedge Cutting</Link></li>
-                                                            <li><Link to={process.env.PUBLIC_URL + `/services`}>Flower Planting</Link></li>
-                                                            <li><Link to={process.env.PUBLIC_URL + `/services`}>Working Process</Link></li>
-                                                            <li><Link to={process.env.PUBLIC_URL + `/services`}>Garden Restoration</Link></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div> */}
+                      <div
+                        class="col-xl-4 col-lg-4 wow animated fadeInUp"
+                        data-wow-delay="0.2s"
+                      >
+                        <div class="footer-one__right-single mb50">
+                          <div class="title">
+                            <h2>Our Services</h2>
+                          </div>
+                          <div class="footer-one__right-single-services">
+                            <ul class="footer-one__right-single-list">
+                              <li>
+                                <Link to={process.env.PUBLIC_URL + `/services`}>
+                                  Lawn Moving
+                                </Link>
+                              </li>
+                              <li>
+                                <Link to={process.env.PUBLIC_URL + `/services`}>
+                                  Hedge Cutting
+                                </Link>
+                              </li>
+                              <li>
+                                <Link to={process.env.PUBLIC_URL + `/services`}>
+                                  Flower Planting
+                                </Link>
+                              </li>
+                              <li>
+                                <Link to={process.env.PUBLIC_URL + `/services`}>
+                                  Working Process
+                                </Link>
+                              </li>
+                              <li>
+                                <Link to={process.env.PUBLIC_URL + `/services`}>
+                                  Garden Restoration
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                       {/* End Footer One Right Single */}
-
                       {/* Start Footer One Right Single */}
                       <div
                         class="col-xl-3 col-lg-3 wow animated fadeInUp"
@@ -132,7 +161,6 @@ export default class FooterOne extends React.Component {
                         </div>
                       </div>
                       {/* End Footer One Right Single */}
-
                       {/* Start Footer One Right Single */}
                       <div
                         class="col-xl-5 col-lg-5 wow animated fadeInUp"

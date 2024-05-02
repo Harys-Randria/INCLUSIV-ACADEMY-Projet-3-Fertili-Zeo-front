@@ -1,0 +1,11 @@
+.container.form-visible {
+  transition: transform 5s ease;
+  transform: translateY(-100px); /* Réglez cette valeur selon vos préférences */
+}
+
+.add-product-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}

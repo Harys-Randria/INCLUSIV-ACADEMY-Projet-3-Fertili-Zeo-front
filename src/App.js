@@ -25,7 +25,6 @@ import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
 import ScrollToTopRoute from "./components/scroll-to-top-route/ScrollToTopRoute";
 
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -33,6 +32,7 @@ import "swiper/css/effect-fade";
 import "./components/contact/styless.css";
 import ProductDetails from "./components/Produits/ProductDetails";
 import ProduitDetails from "./pages/ProduitDetails";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -44,8 +44,6 @@ function App() {
     <Router>
       <ScrollToTopRoute />
       <Routes>
-      
-      
         <Route
           path={`${process.env.PUBLIC_URL}/`}
           exact
@@ -101,11 +99,7 @@ function App() {
           exact
           element={<TeamDetails />}
         />
-        <Route
-          path="/product-details/:id" 
-          exact
-          element={<ProduitDetails />}
-        />
+        <Route path="/product-details/:id" exact element={<ProduitDetails />} />
         <Route
           path={`${process.env.PUBLIC_URL}/portfolio-2`}
           exact
@@ -132,9 +126,16 @@ function App() {
           exact
           element={<Contact />}
         />
-        <Route path={`${process.env.PUBLIC_URL}/produit`}
+        <Route
+          path={`${process.env.PUBLIC_URL}/dashboard`}
           exact
-          element={<ProductDetails />} />
+          element={<Dashboard />}
+        />
+        <Route
+          path={`${process.env.PUBLIC_URL}/produit`}
+          exact
+          element={<ProductDetails />}
+        />
       </Routes>
       <ScrollToTop
         className="scrollUp"
