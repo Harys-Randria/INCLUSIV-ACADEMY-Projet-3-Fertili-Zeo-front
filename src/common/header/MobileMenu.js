@@ -72,7 +72,7 @@ const menuData = [
 
 const SidebarLink = styled(Link)`
   display: flex;
-  color: #fff;
+  color: #000000;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
