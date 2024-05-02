@@ -78,53 +78,95 @@ const ProductsList = () => {
     fetchProducts(); // Appel de la fonction fetchProducts au chargement du composant
   }, []); // Les dépendances vides signifient que useEffect ne s'exécute qu'une seule fois
 
-  // Fonction pour augmenter la quantité d'un produit
-  const handleIncreaseQuantity = (product) => {
-    axios
-      .post(`http://localhost:8080/stock/augmenter/${product.id}`, null, {
-        params: { quantity: 1 },
-      })
-      .then((response) => {
-        console.log(`Augmentation de la quantité pour ${product.name}`);
-        // Mettre à jour l'état des produits dans votre composant ou application si nécessaire
-        // Exemple : setState pour déclencher le rendu avec la nouvelle quantité
-      })
-      .catch((error) => {
-        console.error("Erreur lors de l'augmentation de la quantité :", error);
-      });
-  };
-
-  // Fonction pour diminuer la quantité d'un produit
-  const handleDecreaseQuantity = (product) => {
-    axios
-      .post(`http://localhost:8080/stock/diminuer/${product.id}`, null, {
-        params: { quantity: 1 },
-      })
-      .then((response) => {
-        console.log(`Diminution de la quantité pour ${product.name}`);
-        // Mettre à jour l'état des produits dans votre composant ou application si nécessaire
-        // Exemple : setState pour déclencher le rendu avec la nouvelle quantité
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la diminution de la quantité :", error);
-      });
-  };
+  const handleIncreaseQuantity = (product, action) => {};
 
   return (
-    <div>
-      <h1>Liste des Produits</h1>
+    <div className="container">
+      <h1 style={{ fontFamily: "Fredoka One, cursive" }}>Liste des Produits</h1>
       <table className="table">
-        <thead>
+        <thead style={{ width: "auto", minWidth: "40px" }}>
           <tr>
-            <th>Image</th>
-            <th>Nom</th>
-            <th>Prix</th>
-            <th>Date d'expiration</th>
-            <th>Type</th>
-            <th>Catégorie</th>
-            <th>Description</th>
-            <th>Quantité en stock</th>
-            <th>Action</th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Image
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Nom
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Prix
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Date d'expiration
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Type
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Catégorie
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Description
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Quantité en stock
+            </th>
+            <th
+              style={{
+                fontFamily: "Fredoka One, cursive",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              Action
+            </th>
           </tr>
         </thead>
 
@@ -139,31 +181,56 @@ const ProductsList = () => {
                   className="img-fluid blur-up lazyloaded"
                 />
               </td>
-              <td>{product.name}</td>
-              <td className="fw-bold text-theme">Prix: {product.price}</td>
-              <td>{product.expirationDate}</td>
-              <td>{product.type}</td>
-              <td>{product.category}</td>
-              <td>{product.description}</td>
-              <td>{product.stockQuantity} pcs</td>
-              <td className="d-flex justify-content-center align-items-center mt-2 ">
-                <textarea
-                  placeholder="Entrez une note..."
-                  value={product.quantity}
-                  // onChange={(e) => handleNoteChange(product, e.target.value)}
-                />
-                <div className="mt-2">
-                  <button
-                    onClick={() => handleDecreaseQuantity(product)}
-                    className="btn btn-danger me-2"
-                  >
-                    -
-                  </button>
+              <td style={{ fontFamily: "Poppins, sans-serif" }}>
+                {product.name}
+              </td>
+              <td
+                className="fw-bold text-theme"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
+                Prix: {product.price}
+              </td>
+              <td style={{ fontFamily: "Poppins, sans-serif" }}>
+                {product.expirationDate}
+              </td>
+              <td style={{ fontFamily: "Poppins, sans-serif" }}>
+                {product.type}
+              </td>
+              <td style={{ fontFamily: "Poppins, sans-serif" }}>
+                {product.category}
+              </td>
+              <td style={{ fontFamily: "Poppins, sans-serif" }}>
+                {product.description}
+              </td>
+              <td style={{ fontFamily: "Poppins, sans-serif" }}>
+                {product.stockQuantity} pcs
+              </td>
+              <td className="d-flex justify-content-center align-items-center mx-3 ">
+                <div>
+                  <textarea
+                    placeholder="Nouveau Stock"
+                    value={product.quantity}
+                    // onChange={(e) => handleNoteChange(product, e.target.value)}
+                    style={{
+                      width: "10em",
+                      minWidth: "60px",
+                      height: "1em", // Ajuster la hauteur du textarea
+                      minHeight: "40px",
+                      boxSizing: "border-box",
+                      fontFamily: "Poppins, sans-serif",
+                      resize: "vertical",
+                      marginBottom: "8px", // Espacement en bas du textarea
+                    }}
+                  />
+                </div>
+
+                <div className="d-flex justify-content-center mb-3 mx-1">
                   <button
                     onClick={() => handleIncreaseQuantity(product)}
                     className="btn btn-success"
+                    style={{ width: "auto", minWidth: "40px" }}
                   >
-                    +
+                    Approvisioner
                   </button>
                 </div>
               </td>
