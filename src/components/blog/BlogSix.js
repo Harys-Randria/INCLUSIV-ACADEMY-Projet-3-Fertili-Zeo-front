@@ -213,6 +213,14 @@ export default class BlogSix extends React.Component {
                               </Link>
                             </div>
                           </li>
+                          <li>
+                            <div className="btn-box">
+                           
+                                Achats{" "}
+                                <span className="icon-right-arrow-1"></span>
+                              
+                            </div>
+                          </li>
                         </ul>
                       </div>
                     </div>
