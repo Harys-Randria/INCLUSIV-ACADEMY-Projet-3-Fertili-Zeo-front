@@ -4,6 +4,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { CgChevronDown, CgChevronLeft } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import LogoTwo from "./LogoTwo";
 
 const menuData = [
   {
@@ -246,7 +247,6 @@ const MobileMenu = () => {
   const [sidebar, setSidebar] = useState(false);
 
   const showSidebar = () => setSidebar(!sidebar);
-  let publicUrl = process.env.PUBLIC_URL + "/";
 
   return (
     <>
@@ -259,15 +259,7 @@ const MobileMenu = () => {
           <SidebarWrap>
             <div className="mobile-nav__content">
               <div className="logo-box">
-                <Link to={process.env.PUBLIC_URL + `/`} aria-label="logo image">
-                  <img
-                    src={
-                      publicUrl + "assets/images/resources/mobile-nav-logo.png"
-                    }
-                    width="155"
-                    alt=""
-                  />
-                </Link>
+                <LogoTwo />
               </div>
               <NavIcon to="#">
                 <AiIcons.AiOutlineClose

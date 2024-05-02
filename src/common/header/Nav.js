@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ServiceSearchWidget from "../../components/service/ServiceSearchWidget";
-import LogoTwo from "./LogoTwo";
 
 const Nav = () => {
   return (
     <ul className="main-menu__list">
-      <LogoTwo />
       <li>
         <Link to={process.env.PUBLIC_URL + `/`}>
           Accueil <span className="line"></span>
