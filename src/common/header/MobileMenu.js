@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
 import { AiOutlineBars } from "react-icons/ai";
 import { CgChevronDown, CgChevronLeft } from "react-icons/cg";
@@ -17,14 +17,11 @@ const menuData = [
     title: "About",
     path: "/about",
   },
-
   {
     title: "Services",
     path: "#",
-
     iconClosed: <CgChevronLeft />,
     iconOpened: <CgChevronDown />,
-
     subNav: [
       {
         title: "Services",
@@ -33,14 +30,11 @@ const menuData = [
       },
     ],
   },
-
   {
     title: "Blog",
     path: "#",
-
     iconClosed: <CgChevronLeft />,
     iconOpened: <CgChevronDown />,
-
     subNav: [
       {
         title: "Blog",
@@ -58,12 +52,10 @@ const menuData = [
       },
     ],
   },
-
   {
     title: "Dashboard",
     path: "/dashboard",
   },
-
   {
     title: "Contact",
     path: "/contact",
@@ -180,60 +172,76 @@ const MobileMenu = () => {
 
   const showSidebar = () => setSidebar(!sidebar);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const isMobile = screenWidth < 1200 || screenHeight < 515;
+
+      if (!isMobile) {
+        setSidebar(false); // Masquer le sidebar si ce n'est pas un appareil mobile
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
-      <>
-        <NavIcon to="#" style={{ justifyContent: "flex-end" }}>
-          <AiOutlineBars onClick={showSidebar} />
-        </NavIcon>
+      <NavIcon to="#" style={{ justifyContent: "flex-end" }}>
+        <AiOutlineBars onClick={showSidebar} />
+      </NavIcon>
 
-        <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
-            <div className="mobile-nav__content">
-              <div className="logo-box">
-                <LogoTwo />
-              </div>
-              <NavIcon to="#">
-                <AiIcons.AiOutlineClose
-                  style={{
-                    color: "white",
-                    fontSize: "18px",
-                    justifyContent: "flex-start",
-                  }}
-                  onClick={showSidebar}
-                />
-              </NavIcon>
-              {menuData.map((item, index) => (
-                <SubMenu item={item} key={index} />
-              ))}
-              <ul className="mobile-nav__contact list-unstyled">
-                <li>
-                  <i className="fa fa-envelope" aria-hidden="true"></i>
-                  <a href="mailto:needhelp@packageName__.com">
-                    fertilizeo0@gmail.com
-                  </a>
-                </li>
-              </ul>
-              <div className="mobile-nav__top">
-                <div className="mobile-nav__social">
-                  <a href="https://twitter.com/">
-                    <span className="fab fa-twitter"></span>
-                  </a>
-                  <a href="https://facebook.com/">
-                    <span className="fab fa-facebook-square"></span>
-                  </a>
-                  <a href="https://pinterest.com/">
-                    <span className="fab fa-pinterest-p"></span>
-                  </a>
-                  <a href="https://instagram.com/">
-                    <span className="fab fa-instagram"></span>
-                  </a>
-                </div>
+      <SidebarNav sidebar={sidebar} className="container-xl">
+        <SidebarWrap>
+          <div className="mobile-nav__content">
+            <div className="logo-box">
+              <LogoTwo />
+            </div>
+            <NavIcon to="#">
+              <AiIcons.AiOutlineClose
+                style={{
+                  color: "white",
+                  fontSize: "18px",
+                  justifyContent: "flex-start",
+                }}
+                onClick={showSidebar}
+              />
+            </NavIcon>
+            {menuData.map((item, index) => (
+              <SubMenu item={item} key={index} />
+            ))}
+            <ul className="mobile-nav__contact list-unstyled">
+              <li>
+                <i className="fa fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:needhelp@packageName__.com">
+                  fertilizeo0@gmail.com
+                </a>
+              </li>
+            </ul>
+            <div className="mobile-nav__top">
+              <div className="mobile-nav__social">
+                <a href="https://twitter.com/">
+                  <span className="fab fa-twitter"></span>
+                </a>
+                <a href="https://facebook.com/">
+                  <span className="fab fa-facebook-square"></span>
+                </a>
+                <a href="https://pinterest.com/">
+                  <span className="fab fa-pinterest-p"></span>
+                </a>
+                <a href="https://instagram.com/">
+                  <span className="fab fa-instagram"></span>
+                </a>
               </div>
             </div>
-          </SidebarWrap>
-        </SidebarNav>
-      </>
+          </div>
+        </SidebarWrap>
+      </SidebarNav>
     </>
   );
 };

@@ -6,21 +6,16 @@ import ProductsList from "../components/ProductLists";
 import BlogSix from "../components/blog/BlogSix";
 
 const HomeTwo = () => {
-  // const token = sessionStorage.getItem("token");
-
-  // if (!token) {
-  //   window.location.href = "/about";
-  // }
   return (
     <>
       <HeaderTwo />
       <HeroTwo />
-      {/* <div>
+      <div>
         <h3>Votre produit publier dan le plateforme seront ici:</h3>
       </div>
       <div className="d-flex justify-content-center align-items-center ">
         <ProductsList />
-      </div> */}
+      </div>
 
       <BlogSix />
 
