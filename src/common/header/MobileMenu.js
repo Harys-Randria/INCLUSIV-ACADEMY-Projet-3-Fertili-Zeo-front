@@ -4,7 +4,10 @@ import { AiOutlineBars } from "react-icons/ai";
 import { CgChevronDown, CgChevronLeft } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+<<<<<<< Updated upstream
 import LogoTwo from "./LogoTwo";
+=======
+>>>>>>> Stashed changes
 
 const menuData = [
   {
