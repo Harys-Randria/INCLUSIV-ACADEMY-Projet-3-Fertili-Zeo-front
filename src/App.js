@@ -33,7 +33,7 @@ import "./components/contact/styless.css";
 import ProductDetails from "./components/Produits/ProductDetails";
 import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
-import ProductPage from "./components/Produits/ProductPage";
+import ProductPage from "./components/blog/ProductPage";
 
 function App() {
   useEffect(() => {
