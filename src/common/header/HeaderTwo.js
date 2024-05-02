@@ -55,6 +55,20 @@ class HeaderTwo extends React.Component {
                         </div>
                       </div>
                     </li>
+                    {/* 
+                    <li>
+                      <div className="inner">
+                        <div className="icon-box">
+                          <span className="icon-phone-call-1"></span>
+                        </div>
+                        <div className="text-box">
+                          <p>Call anytime </p>
+                          <h6>
+                            <a href="tel:980009630">+ 98 (000) - 9630</a>
+                          </h6>
+                        </div>
+                      </div>
+                    </li> */}
 
                     <li>
                       <div className="inner">

@@ -60,6 +60,11 @@ const menuData = [
   },
 
   {
+    title: "Dashboard",
+    path: "/dashboard",
+  },
+
+  {
     title: "Contact",
     path: "/contact",
   },
