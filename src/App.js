@@ -33,6 +33,7 @@ import "./components/contact/styless.css";
 import ProductDetails from "./components/Produits/ProductDetails";
 import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
+import RegistrationForm from "./components/Registration/RegistrationForm";
 
 function App() {
   useEffect(() => {
@@ -135,6 +136,10 @@ function App() {
           path={`${process.env.PUBLIC_URL}/produit`}
           exact
           element={<ProductDetails />}
+        />
+        <Route
+          path={`${process.env.PUBLIC_URL}/registration`}
+          element={<RegistrationForm />}
         />
       </Routes>
       <ScrollToTop

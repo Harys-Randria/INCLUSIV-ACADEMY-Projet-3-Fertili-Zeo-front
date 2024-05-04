@@ -1,0 +1,102 @@
+.registration-form {
+  position: relative;
+  background-image: url("./bgR.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.registration-form form {
+  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
+  width: 400px; /* Largeur souhaitée du formulaire */
+  height: auto; /* Hauteur automatique */
+  position: absolute; /* Position absolue pour le positionnement */
+  top: 50%; /* Décalage de 50% vers le haut */
+  left: 50%; /* Décalage de 50% vers la gauche */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Déplacer le formulaire de moitié de sa largeur et de sa hauteur vers le haut et la gauche */
+  background-color: transparent;
+  padding: 20px; /* Marge intérieure */
+  border-radius: 10px; /* Bord arrondi */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  backdrop-filter: blur(55px); /* Flou de l'arrière-plan */
+}
+
+/* Styles pour les champs de formulaire */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"] {
+  position: relative;
+  display: block;
+  background: transparent;
+  width: 100%;
+  height: 60px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid #dcdfe2;
+  border-radius: 3px;
+  color: #fff;
+  transition: all 500ms ease;
+}
+
+.registration-form input:hover {
+  border-color: #3cab41;
+}
+
+/* Styles pour le bouton */
+.registration-form button {
+  width: 100%; /* Largeur à 100% */
+  padding: 10px; /* Marge intérieure */
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  background-color: #055d2b;
+  padding: 0px 45px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  height: 50px;
+  color: #fff;
+}
+
+.registration-form button:hover {
+  background-color: #0b3d2c;
+}
+
+/* Style pour les étiquettes */
+.registration-form label {
+  margin-bottom: 5px; /* Marge en bas */
+  color: #fff;
+}
+
+.registration-form h2 {
+  text-align: center;
+  color: #fff;
+}
+
+.registration-form p {
+  margin-top: 15px;
+  text-align: center;
+  color: #fff;
+}
+
+.registration-form.close-button {
+  position: absolute;
+  top: 10px; /* Ajustez la position verticale selon vos besoins */
+  right: 10px; /* Ajustez la position horizontale selon vos besoins */
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+}

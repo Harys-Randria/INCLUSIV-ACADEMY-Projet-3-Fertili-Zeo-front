@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AddProductForm.css";
 
@@ -12,6 +12,7 @@ const AjoutProduitForm = () => {
   const [productCategory, setProductCategory] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productExpirationDate, setProductExpirationDate] = useState("");
+  const [userId, setUserId] = useState("");
 
   // Définissez une fonction pour gérer le changement de type de produit
   const handleTypeChange = (e) => {
@@ -19,6 +20,13 @@ const AjoutProduitForm = () => {
     // Réinitialisez la catégorie sélectionnée lorsque le type de produit change
     setProductCategory("");
   };
+
+  useEffect(() => {
+    const userIdFromStorage = sessionStorage.getItem("id");
+    if (userIdFromStorage) {
+      setUserId(userIdFromStorage);
+    }
+  }, []);
 
   // Définissez une liste d'options de catégorie en fonction du type de produit sélectionné
   const getCategoryOptions = () => {
@@ -76,6 +84,7 @@ const AjoutProduitForm = () => {
     formData.append("category", productCategory);
     formData.append("description", productDescription);
     formData.append("expirationDate", formattedDate);
+    formData.append("userId", userId);
     if (imageFile) {
       // Redimensionner l'image avant de l'ajouter au formulaire
       const resizedImageFile = await resizeImage(imageFile);
