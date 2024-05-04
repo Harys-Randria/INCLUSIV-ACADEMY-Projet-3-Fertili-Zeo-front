@@ -25,7 +25,6 @@ const AjoutProduitForm = () => {
     if (productType === "Matières Premières") {
       return [
         // Catégories pour le type "Matières Premières"
-
         "Résidus végétaux",
         "Déchets alimentaires organiques",
         "Fumier animal",
@@ -40,7 +39,6 @@ const AjoutProduitForm = () => {
     } else if (productType === "Fertilisant Bio") {
       return [
         // Catégories pour le type "Fertilisant Bio"
-
         "Engrais organique",
         "Engrais à base de compost",
         "Engrais à base d'algues marines",
@@ -174,20 +172,9 @@ const AjoutProduitForm = () => {
   };
 
   return (
-    <div className="d-flex justify-content-between">
-      <div className="button-container-left">
-        <button type="button" onClick={() => setShow(!show)}>
-          Ajouter un produit
-        </button>
-        <button type="button">Mon Profil</button>
-        <button type="button">Mes Produits</button>
-        <button type="button">Mes Stocks</button>
-        <button type="button">Mes Commandes</button>
-      </div>
-      <form className="add-product-form" onSubmit={handleSubmit}>
-        <div>
-          <h3>Ajoutez votre produit</h3>
-        </div>
+    
+      <form className="add-product-form d-flex align-items-center justify-content-center" onSubmit={handleSubmit}>
+       
         <div>
           <input
             onChange={handleImageChange}
@@ -212,12 +199,20 @@ const AjoutProduitForm = () => {
           placeholder="Nom du produit..."
         />
         <input
-          type="number"
-          name="prixProduit"
-          value={productPrice}
-          onChange={(e) => setProductPrice(e.target.value)}
-          placeholder="Prix du produit..."
-        />
+  type="number"
+  name="prixProduit"
+  value={productPrice}
+  onChange={(e) => setProductPrice(e.target.value)}
+  onKeyPress={(e) => {
+    // Empêche la saisie de lettres
+    const charCode = e.which ? e.which : e.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      e.preventDefault();
+    }
+  }}
+  placeholder="Prix du produit..."
+/>
+
         <input
           type="date"
           name="datePeremption"
@@ -263,7 +258,7 @@ const AjoutProduitForm = () => {
           Ajouter
         </button>
       </form>
-    </div>
+  
   );
 };
 

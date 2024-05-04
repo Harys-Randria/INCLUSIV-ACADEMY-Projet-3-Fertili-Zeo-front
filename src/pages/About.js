@@ -8,12 +8,14 @@ import FeatureTwo from "../components/feature/FeatureTwo";
 import ServiceThree from "../components/service/ServiceThree";
 import TeamThree from "../components/team/TeamThree";
 import TestimonialTwo from "../components/testimonial/TestimonialTwo";
+import HeroTwo from "../components/hero/HeroTwo";
 
 const About = () => {
   return (
     <>
       <HeaderTwo />
-      <Breadcrumb heading="About Us" currentPage="About Us" />
+      <Breadcrumb heading="Nous connaître" currentPage="A propos" />
+      
       <FeatureTwo />
       <AboutThree />
       <ServiceThree />

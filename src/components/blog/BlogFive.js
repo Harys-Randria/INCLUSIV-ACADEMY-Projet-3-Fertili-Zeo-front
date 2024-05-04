@@ -1,156 +1,228 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import BlogCategoryWidget from './BlogCategoryWidget';
-import BlogLatestPostWidget from './BlogLatestPostWidget';
-import BlogSearchWidget from './BlogSearchWidget';
-import BlogTagsWidget from './BlogTagsWidget';
-
+import React, { useState } from "react";
+import axios from "axios";
+import { Modal } from "react-bootstrap";
+import AjoutProduitForm from "../dashboard/AjoutProduitForm";
+import ContactForm from "../contact/ContactForm";
+import ProductLists from "../ProductLists";
+import "./affichageProduit.css";
+import { Link } from "react-router-dom";
+import { BsFillPersonFill, BsTagFill, BsCartFill, BsClipboardData, BsCheckCircleFill, BsPlusCircle  } from "react-icons/bs";
+import { BiLeaf } from "react-icons/bi";
 export default class BlogFive extends React.Component {
-    render(){
-        let publicUrl = process.env.PUBLIC_URL+'/'
-        return (
-            <>
-                <section className="blog-page">
-                    <div className="container">
-                        <div className="row">
-                            {/* Start Blog Page Content */}
-                            <div className="col-xl-8">
-                                <div className="blog-page__content">
+  constructor(props) {
+    super(props);
+    this.state = {
+      products: [],
+      selectedTab: "Mes Produits",
+      showAddProductModal: false,
+      showProfileContent: false,
+      showStockContent: false,
+    };
+  }
 
-                                    {/* Start Blog Page Single */}
-                                    <div className="blog-page__single">
-                                        <div className="blog-page__single-img">
-                                            <div className="inner">
-                                                <img src={publicUrl+"assets/images/blog/blog-page-img1.jpg"} alt="#" />
-                                            </div>
-                                            <div className="date-box">
-                                                <h4>21<br /> May</h4>
-                                            </div>
-                                        </div>
+  componentDidMount() {
+    fetch("http://localhost:8080/produit/allproduct")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({ products: data }, () => {
+          this.fetchProductsStock(this.state.products);
+        });
+      })
+      .catch((error) =>
+        console.error("Erreur lors de la récupération des données:", error)
+      );
 
-                                        <div className="blog-page__single-content">
-                                            <ul className="meta-box">
-                                                <li><a href="#"><i className="fa fa-user"></i>Jason Smith</a></li>
-                                                <li><a href="#"><i className="fa fa-comments"></i> 0 Comment</a></li>
-                                                <li><a href="#"><i className="fa fa-heart"></i> 0 Like</a></li>
-                                            </ul>
+    this.setState({ selectedTab: "Mes Produits" });
+  }
 
-                                            <h2><Link to={process.env.PUBLIC_URL + `/blog-details`}>Complete solution for your land & garden design</Link>
-                                            </h2>
-                                            <p className="text1">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                                officia deserunt mollanim id est laborum. Sed ut perspiciatis unde omnis iste
-                                                natus voluptatem accusantium doloremque laudantium, totam rem aperiam, </p>
+  fetchProductsStock = async (products) => {
+    try {
+      const productsWithStock = await Promise.all(
+        products.map(async (product) => {
+          const idproduit = product.idproduit;
+          const stockResponse = await axios.get(
+            `http://localhost:8080/stock/quantity/${idproduit}`
+          );
 
-                                            <p className="text2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                                velit </p>
+          let stockQuantity;
 
-                                            <div className="btn-box">
-                                                <Link to={process.env.PUBLIC_URL + `/blog-details`}>Read more</Link>
-                                            </div>
+          if (typeof stockResponse.data === "number") {
+            stockQuantity = stockResponse.data;
+          } else {
+            stockQuantity = stockResponse.data.quantity;
+          }
 
-                                        </div>
-                                    </div>
-                                    {/* End Blog Page Single */}
+          return { ...product, stockQuantity };
+        })
+      );
 
-                                    {/* Start Blog Page Single */}
-                                    <div className="blog-page__single">
-                                        <div className="blog-page__single-img">
-                                            <div className="inner">
-                                                <img src={publicUrl+"assets/images/blog/blog-page-img2.jpg"} alt="#" />
-                                            </div>
-                                            <div className="date-box">
-                                                <h4>17<br /> aug</h4>
-                                            </div>
-                                        </div>
+      this.setState({ products: productsWithStock });
+    } catch (error) {
+      console.error(
+        "Erreur lors de la récupération du stock pour les produits :",
+        error.message
+      );
 
-                                        <div className="blog-page__single-content">
-                                            <ul className="meta-box">
-                                                <li><a href="#"><i className="fa fa-user"></i>Jason Smith</a></li>
-                                                <li><a href="#"><i className="fa fa-comments"></i> 0 Comment</a></li>
-                                                <li><a href="#"><i className="fa fa-heart"></i> 0 Like</a></li>
-                                            </ul>
+      const productsWithError = products.map((product) => ({
+        ...product,
+        stockQuantity: "Erreur de récupération du stock",
+      }));
 
-                                            <h2><Link to={process.env.PUBLIC_URL + `/blog-details`}>Ex-homeless shelter head agrees to settlement</Link>
-                                            </h2>
-                                            <p className="text1">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                                officia deserunt mollanim id est laborum. Sed ut perspiciatis unde omnis iste
-                                                natus voluptatem accusantium doloremque laudantium, totam rem aperiam, </p>
-
-                                            <p className="text2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                                velit </p>
-
-                                            <div className="btn-box">
-                                                <Link to={process.env.PUBLIC_URL + `/blog-details`}>Read more</Link>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    {/* End Blog Page Single */}
-
-                                    {/* Start Blog Page Single */}
-                                    <div className="blog-page__single">
-                                        <div className="blog-page__single-img">
-                                            <div className="inner">
-                                                <img src={publicUrl+"assets/images/blog/blog-page-img3.jpg"} alt="#" />
-                                            </div>
-                                            <div className="date-box">
-                                                <h4>23<br /> sep</h4>
-                                            </div>
-                                        </div>
-
-                                        <div className="blog-page__single-content">
-                                            <ul className="meta-box">
-                                                <li><a href="#"><i className="fa fa-user"></i>Jason Smith</a></li>
-                                                <li><a href="#"><i className="fa fa-comments"></i> 0 Comment</a></li>
-                                                <li><a href="#"><i className="fa fa-heart"></i> 0 Like</a></li>
-                                            </ul>
-
-                                            <h2><Link to={process.env.PUBLIC_URL + `/blog-details`}>The environment benefits of tower gardens</Link>
-                                            </h2>
-                                            <p className="text1">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                                officia deserunt mollanim id est laborum. Sed ut perspiciatis unde omnis iste
-                                                natus voluptatem accusantium doloremque laudantium, totam rem aperiam, </p>
-
-                                            <p className="text2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                                nisi commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                                velit </p>
-
-                                            <div className="btn-box">
-                                                <Link to={process.env.PUBLIC_URL + `/blog-details`}>Read more</Link>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    {/* End Blog Page Single */}
-
-                                    <ul className="styled-pagination clearfix">
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li className="arrow next active"><a href="#"><span className="icon-right-arrow"></span></a></li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                            {/* End Blog Page Content */}
-
-                            {/* Start Sidebar */}
-                            <div className="col-xl-4">
-                                <div className="sidebar">
-                                    <BlogSearchWidget />
-                                    <BlogCategoryWidget />
-                                    <BlogLatestPostWidget />
-                                    <BlogTagsWidget />
-                                </div>
-                            </div>
-                            {/* End Sidebar */}
-
-                        </div>
-                    </div>
-                </section>
-            </>
-        )
+      this.setState({ products: productsWithError });
     }
+  };
+
+  render() {
+    const { products, selectedTab, showAddProductModal, showProfileContent, showStockContent } = this.state;
+
+    return (
+      <div className="d-flex flex-row justify-content-center">
+        <div style={{ marginLeft: "-10px", width: "300px" }} className="button-container-left">
+          <button
+            type="button"
+            onClick={() => this.setState({ selectedTab: "Mes Produits", showProfileContent: false, showStockContent: false })}
+            className={`tab-button ${selectedTab === "Mes Produits" ? "selected" : ""}`}
+          >
+            <BsCartFill/> Mes Produits
+          </button>
+          <button
+            type="button"
+            onClick={() => this.setState({ selectedTab: "Mon Profil", showProfileContent: true, showStockContent: false })}
+            className={`tab-button ${selectedTab === "Mon Profil" ? "selected" : ""}`}
+          >
+            <BsFillPersonFill/> Mon Profil
+          </button>
+          <button
+            type="button"
+            onClick={() => this.setState({ selectedTab: "Mes Stocks", showProfileContent: false, showStockContent: true })}
+            className={`tab-button ${selectedTab === "Mes Stocks" ? "selected" : ""}`}
+          >
+            <BsClipboardData/> Mes Stocks
+          </button>
+          <button
+            type="button"
+            onClick={() => this.setState({ selectedTab: "Mes Commandes", showProfileContent: false, showStockContent: false })}
+            className={`tab-button ${selectedTab === "Mes Commandes" ? "selected" : ""}`}
+          >
+            <BsCheckCircleFill/> Mes Commandes
+          </button>
+        </div>
+
+        <Modal
+          show={showAddProductModal}
+          onHide={() => this.setState({ showAddProductModal: false })}
+          size="lg"
+          dialogClassName="modal-lg d-flex align-items-center justify-content-center"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Ajouter un produit</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="text-center">
+            <AjoutProduitForm />
+          </Modal.Body>
+        </Modal>
+
+        <section className="blog-grid-page" style={{ width: "1500px" }}>
+          <div className="container">
+            <div className="row">
+              {showProfileContent ? (
+                <ContactForm />
+              ) : showStockContent ? (
+                <ProductLists /> // Afficher le composant ProductsList si showStockContent est vrai
+              ) : (
+                products.map((product) => (
+                  <div
+                    key={product.idproduit}
+                    className="col-xl-4 col-lg-4 wow animated fadeInUp"
+                    data-wow-delay="0.1s"
+                  >
+                    <div className="blog-one__single">
+                      <div className="product-image">
+                        <img src={`data:image/jpeg;base64,${product.image}`} alt={product.name} />
+                      </div>
+                      <div className="blog-one__single-content">
+                        <div className="blog-one__single-content-inner">
+                          <br></br>
+                          <h2>
+                            {product.name}
+                            </h2>
+                          <h2> {product.price}Ar/Kg</h2>
+                          
+                          <div style={{ textAlign: "right" }} className="blog-one__single-content-price">
+                            <ul className="meta-box clearfix">
+                              <li>
+                                <div className="icon">
+                                  <span className="icon-calendar"></span>
+                                </div>
+                                <div className="text">
+                                  <p>
+                                    <Link to={process.env.PUBLIC_URL + `/`}>
+                                      Exp: {product.expirationDate}
+                                    </Link>
+                                  </p>
+                                </div>
+                              </li>
+                              <li>
+                                <div className="icon">
+                                  <span className="icon-user"></span>
+                                </div>
+                                <div className="text">
+                                  <p>
+                                    <Link to={process.env.PUBLIC_URL + `/`}>
+                                      {product.compte
+                                        ? product.compte.name
+                                        : "Aucun"}
+                                    </Link>
+                                  </p>
+                                </div>
+                              </li>
+                              <li>
+                                <div className="icon">
+                                  <span className="icon-leaf"></span>{" "}
+                                </div>
+                                <div className="text">
+                                  <p>
+                                    <Link to={process.env.PUBLIC_URL + `/`}>
+                                      {product.type}-{product.category}
+                                    </Link>
+                                  </p>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div className="blog-one__single-content-bottom ">
+                            <ul className="clearfix">
+                              <li>
+                                <div className="comment-box">
+                                  <Link to={process.env.PUBLIC_URL + `/`}>
+                                    <span className="icon-folder"></span>{" "}
+                                    Stock Dispo: {product.stockQuantity} Kg
+                                  </Link>
+                                </div>
+                              </li>
+                              <li>
+                                <div className="btn-box">
+                                  <a href={`${process.env.PUBLIC_URL}/product-details/${product.idproduit}`}>Voir détails <span className="icon-right-arrow-1"></span></a>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </section>
+
+        <div style={{ alignItems: "end", width: "300px" }} className="button-container-right">
+          {!showProfileContent && !showStockContent && (
+            <button type="button" onClick={() => this.setState({ showAddProductModal: true })}> <BsPlusCircle />Ajouter un produit</button>
+          )}
+        </div>
+      </div>
+    );
+  }
 }

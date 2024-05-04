@@ -47,9 +47,9 @@ export default class FeatureTwo extends React.Component {
                     <div className="auto-container">
                         <div className="sec-title-three text-center">
                             <div className="sec-title-three__tagline">
-                                <h6>What we offer</h6>
+                                {/*<h6>Qu'est ce que nous offrons?</h6> */}
                             </div>
-                            <h2 className="sec-title-three__title">How does we works</h2>
+                            <h2 className="sec-title-three__title">Qu'est ce que nous offrons?</h2>
                         </div>
                         <div className="row">
                             {/* Start Features Two Single */}
@@ -66,16 +66,16 @@ export default class FeatureTwo extends React.Component {
 
                                             <div className="content-box">
                                                 <div className="title">
-                                                    <h2><Link to={process.env.PUBLIC_URL + `/arbor-management`}>Garden Renovation</Link></h2>
+                                                    <h2><Link to={process.env.PUBLIC_URL + `/`}>Des Matières Premières</Link></h2>
                                                 </div>
-                                                <p>Prevailed mr tolerably discourse arance <br /> estimable applauded to kiyh so.
+                                                <p>Nous vous offrons la possibilité d'acceder à des matières premières triés selon vos besoins
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="features-two__single-img">
-                                        <img src={publicUrl+"assets/images/resources/features-v2-img1.jpg"} alt="#" />
+                                        <img src={publicUrl+"assets/images/about/sZ86uacJhARwwRoebYvU5L.jpg"} alt="#" />
                                     </div>
                                 </div>
                             </div>
@@ -95,16 +95,16 @@ export default class FeatureTwo extends React.Component {
 
                                             <div className="content-box">
                                                 <div className="title">
-                                                    <h2><Link to={process.env.PUBLIC_URL + `/arbor-management`}>Landscape Install</Link></h2>
+                                                    <h2><Link to={process.env.PUBLIC_URL + `/arbor-management`}>Des Fertilisants Bio</Link></h2>
                                                 </div>
-                                                <p>Prevailed mr tolerably discourse arance <br /> estimable applauded to kiyh so.
+                                                <p>Nous proposons des fertilisants bio pour enrichir la terre et favoriser la croissance de cultures saines.
                                                 </p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="features-two__single-img">
-                                        <img src={publicUrl+"assets/images/resources/features-v2-img2.jpg"} alt="#" />
+                                        <img src={publicUrl+"assets/images/about/OIP.jpg"} alt="#" />
                                     </div>
                                 </div>
                             </div>

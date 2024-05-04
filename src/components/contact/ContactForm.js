@@ -88,7 +88,7 @@ export default class ContactForm extends React.Component {
 
   render() {
     return (
-      <section className="contact-page">
+      <section style={{ marginTop: "-200px" }} className="contact-page">
         <div className="container">
           <div className="row">
             {/* Start Contact One Form Contact */}
