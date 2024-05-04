@@ -11,16 +11,18 @@ export default class Breadcrumb extends React.Component {
         return (
             <>
                 <section class="page-header">
-                    <div class="page-header__bg" style={{backgroundImage: 'url('+publicUrl+'assets/images/backgrounds/'+Img+')'}}></div>
-                    <div class="shape1">
-                        <img src={publicUrl+'assets/images/shapes/'+Img2+''} alt="#" />
-                    </div>
+                    <div class="page-header__bg" style={{backgroundImage: 'url('+ publicUrl +
+                      "assets/images/backgrounds/Fond4.png"}}></div>
+                    {/*<div class="shape1">
+                        <img src={ publicUrl +
+                      "assets/images/backgrounds/Fond4.png"} alt="#" />
+                    </div> */}
 
                     <div class="container">
                         <div class="page-header__inner">
                             <h2>{heading}</h2>
                             <ul class="thm-breadcrumb">
-                                <li><Link to={process.env.PUBLIC_URL + `/`}>Home</Link></li>
+                                <li><Link to={process.env.PUBLIC_URL + `/`}>Accueil</Link></li>
                                 <li><span className="pl-1 pr-1"> - </span></li>
                                 <li>{currentPage}</li>
                             </ul>

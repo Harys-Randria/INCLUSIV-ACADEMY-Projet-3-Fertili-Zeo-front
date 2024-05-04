@@ -3,3 +3,16 @@
   height: auto; /* Garder le rapport hauteur/largeur de l'image */
   object-fit: cover; /* Redimensionner l'image pour couvrir tout le conteneur, sans déformer */
 }
+
+
+
+.tab-button.selected {
+  background-color: #055d2b;
+  color: #fff;
+}
+
+.tab-button.selected:hover {
+  background-color: #055d2b;
+  color: #fff;
+}
+

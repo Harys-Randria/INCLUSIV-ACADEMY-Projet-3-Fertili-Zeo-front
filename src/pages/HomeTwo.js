@@ -10,12 +10,7 @@ const HomeTwo = () => {
     <>
       <HeaderTwo />
       <HeroTwo />
-      <div>
-        <h3>Votre produit publier dan le plateforme seront ici:</h3>
-      </div>
-      <div className="d-flex justify-content-center align-items-center ">
-        <ProductsList />
-      </div>
+      
 
       <BlogSix />
 

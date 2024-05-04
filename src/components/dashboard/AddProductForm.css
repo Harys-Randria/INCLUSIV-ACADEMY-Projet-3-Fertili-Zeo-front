@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  padding: 20px;
+  
   border-radius: 5px;
   width: 100%;
   transition: height 0.5s ease-in-out;
@@ -20,10 +20,10 @@
   padding: 15px;
   display: flex;
   flex-direction: column;
-  grid-template-columns: 1fr auto; /* Flexible label and input area */
-  grid-gap: 20px;
-  width: 40%;
-  margin: 0;
+  align-items: center; /* Centrer horizontalement */
+  gap: 20px;
+  width: 80%; /* Ajuster la largeur */
+  margin: 0 auto; /* Centrer horizontalement */
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
@@ -49,12 +49,11 @@
   font-weight: 600;
   background-color: #3cab41;
   color: #fff;
-  padding: 0px 45px 0px;
+  padding: 10px 45px; /* Ajuster les marges */
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-align: center;
-  height: 50px;
 }
 
 .add-product-form h3 {
@@ -195,3 +194,56 @@ input[type="file"]::file-selector-button {
   background-color: #055d2b;
   color: #fff;
 }
+
+.button-container-left button::selection{
+  background-color: #055d2b;
+  color: #fff;
+}
+
+
+.button-container-right {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 240px;
+}
+
+.button-container-right button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  background-color: transparent;
+  padding: 0px 45px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: right;
+  height: 50px;
+}
+
+.button-container-right button:hover {
+  background-color: #055d2b;
+  color: #fff;
+}
+
+.selected,
+.selected:hover {
+  background-color:#055d2b;
+  color: black;
+  
+}
+
+.add-product-form input,
+.add-product-form textarea,
+.add-product-form select {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: transparent;
+  border: 1px solid #dcdfe2;
+  border-radius: 3px;
+  color: #878c8f;
+  padding: 10px 20px; /* Ajuster les marges */
+  width: 100%; /* Ajuster la largeur */
+  transition: all 500ms ease;
+}
+
