@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ isAuthenticated }) => {
   return (
     <ul className="main-menu__list">
       <li>
@@ -103,11 +103,13 @@ const Nav = () => {
           </li>
         </ul>
       </li>
-      <li>
-        <Link to={process.env.PUBLIC_URL + `/dashboard`}>
-          Dashboard <span className="line"></span>
-        </Link>
-      </li>
+      {isAuthenticated && (
+        <li>
+          <Link to={process.env.PUBLIC_URL + `/dashboard`}>
+            Dashboard <span className="line"></span>
+          </Link>
+        </li>
+      )}
     </ul>
   );
 };
