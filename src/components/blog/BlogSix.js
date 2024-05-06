@@ -163,7 +163,7 @@ export default class BlogSix extends React.Component {
     //const publicUrl = process.env.PUBLIC_URL + "/assets/images/produits/";
 
     return (
-      <div className="d-flex flex-row justify-content-center">
+      <div style={{ backgroundColor: "#f1f3f8" }} className="d-flex flex-row justify-content-center">
         {/* Composant de filtre de types et catégories */}
         <BlogCategoryWidget
           types={types}
@@ -173,10 +173,11 @@ export default class BlogSix extends React.Component {
           categoriesByType={categoriesByType}
           selectedCategoryByType={selectedCategoryByType}
           products={products} // Passer les produits en tant que prop
+          
         />
 
         {/* Affichage des produits filtrés */}
-        <section className="blog-grid-page">
+        <section style={{ width: "1500px", backgroundColor: "#f1f3f8", paddingTop: "110px" }} className="blog-grid-page">
           <div className="container">
             <div className="row">
               {/* Mapper chaque produit à un composant de blog */}
@@ -208,7 +209,7 @@ export default class BlogSix extends React.Component {
                           className="blog-one__single-content-price"
                         >
                           <h2>{product.price}Ar/Kg</h2>
-                          <ul className="meta-box clearfix">
+                          <ul style={{backgroundColor: "#f1f3f8"}} className="meta-box clearfix">
                             <li>
                               <div className="icon">
                                 <span className="icon-calendar"></span>

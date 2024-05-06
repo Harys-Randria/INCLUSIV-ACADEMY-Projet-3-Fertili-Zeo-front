@@ -74,9 +74,9 @@ export default class BlogFive extends React.Component {
 
   render() {
     const { products, selectedTab, showAddProductModal, showProfileContent, showStockContent } = this.state;
-
+    let publicUrl = process.env.PUBLIC_URL + "/";
     return (
-      <div className="d-flex flex-row justify-content-center">
+      <div style={{ backgroundColor:"#f1f3f8" }} className="d-flex flex-row justify-content-center">
         <div style={{ marginLeft: "-10px", width: "300px" }} className="button-container-left">
           <button
             type="button"
@@ -122,7 +122,7 @@ export default class BlogFive extends React.Component {
           </Modal.Body>
         </Modal>
 
-        <section className="blog-grid-page" style={{ width: "1500px" }}>
+        <section style={{ width: "1500px", backgroundColor: "#f1f3f8", paddingTop: "50px" }} className="blog-grid-page" s>
           <div className="container">
             <div className="row">
               {showProfileContent ? (
@@ -149,7 +149,9 @@ export default class BlogFive extends React.Component {
                           <h2> {product.price}Ar/Kg</h2>
                           
                           <div style={{ textAlign: "right" }} className="blog-one__single-content-price">
-                            <ul className="meta-box clearfix">
+                            <ul 
+
+ className="meta-box clearfix">
                               <li>
                                 <div className="icon">
                                   <span className="icon-calendar"></span>
