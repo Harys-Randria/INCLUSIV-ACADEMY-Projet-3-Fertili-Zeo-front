@@ -12,11 +12,12 @@ import ArborManagement from "./pages/ArborManagement";
 import GardenManagement from "./pages/GardenManagement";
 import NurseryTreeFarm from "./pages/NurseryTreeFarm";
 import TrimmingPruning from "./pages/TrimmingPruning";
+import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import PestsWeedsControl from "./pages/PestsWeedsControl";
 import FruitsFlowersGarden from "./pages/FruitsFlowersGarden";
 import Team from "./pages/Team";
 import TeamDetails from "./pages/TeamDetails";
-import PortfolioOne from "./pages/PortfolioOne";
+// import PortfolioOne from "./pages/PortfolioOne";
 import PortfolioTwo from "./pages/PortfolioTwo";
 import Faq from "./pages/Faq";
 import Blog from "./pages/Blog";
@@ -35,7 +36,6 @@ import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
 
 import ProductPage from "./components/Produits/ProductDetails";
-
 
 function App() {
   useEffect(() => {
@@ -134,16 +134,21 @@ function App() {
           exact
           element={<Dashboard />}
         />
-        
+
         <Route
           path={`${process.env.PUBLIC_URL}/produit`}
           exact
           element={<ProductDetails />}
         />
-                <Route
+        <Route
           path={`${process.env.PUBLIC_URL}/produitpage`}
           exact
           element={<ProductPage />}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/shoppingCart`}
+          component={<ShoppingCart />}
         />
       </Routes>
       <ScrollToTop

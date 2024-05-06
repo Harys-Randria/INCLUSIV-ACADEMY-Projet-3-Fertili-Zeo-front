@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AddProductForm.css";
 
@@ -12,6 +12,7 @@ const AjoutProduitForm = () => {
   const [productCategory, setProductCategory] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productExpirationDate, setProductExpirationDate] = useState("");
+  const [userId, setUserId] = useState("");
 
   // Définissez une fonction pour gérer le changement de type de produit
   const handleTypeChange = (e) => {
@@ -19,6 +20,13 @@ const AjoutProduitForm = () => {
     // Réinitialisez la catégorie sélectionnée lorsque le type de produit change
     setProductCategory("");
   };
+
+  useEffect(() => {
+    const userIdFromStorage = sessionStorage.getItem("id");
+    if (userIdFromStorage) {
+      setUserId(userIdFromStorage);
+    }
+  }, []);
 
   // Définissez une liste d'options de catégorie en fonction du type de produit sélectionné
   const getCategoryOptions = () => {
@@ -74,6 +82,7 @@ const AjoutProduitForm = () => {
     formData.append("category", productCategory);
     formData.append("description", productDescription);
     formData.append("expirationDate", formattedDate);
+    formData.append("userId", userId);
     if (imageFile) {
       // Redimensionner l'image avant de l'ajouter au formulaire
       const resizedImageFile = await resizeImage(imageFile);
@@ -172,93 +181,93 @@ const AjoutProduitForm = () => {
   };
 
   return (
-    
-      <form className="add-product-form d-flex align-items-center justify-content-center" onSubmit={handleSubmit}>
-       
-        <div>
-          <input
-            onChange={handleImageChange}
-            type="file"
-            id="images"
-            accept="image/*"
-            required
-          ></input>
+    <form
+      className="add-product-form d-flex align-items-center justify-content-center"
+      onSubmit={handleSubmit}
+    >
+      <div>
+        <input
+          onChange={handleImageChange}
+          type="file"
+          id="images"
+          accept="image/*"
+          required
+        ></input>
 
-          {imageSrc && (
-            <div>
-              <label htmlFor="images">Aperçu de l'image</label>
-              <img src={imageSrc} alt="Preview" />
-            </div>
-          )}
-        </div>
-        <input
-          type="text"
-          name="nomProduit"
-          value={productName}
-          onChange={(event) => setProductName(event.target.value)}
-          placeholder="Nom du produit..."
-        />
-        <input
-  type="number"
-  name="prixProduit"
-  value={productPrice}
-  onChange={(e) => setProductPrice(e.target.value)}
-  onKeyPress={(e) => {
-    // Empêche la saisie de lettres
-    const charCode = e.which ? e.which : e.keyCode;
-    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      e.preventDefault();
-    }
-  }}
-  placeholder="Prix du produit..."
-/>
+        {imageSrc && (
+          <div>
+            <label htmlFor="images">Aperçu de l'image</label>
+            <img src={imageSrc} alt="Preview" />
+          </div>
+        )}
+      </div>
+      <input
+        type="text"
+        name="nomProduit"
+        value={productName}
+        onChange={(event) => setProductName(event.target.value)}
+        placeholder="Nom du produit..."
+      />
+      <input
+        type="number"
+        name="prixProduit"
+        value={productPrice}
+        onChange={(e) => setProductPrice(e.target.value)}
+        onKeyPress={(e) => {
+          // Empêche la saisie de lettres
+          const charCode = e.which ? e.which : e.keyCode;
+          if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            e.preventDefault();
+          }
+        }}
+        placeholder="Prix du produit..."
+      />
 
-        <input
-          type="date"
-          name="datePeremption"
-          value={productExpirationDate}
-          onChange={(e) => setProductExpirationDate(e.target.value)}
-          placeholder="Date de péremption..."
-        />
-        <select
-          name="type"
-          className="drop-container"
-          value={productType}
-          onChange={handleTypeChange} // Utilisez le gestionnaire d'événements pour mettre à jour le type de produit sélectionné
-        >
-          <option value="" disabled>
-            Choisir le type
+      <input
+        type="date"
+        name="datePeremption"
+        value={productExpirationDate}
+        onChange={(e) => setProductExpirationDate(e.target.value)}
+        placeholder="Date de péremption..."
+      />
+      <select
+        name="type"
+        className="drop-container"
+        value={productType}
+        onChange={handleTypeChange} // Utilisez le gestionnaire d'événements pour mettre à jour le type de produit sélectionné
+      >
+        <option value="" disabled>
+          Choisir le type
+        </option>
+        <option value="Matières Premières">Matières Premières</option>
+        <option value="Fertilisant Bio">Fertilisant Bio</option>
+      </select>
+      <select
+        name="categorie"
+        className="drop-container"
+        value={productCategory}
+        onChange={(e) => setProductCategory(e.target.value)}
+      >
+        <option value="" disabled>
+          Choisir la catégorie
+        </option>
+        {/* Utilisez une liste d'options dynamique basée sur le type de produit sélectionné */}
+        {getCategoryOptions().map((category) => (
+          <option key={category} value={category}>
+            {category}
           </option>
-          <option value="Matières Premières">Matières Premières</option>
-          <option value="Fertilisant Bio">Fertilisant Bio</option>
-        </select>
-        <select
-          name="categorie"
-          className="drop-container"
-          value={productCategory}
-          onChange={(e) => setProductCategory(e.target.value)}
-        >
-          <option value="" disabled>
-            Choisir la catégorie
-          </option>
-          {/* Utilisez une liste d'options dynamique basée sur le type de produit sélectionné */}
-          {getCategoryOptions().map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-        <textarea
-          name="description"
-          value={productDescription}
-          onChange={(e) => setProductDescription(e.target.value)}
-          placeholder="Description du produit..."
-        />
-        <button type="submit" value="Ajouter">
-          Ajouter
-        </button>
-      </form>
-  
+        ))}
+      </select>
+      <textarea
+        name="description"
+        value={productDescription}
+        onChange={(e) => setProductDescription(e.target.value)}
+        placeholder="Description du produit..."
+      />
+      <button type="submit" value="Ajouter">
+        Ajouter
+      </button>
+    </form>
   );
 };
 

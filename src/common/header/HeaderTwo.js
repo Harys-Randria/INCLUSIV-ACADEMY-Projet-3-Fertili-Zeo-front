@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
+import FloatingCart from "../../components/FloatingCart/FloatingCart";
 
 import "./dropdowncss.css";
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
@@ -13,8 +14,29 @@ class HeaderTwo extends React.Component {
     super(props);
     this.state = {
       userName: sessionStorage.getItem("name") || "Compte",
+      photoDeProfile: sessionStorage.getItem("photo"),
       isAuthenticated: sessionStorage.getItem("name") ? true : false,
     };
+
+    if (
+      this.state.photoDeProfile !== "null" &&
+      this.state.photoDeProfile !== null
+    ) {
+      const imageDataString = this.state.photoDeProfile;
+
+      // Convertir la chaîne de caractères en un objet blob
+      const byteCharacters = atob(imageDataString);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: "image/jpeg" }); // Adjust type as needed
+
+      // Créer une URL blob pour l'image
+      const imageProfil = URL.createObjectURL(blob);
+      sessionStorage.setItem("imageProfil", imageProfil);
+    }
   }
 
   handleLogout = () => {
@@ -181,8 +203,13 @@ class HeaderTwo extends React.Component {
                               >
                                 <img
                                   src={
-                                    publicUrl +
-                                    "assets/images/resources/Profils.png"
+                                    sessionStorage.getItem("imageProfil") !==
+                                      null &&
+                                    sessionStorage.getItem("imageProfil") !==
+                                      "null"
+                                      ? sessionStorage.getItem("imageProfil")
+                                      : publicUrl +
+                                        "assets/images/resources/Profils.png"
                                   }
                                   alt="Awesome Logo"
                                   style={{
@@ -203,6 +230,9 @@ class HeaderTwo extends React.Component {
                                   {userName}
                                 </p>
                               </Link>
+                            </div>
+                            <div>
+                              <FloatingCart />
                             </div>
                             <h6
                               style={{

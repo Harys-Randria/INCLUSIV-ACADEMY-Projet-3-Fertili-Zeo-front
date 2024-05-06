@@ -184,9 +184,7 @@ export default class BlogSix extends React.Component {
                       <div className="blog-one__single-content-inner">
                         <br></br>
                         <h2>
-                          <Link
-                            to={process.env.PUBLIC_URL + `/blog-details`}
-                          >
+                          <Link to={process.env.PUBLIC_URL + `/blog-details`}>
                             {product.name}
                           </Link>
                         </h2>
@@ -242,8 +240,8 @@ export default class BlogSix extends React.Component {
                             <li>
                               <div className="comment-box">
                                 <Link to={process.env.PUBLIC_URL + `/`}>
-                                  <span className="icon-folder"></span>{" "}
-                                  Stock Dispo: {product.stockQuantity} Kg
+                                  <span className="icon-folder"></span> Stock
+                                  Dispo: {product.stockQuantity} Kg
                                 </Link>
                               </div>
                             </li>
