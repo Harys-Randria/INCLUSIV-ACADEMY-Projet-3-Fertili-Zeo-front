@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import BlogCategoryWidget from "./BlogCategoryWidget";
 import "./affichageProduit.css";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default class BlogSix extends React.Component {
   constructor(props) {
@@ -40,8 +41,16 @@ export default class BlogSix extends React.Component {
         ],
       },
       selectedCategoryByType: "", // Catégorie sélectionnée
+      showModal: false, // Modal affichée
+      cart: [],
     };
   }
+
+  addToCart = (product) => {
+    this.setState((prevState) => ({
+      cart: [...prevState.cart, product],
+    }));
+  };
 
   componentDidMount() {
     // Récupérer les produits depuis le backend
@@ -118,6 +127,8 @@ export default class BlogSix extends React.Component {
   };
 
   render() {
+    const { cart } = this.state;
+
     const {
       products,
       types,
@@ -144,8 +155,12 @@ export default class BlogSix extends React.Component {
     filteredProducts = filteredProducts.filter(
       (product) => product.stockQuantity > 0
     );
+    // const addingInfo = useRef();
+    let timerInfo;
+    let display = true;
 
-    const publicUrl = process.env.PUBLIC_URL + "/assets/images/produits/";
+    // const dispatch = useDispatch();
+    //const publicUrl = process.env.PUBLIC_URL + "/assets/images/produits/";
 
     return (
       <div className="d-flex flex-row justify-content-center">
@@ -253,6 +268,14 @@ export default class BlogSix extends React.Component {
                                   Voir détails{" "}
                                   <span className="icon-right-arrow-1"></span>
                                 </Link>
+                              </div>
+                            </li>
+                            <li>
+                              {/* Bouton "Acheter" */}
+                              <div className="acheter-btn">
+                                <button onClick={() => this.addToCart(product)}>
+                                  <FaShoppingCart /> Acheter
+                                </button>
                               </div>
                             </li>
                           </ul>

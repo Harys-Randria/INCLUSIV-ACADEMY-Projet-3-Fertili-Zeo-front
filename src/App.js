@@ -148,7 +148,7 @@ function App() {
         <Route
           exact
           path={`${process.env.PUBLIC_URL}/shoppingCart`}
-          component={<ShoppingCart />}
+          element={<ShoppingCart />}
         />
       </Routes>
       <ScrollToTop
