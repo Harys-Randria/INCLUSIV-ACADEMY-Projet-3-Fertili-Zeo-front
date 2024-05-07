@@ -14,3 +14,9 @@ export const removeFromCart = (produit) => ({
   type: "REMOVE_FROM_CART",
   payload: produit,
 });
+
+export const incrementCartCount = () => {
+  return {
+    type: "INCREMENT_CART_COUNT",
+  };
+};

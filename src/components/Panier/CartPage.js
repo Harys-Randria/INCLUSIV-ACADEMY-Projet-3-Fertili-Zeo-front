@@ -6,6 +6,7 @@ import CartItem from "./CartItem";
 import { removeFromCart, updateQuantity } from "../../redux/panierAction.js";
 import HeaderTwo from "../../common/header/HeaderTwo.js";
 import "./Panier.css";
+import Payer from "../Payments/Payment.jsx";
 
 const Panier = () => {
   const produits = useSelector((state) => state.produits);
@@ -30,6 +31,7 @@ const Panier = () => {
 
   const passerCommande = () => {
     envoyerPanierAuBackend(produits);
+    console.log({ totalPrice });
   };
 
   const handleRemoveFromCart = (produitId) => {
@@ -72,6 +74,7 @@ const Panier = () => {
         <button className="passer-commande-btn" onClick={passerCommande}>
           Passer la commande
         </button>
+        <Payer prix={totalPrice} />
       </div>
     </div>
   );
