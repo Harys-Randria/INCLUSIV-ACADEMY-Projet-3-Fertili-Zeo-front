@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./AddProductForm.css";
 
-const AjoutProduitForm = () => {
-  const [show, setShow] = useState(false);
+const AjoutProduitForm = ({ onHide }) => {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [productName, setProductName] = useState("");
@@ -112,6 +111,7 @@ const AjoutProduitForm = () => {
     for (let [key, value] of formData.entries()) {
       console.log(key, value);
     }
+    onHide();
   };
 
   const resizeImage = async (file) => {

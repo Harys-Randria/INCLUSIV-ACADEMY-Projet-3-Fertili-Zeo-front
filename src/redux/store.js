@@ -1,6 +1,20 @@
-import { createStore } from "redux";
-import cartReducer from './reducer/cartReducer';
+// Dans redux/store.js
+import { configureStore } from "@reduxjs/toolkit";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import rootReducer from "./reducer/cartReducer"; // Assurez-vous que ce chemin est correct
 
-const store = createStore(cartReducer);
+const persistConfig = {
+  key: "root",
+  storage,
+};
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = configureStore({
+  reducer: persistedReducer,
+});
+
+const persistor = persistStore(store);
+
+export { store, persistor };

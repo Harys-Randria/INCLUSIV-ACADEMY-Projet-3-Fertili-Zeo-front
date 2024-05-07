@@ -1,20 +1,21 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import BlogCategoryWidget from "./BlogCategoryWidget";
-import "./affichageProduit.css";
 import { FaShoppingCart } from "react-icons/fa";
+import { addToCart } from "../../redux/panierAction.js";
+import { toast, ToastContainer } from "react-toastify";
 
-export default class BlogSix extends React.Component {
+class BlogSix extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [], // Initialiser l'état pour stocker les produits récupérés du backend
-      types: ["Matières Premières", "Fertilisant Bio"], // Types de produits disponibles
-      selectedType: "", // Type sélectionné
+      products: [],
+      types: ["Matières Premières", "Fertilisant Bio"],
+      selectedType: "",
       categoriesByType: {
         "Matières Premières": [
-          // Catégories pour le type "Matières Premières"
           "Résidus végétaux",
           "Déchets alimentaires organiques",
           "Fumier animal",
@@ -27,7 +28,6 @@ export default class BlogSix extends React.Component {
           "Guano",
         ],
         "Fertilisant Bio": [
-          // Catégories pour le type "Fertilisant Bio"
           "Engrais organique",
           "Engrais à base de compost",
           "Engrais à base d'algues marines",
@@ -40,26 +40,24 @@ export default class BlogSix extends React.Component {
           "Engrais à base de bactéries bénéfiques",
         ],
       },
-      selectedCategoryByType: "", // Catégorie sélectionnée
-      showModal: false, // Modal affichée
-      cart: [],
+      selectedCategoryByType: "",
+      showModal: false,
     };
   }
 
   addToCart = (product) => {
-    this.setState((prevState) => ({
-      cart: [...prevState.cart, product],
-    }));
+    this.props.addToCart(product);
+    console.log(product);
+    toast.success(product.name + " ajouter au panier", {
+      position: "top-center",
+    });
   };
 
   componentDidMount() {
-    // Récupérer les produits depuis le backend
     fetch("http://localhost:8080/produit/allproduct")
       .then((response) => response.json())
       .then((data) => {
-        // Mettre à jour l'état avec les produits récupérés
         this.setState({ products: data }, () => {
-          // Appeler fetchProductsStock une fois que les produits sont récupérés
           this.fetchProductsStock(this.state.products);
         });
       })
@@ -68,7 +66,6 @@ export default class BlogSix extends React.Component {
       );
   }
 
-  // Fonction pour récupérer la quantité de stock pour chaque produit
   fetchProductsStock = async (products) => {
     try {
       const productsWithStock = await Promise.all(
@@ -81,19 +78,15 @@ export default class BlogSix extends React.Component {
           let stockQuantity;
 
           if (typeof stockResponse.data === "number") {
-            // Si la réponse est directement un nombre (Long), stockQuantity sera ce nombre
             stockQuantity = stockResponse.data;
           } else {
-            // Si la réponse est un objet JSON, récupérer la quantité de stock du champ approprié
             stockQuantity = stockResponse.data.quantity;
           }
 
-          // Retourner le produit avec la quantité de stock récupérée
           return { ...product, stockQuantity };
         })
       );
 
-      // Mettre à jour l'état avec les produits contenant la quantité de stock
       this.setState({ products: productsWithStock });
     } catch (error) {
       console.error(
@@ -101,18 +94,15 @@ export default class BlogSix extends React.Component {
         error.message
       );
 
-      // En cas d'erreur, retourner les produits avec une indication d'erreur pour la quantité de stock
       const productsWithError = products.map((product) => ({
         ...product,
         stockQuantity: "Erreur de récupération du stock",
       }));
 
-      // Mettre à jour l'état avec les produits contenant l'erreur de quantité de stock
       this.setState({ products: productsWithError });
     }
   };
 
-  // Gérer le changement de type
   handleTypeChange = (type) => {
     if (type === "Tous les types") {
       this.setState({ selectedType: "", selectedCategoryByType: "" });
@@ -121,14 +111,12 @@ export default class BlogSix extends React.Component {
     }
   };
 
-  // Gérer le changement de catégorie
   handleCategoryChange = (categoriesByType) => {
     this.setState({ selectedCategoryByType: categoriesByType });
   };
 
   render() {
-    const { cart } = this.state;
-
+    const { cart } = this.props;
     const {
       products,
       types,
@@ -151,20 +139,16 @@ export default class BlogSix extends React.Component {
       );
     }
 
-    // Filtrer les produits avec un stock supérieur à 0
     filteredProducts = filteredProducts.filter(
       (product) => product.stockQuantity > 0
     );
-    // const addingInfo = useRef();
-    let timerInfo;
-    let display = true;
-
-    // const dispatch = useDispatch();
-    //const publicUrl = process.env.PUBLIC_URL + "/assets/images/produits/";
 
     return (
-      <div style={{ backgroundColor: "#f1f3f8" }} className="d-flex flex-row justify-content-center">
-        {/* Composant de filtre de types et catégories */}
+      <div
+        style={{ backgroundColor: "#f1f3f8" }}
+        className="d-flex flex-row justify-content-center"
+      >
+        <ToastContainer />
         <BlogCategoryWidget
           types={types}
           selectedType={selectedType}
@@ -172,15 +156,19 @@ export default class BlogSix extends React.Component {
           handleCategoryChange={this.handleCategoryChange}
           categoriesByType={categoriesByType}
           selectedCategoryByType={selectedCategoryByType}
-          products={products} // Passer les produits en tant que prop
-          
+          products={products}
         />
 
-        {/* Affichage des produits filtrés */}
-        <section style={{ width: "1500px", backgroundColor: "#f1f3f8", paddingTop: "110px" }} className="blog-grid-page">
+        <section
+          style={{
+            width: "1500px",
+            backgroundColor: "#f1f3f8",
+            paddingTop: "110px",
+          }}
+          className="blog-grid-page"
+        >
           <div className="container">
             <div className="row">
-              {/* Mapper chaque produit à un composant de blog */}
               {filteredProducts.map((product) => (
                 <div
                   key={product.idproduit}
@@ -189,14 +177,12 @@ export default class BlogSix extends React.Component {
                 >
                   <div className="blog-one__single">
                     <div className="product-image">
-                      {/* Afficher l'image du produit */}
                       <img
                         src={`data:image/jpeg;base64,${product.image}`}
                         alt={product.name}
                       />
                     </div>
                     <div className="blog-one__single-content">
-                      {/* Afficher les détails du produit */}
                       <div className="blog-one__single-content-inner">
                         <br></br>
                         <h2>
@@ -209,7 +195,10 @@ export default class BlogSix extends React.Component {
                           className="blog-one__single-content-price"
                         >
                           <h2>{product.price}Ar/Kg</h2>
-                          <ul style={{backgroundColor: "#f1f3f8"}} className="meta-box clearfix">
+                          <ul
+                            style={{ backgroundColor: "#f1f3f8" }}
+                            className="meta-box clearfix"
+                          >
                             <li>
                               <div className="icon">
                                 <span className="icon-calendar"></span>
@@ -249,7 +238,6 @@ export default class BlogSix extends React.Component {
                               </div>
                             </li>
                           </ul>
-                          {/*<p>{product.description}</p> */}
                         </div>
                         <div className="blog-one__single-content-bottom ">
                           <ul className="clearfix">
@@ -272,10 +260,9 @@ export default class BlogSix extends React.Component {
                               </div>
                             </li>
                             <li>
-                              {/* Bouton "Acheter" */}
                               <div className="acheter-btn">
                                 <button onClick={() => this.addToCart(product)}>
-                                  <FaShoppingCart /> Acheter
+                                  <FaShoppingCart /> Ajouter au panier
                                 </button>
                               </div>
                             </li>
@@ -293,3 +280,13 @@ export default class BlogSix extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  cart: state.panier.produits, // Mappez le panier du state Redux aux props
+});
+
+const mapDispatchToProps = {
+  addToCart, // Ajoutez d'autres actions si nécessaire
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogSix);

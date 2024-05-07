@@ -12,7 +12,6 @@ import ArborManagement from "./pages/ArborManagement";
 import GardenManagement from "./pages/GardenManagement";
 import NurseryTreeFarm from "./pages/NurseryTreeFarm";
 import TrimmingPruning from "./pages/TrimmingPruning";
-import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
 import PestsWeedsControl from "./pages/PestsWeedsControl";
 import FruitsFlowersGarden from "./pages/FruitsFlowersGarden";
 import Team from "./pages/Team";
@@ -36,6 +35,10 @@ import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
 
 import ProductPage from "./components/Produits/ProductDetails";
+import CartItem from "./components/Panier/CartItem";
+import CartPage from "./components/Panier/CartPage";
+import Panier from "./components/Panier/CartPage";
+import BlogSix from "./components/blog/BlogSix";
 
 function App() {
   useEffect(() => {
@@ -147,8 +150,8 @@ function App() {
         />
         <Route
           exact
-          path={`${process.env.PUBLIC_URL}/shoppingCart`}
-          element={<ShoppingCart />}
+          path={`${process.env.PUBLIC_URL}/panier`}
+          element={<Panier />}
         />
       </Routes>
       <ScrollToTop

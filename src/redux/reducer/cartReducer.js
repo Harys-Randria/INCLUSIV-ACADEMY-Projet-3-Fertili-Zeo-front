@@ -1,59 +1,55 @@
-const INITIAL_STATE = {
-  cart: [],
+// cartReducer.js
+
+const initialState = {
+  produits: [], // Initialisez produits à un tableau vide
+  totalPrice: 0, // Initialisez le prix total à 0
+  // Autres états de votre panier ici...
 };
 
-export default function cartReducer(state = INITIAL_STATE, action) {
+const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "ADDITEM":
-      const indexItemAdd = state.cart.findIndex(
-        (obj) => obj.id === action.payload.id
-      );
-
-      // Si l'item est déjà présent dans le state (store)
-      if (indexItemAdd !== -1) {
-        const updatedQuantity = {
-          ...state.cart[indexItemAdd],
-          quantity: state.cart[indexItemAdd].quantity + action.payload.quantity,
-        };
-        const newArr = [...state.cart];
-        // On remplace l'ancien élément par le même élément avec la nouvelle quantité
-        newArr.splice(indexItemAdd, 1, updatedQuantity);
-        return {
-          cart: newArr,
-        };
-      } else {
-        // Sinon on push l'élément normalement (pas de risque de doublon)
-        const newArr = [...state.cart];
-        newArr.push(action.payload);
-        return {
-          cart: newArr,
-        };
-      }
-
-    case "UPDATEITEM":
-      const indexItemUpdate = state.cart.findIndex(
-        (obj) => obj.id === action.payload.id
-      );
-
-      const newArrUpdated = [...state.cart];
-      // On remplace l'ancien élément par le même élément avec la nouvelle quantité (payload du handleChange de ShoppingCart.js)
-      newArrUpdated.splice(indexItemUpdate, 1, action.payload);
+    case "ADD_TO_CART":
+      // Ajouter le produit au panier avec une quantité demandée de 1 par défaut
       return {
-        cart: newArrUpdated,
+        ...state,
+        produits: [
+          ...state.produits,
+          {
+            ...action.payload,
+            quantityDemandee: 1, // Quantité demandée par défaut
+          },
+        ],
       };
-
-    case "DELETEITEM":
-      const indexItemDelete = state.cart.findIndex(
-        (obj) => obj.id === action.payload.id
-      );
-
-      const newArrDeleted = [...state.cart];
-      // On splice l'ancien élément en le remplaçant par du vide, il n'existe donc plus
-      newArrDeleted.splice(indexItemDelete, 1);
+    case "REMOVE_FROM_CART":
       return {
-        cart: newArrDeleted,
+        ...state,
+        produits: state.produits.filter(
+          (product) => product.idproduit !== action.payload
+        ),
       };
+    case "UPDATE_QUANTITY":
+      const { productId, newQuantity, productPrice } = action.payload;
+      // Mettez à jour la quantité du produit dans le panier
+      const updatedProduits = state.produits.map((produit) => {
+        if (produit.idproduit === productId) {
+          return { ...produit, quantityDemandee: newQuantity };
+        }
+        return produit;
+      });
+      // Calculez le nouveau prix total du panier
+      const newTotalPrice = updatedProduits.reduce(
+        (total, produit) => total + produit.quantityDemandee * produit.price,
+        0
+      );
+      // Retourne le nouveau state avec les produits et le prix total mis à jour
+      return {
+        ...state,
+        produits: updatedProduits,
+        totalPrice: newTotalPrice,
+      };
+    default:
+      return state;
   }
+};
 
-  return state;
-}
+export default cartReducer;

@@ -6,7 +6,14 @@ import ContactForm from "../contact/ContactForm";
 import ProductLists from "../ProductLists";
 import "./affichageProduit.css";
 import { Link } from "react-router-dom";
-import { BsFillPersonFill, BsTagFill, BsCartFill, BsClipboardData, BsCheckCircleFill, BsPlusCircle  } from "react-icons/bs";
+import {
+  BsFillPersonFill,
+  BsTagFill,
+  BsCartFill,
+  BsClipboardData,
+  BsCheckCircleFill,
+  BsPlusCircle,
+} from "react-icons/bs";
 import { BiLeaf } from "react-icons/bi";
 export default class BlogFive extends React.Component {
   constructor(props) {
@@ -73,38 +80,82 @@ export default class BlogFive extends React.Component {
   };
 
   render() {
-    const { products, selectedTab, showAddProductModal, showProfileContent, showStockContent } = this.state;
+    const {
+      products,
+      selectedTab,
+      showAddProductModal,
+      showProfileContent,
+      showStockContent,
+    } = this.state;
     let publicUrl = process.env.PUBLIC_URL + "/";
     return (
-      <div style={{ backgroundColor:"#f1f3f8" }} className="d-flex flex-row justify-content-center">
-        <div style={{ marginLeft: "-10px", width: "300px" }} className="button-container-left">
+      <div
+        style={{ backgroundColor: "#f1f3f8" }}
+        className="d-flex flex-row justify-content-center"
+      >
+        <div
+          style={{ marginLeft: "-10px", width: "300px" }}
+          className="button-container-left"
+        >
           <button
             type="button"
-            onClick={() => this.setState({ selectedTab: "Mes Produits", showProfileContent: false, showStockContent: false })}
-            className={`tab-button ${selectedTab === "Mes Produits" ? "selected" : ""}`}
+            onClick={() =>
+              this.setState({
+                selectedTab: "Mes Produits",
+                showProfileContent: false,
+                showStockContent: false,
+              })
+            }
+            className={`tab-button ${
+              selectedTab === "Mes Produits" ? "selected" : ""
+            }`}
           >
-            <BsCartFill/> Mes Produits
+            <BsCartFill /> Mes Produits
           </button>
           <button
             type="button"
-            onClick={() => this.setState({ selectedTab: "Mon Profil", showProfileContent: true, showStockContent: false })}
-            className={`tab-button ${selectedTab === "Mon Profil" ? "selected" : ""}`}
+            onClick={() =>
+              this.setState({
+                selectedTab: "Mon Profil",
+                showProfileContent: true,
+                showStockContent: false,
+              })
+            }
+            className={`tab-button ${
+              selectedTab === "Mon Profil" ? "selected" : ""
+            }`}
           >
-            <BsFillPersonFill/> Mon Profil
+            <BsFillPersonFill /> Mon Profil
           </button>
           <button
             type="button"
-            onClick={() => this.setState({ selectedTab: "Mes Stocks", showProfileContent: false, showStockContent: true })}
-            className={`tab-button ${selectedTab === "Mes Stocks" ? "selected" : ""}`}
+            onClick={() =>
+              this.setState({
+                selectedTab: "Mes Stocks",
+                showProfileContent: false,
+                showStockContent: true,
+              })
+            }
+            className={`tab-button ${
+              selectedTab === "Mes Stocks" ? "selected" : ""
+            }`}
           >
-            <BsClipboardData/> Mes Stocks
+            <BsClipboardData /> Mes Stocks
           </button>
           <button
             type="button"
-            onClick={() => this.setState({ selectedTab: "Mes Commandes", showProfileContent: false, showStockContent: false })}
-            className={`tab-button ${selectedTab === "Mes Commandes" ? "selected" : ""}`}
+            onClick={() =>
+              this.setState({
+                selectedTab: "Mes Commandes",
+                showProfileContent: false,
+                showStockContent: false,
+              })
+            }
+            className={`tab-button ${
+              selectedTab === "Mes Commandes" ? "selected" : ""
+            }`}
           >
-            <BsCheckCircleFill/> Mes Commandes
+            <BsCheckCircleFill /> Mes Commandes
           </button>
         </div>
 
@@ -118,11 +169,21 @@ export default class BlogFive extends React.Component {
             <Modal.Title>Ajouter un produit</Modal.Title>
           </Modal.Header>
           <Modal.Body className="text-center">
-            <AjoutProduitForm />
+            <AjoutProduitForm
+              onHide={() => this.setState({ showAddProductModal: false })}
+            />
           </Modal.Body>
         </Modal>
 
-        <section style={{ width: "1500px", backgroundColor: "#f1f3f8", paddingTop: "50px" }} className="blog-grid-page" s>
+        <section
+          style={{
+            width: "1500px",
+            backgroundColor: "#f1f3f8",
+            paddingTop: "50px",
+          }}
+          className="blog-grid-page"
+          s
+        >
           <div className="container">
             <div className="row">
               {showProfileContent ? (
@@ -138,20 +199,22 @@ export default class BlogFive extends React.Component {
                   >
                     <div className="blog-one__single">
                       <div className="product-image">
-                        <img src={`data:image/jpeg;base64,${product.image}`} alt={product.name} />
+                        <img
+                          src={`data:image/jpeg;base64,${product.image}`}
+                          alt={product.name}
+                        />
                       </div>
                       <div className="blog-one__single-content">
                         <div className="blog-one__single-content-inner">
                           <br></br>
-                          <h2>
-                            {product.name}
-                            </h2>
+                          <h2>{product.name}</h2>
                           <h2> {product.price}Ar/Kg</h2>
-                          
-                          <div style={{ textAlign: "right" }} className="blog-one__single-content-price">
-                            <ul 
 
- className="meta-box clearfix">
+                          <div
+                            style={{ textAlign: "right" }}
+                            className="blog-one__single-content-price"
+                          >
+                            <ul className="meta-box clearfix">
                               <li>
                                 <div className="icon">
                                   <span className="icon-calendar"></span>
@@ -197,14 +260,19 @@ export default class BlogFive extends React.Component {
                               <li>
                                 <div className="comment-box">
                                   <Link to={process.env.PUBLIC_URL + `/`}>
-                                    <span className="icon-folder"></span>{" "}
-                                    Stock Dispo: {product.stockQuantity} Kg
+                                    <span className="icon-folder"></span> Stock
+                                    Dispo: {product.stockQuantity} Kg
                                   </Link>
                                 </div>
                               </li>
                               <li>
                                 <div className="btn-box">
-                                  <a href={`${process.env.PUBLIC_URL}/product-details/${product.idproduit}`}>Voir détails <span className="icon-right-arrow-1"></span></a>
+                                  <a
+                                    href={`${process.env.PUBLIC_URL}/product-details/${product.idproduit}`}
+                                  >
+                                    Voir détails{" "}
+                                    <span className="icon-right-arrow-1"></span>
+                                  </a>
                                 </div>
                               </li>
                             </ul>
@@ -219,9 +287,19 @@ export default class BlogFive extends React.Component {
           </div>
         </section>
 
-        <div style={{ alignItems: "end", width: "300px" }} className="button-container-right">
+        <div
+          style={{ alignItems: "end", width: "300px" }}
+          className="button-container-right"
+        >
           {!showProfileContent && !showStockContent && (
-            <button type="button" onClick={() => this.setState({ showAddProductModal: true })}> <BsPlusCircle />Ajouter un produit</button>
+            <button
+              type="button"
+              onClick={() => this.setState({ showAddProductModal: true })}
+            >
+              {" "}
+              <BsPlusCircle />
+              Ajouter un produit
+            </button>
           )}
         </div>
       </div>
