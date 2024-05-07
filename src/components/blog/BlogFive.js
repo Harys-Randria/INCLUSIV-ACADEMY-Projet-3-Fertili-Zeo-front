@@ -26,7 +26,9 @@ export default class BlogFive extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/produit/allproduct")
+    const accountId = sessionStorage.getItem('id');
+  
+    fetch(`http://localhost:8080/produit/by-compte/${accountId}`)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ products: data }, () => {
@@ -36,10 +38,10 @@ export default class BlogFive extends React.Component {
       .catch((error) =>
         console.error("Erreur lors de la récupération des données:", error)
       );
-
+  
     this.setState({ selectedTab: "Mes Produits" });
   }
-
+  
   fetchProductsStock = async (products) => {
     try {
       const productsWithStock = await Promise.all(
