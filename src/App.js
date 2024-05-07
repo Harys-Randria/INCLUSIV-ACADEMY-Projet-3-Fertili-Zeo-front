@@ -35,7 +35,7 @@ import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
 import ProductPage from "./components/Produits/ProductDetails";
 import Panier from "./components/Panier/CartPage";
-
+import Payment from "./components/Payments/Payment";
 function App() {
   useEffect(() => {
     new WOW.WOW({
@@ -148,6 +148,11 @@ function App() {
           exact
           path={`${process.env.PUBLIC_URL}/panier`}
           element={<Panier />}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/payment`}
+          element={<Payment />}
         />
       </Routes>
       <ScrollToTop
