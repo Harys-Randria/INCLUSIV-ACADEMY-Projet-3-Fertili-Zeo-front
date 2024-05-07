@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import BlogCategoryWidget from "./BlogCategoryWidget";
 import { FaShoppingCart } from "react-icons/fa";
-import { addToCart } from "../../redux/panierAction.js";
+import { addToCart, incrementCartCount } from "../../redux/panierAction.js";
 import { toast, ToastContainer } from "react-toastify";
 
 class BlogSix extends React.Component {
@@ -59,6 +59,7 @@ class BlogSix extends React.Component {
     } else {
       // Si le produit n'est pas déjà dans le panier, ajoutez-le
       this.props.addToCart(product);
+      this.props.incrementCartCount();
       toast.success(product.name + " ajouté au panier", {
         position: "top-center",
       });
@@ -298,7 +299,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  addToCart, // Ajoutez d'autres actions si nécessaire
+  addToCart,
+  incrementCartCount,
+  // Ajoutez d'autres actions si nécessaire
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BlogSix);

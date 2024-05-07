@@ -3,6 +3,7 @@
 const initialState = {
   produits: [], // Initialisez produits à un tableau vide
   totalPrice: 0, // Initialisez le prix total à 0
+  count: 0,
   // Autres états de votre panier ici...
 };
 
@@ -19,6 +20,11 @@ const cartReducer = (state = initialState, action) => {
             quantityDemandee: 1, // Quantité demandée par défaut
           },
         ],
+      };
+    case "INCREMENT_CART_COUNT":
+      return {
+        ...state,
+        count: state.count + 1, // Increment the count by 1
       };
     case "REMOVE_FROM_CART":
       return {

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import LogoTwo from "./LogoTwo";
 import MobileMenu from "./MobileMenu";
 import Nav from "./Nav";
+import FloatingCart from "../../components/FloatingCart/FloatingCart";
 
 import "./dropdowncss.css";
 import ModalInscriptionAuthentification from "../../components/ModalInscriptionAuthentification";
@@ -230,7 +231,9 @@ class HeaderTwo extends React.Component {
                                 </p>
                               </Link>
                             </div>
-                            <div></div>
+                            <div>
+                              <FloatingCart />
+                            </div>
                             <h6
                               style={{
                                 color: "white",

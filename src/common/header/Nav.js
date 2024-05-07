@@ -14,8 +14,7 @@ const Nav = ({ isAuthenticated }) => {
           A&nbsp;propos <span className="line"></span>
         </Link>
       </li>
-
-      <li className="dropdown">
+      {/* <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Nos&nbsp;offres <span className="line"></span>
         </Link>
@@ -52,10 +51,9 @@ const Nav = ({ isAuthenticated }) => {
             <Link to={process.env.PUBLIC_URL + `/flowers-garden`}>
               Fruits & Flowers Garden
             </Link> */}
-          {/* </li> */}
-        </ul>
-      </li>
-
+      {/* </li> */}
+      {/* </ul> */}
+      {/* // </li> */}
       {/*<li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Pages <span className="line"></span>
@@ -84,8 +82,7 @@ const Nav = ({ isAuthenticated }) => {
           </li>
         </ul>
       </li> */}
-
-      <li className="dropdown">
+      {/* <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Blog <span className="line"></span>
         </Link>
@@ -102,7 +99,7 @@ const Nav = ({ isAuthenticated }) => {
             </Link>
           </li>
         </ul>
-      </li>
+      </li> */}
       {isAuthenticated && (
         <li>
           <Link to={process.env.PUBLIC_URL + `/dashboard`}>
