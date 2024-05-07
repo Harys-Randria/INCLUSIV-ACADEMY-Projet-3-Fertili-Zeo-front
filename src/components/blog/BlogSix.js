@@ -282,7 +282,7 @@ class BlogSix extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  cart: state.panier.produits, // Mappez le panier du state Redux aux props
+  cart: state.produits, // Mappez le panier du state Redux aux props
 });
 
 const mapDispatchToProps = {
