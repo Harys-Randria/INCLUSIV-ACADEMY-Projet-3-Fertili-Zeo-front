@@ -36,6 +36,7 @@ import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
 
 import ProductPage from "./components/Produits/ProductDetails";
+import Panier from "./pages/Panier";
 
 function App() {
   useEffect(() => {
@@ -146,9 +147,9 @@ function App() {
           element={<ProductPage />}
         />
         <Route
+          path={`${process.env.PUBLIC_URL}/panier`}
           exact
-          path={`${process.env.PUBLIC_URL}/shoppingCart`}
-          component={<ShoppingCart />}
+          element={<Panier />}
         />
       </Routes>
       <ScrollToTop

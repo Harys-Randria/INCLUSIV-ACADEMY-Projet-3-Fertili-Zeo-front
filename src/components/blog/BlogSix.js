@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import BlogCategoryWidget from "./BlogCategoryWidget";
 import "./affichageProduit.css";
+import { FaShoppingCart } from "react-icons/fa";
 
 export default class BlogSix extends React.Component {
   constructor(props) {
@@ -40,6 +41,7 @@ export default class BlogSix extends React.Component {
         ],
       },
       selectedCategoryByType: "", // Catégorie sélectionnée
+      showModal: false, // Modal affichée
     };
   }
 
@@ -145,7 +147,7 @@ export default class BlogSix extends React.Component {
       (product) => product.stockQuantity > 0
     );
 
-    const publicUrl = process.env.PUBLIC_URL + "/assets/images/produits/";
+    //const publicUrl = process.env.PUBLIC_URL + "/assets/images/produits/";
 
     return (
       <div className="d-flex flex-row justify-content-center">
@@ -253,6 +255,18 @@ export default class BlogSix extends React.Component {
                                   Voir détails{" "}
                                   <span className="icon-right-arrow-1"></span>
                                 </Link>
+                              </div>
+                            </li>
+                            <li>
+                              {/* Bouton "Acheter" */}
+                              <div className="acheter-btn">
+                                <button
+                                  onClick={() =>
+                                    alert(`Achat du produit: ${product.name}`)
+                                  }
+                                >
+                                  <FaShoppingCart /> Acheter
+                                </button>
                               </div>
                             </li>
                           </ul>
