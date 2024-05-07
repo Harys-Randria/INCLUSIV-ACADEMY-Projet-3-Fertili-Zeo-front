@@ -46,11 +46,23 @@ class BlogSix extends React.Component {
   }
 
   addToCart = (product) => {
-    this.props.addToCart(product);
-    console.log(product);
-    toast.success(product.name + " ajouter au panier", {
-      position: "top-center",
-    });
+    // Vérifie si le produit est déjà dans le panier
+    const isProductInCart = this.props.cart.some(
+      (item) => item.idproduit === product.idproduit
+    );
+
+    if (isProductInCart) {
+      // Si le produit est déjà dans le panier, affichez un message d'erreur ou prenez une autre action appropriée
+      toast.error("Ce produit est déjà dans votre panier", {
+        position: "top-center",
+      });
+    } else {
+      // Si le produit n'est pas déjà dans le panier, ajoutez-le
+      this.props.addToCart(product);
+      toast.success(product.name + " ajouté au panier", {
+        position: "top-center",
+      });
+    }
   };
 
   componentDidMount() {

@@ -33,12 +33,8 @@ import "./components/contact/styless.css";
 import ProductDetails from "./components/Produits/ProductDetails";
 import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
-
 import ProductPage from "./components/Produits/ProductDetails";
-import CartItem from "./components/Panier/CartItem";
-import CartPage from "./components/Panier/CartPage";
 import Panier from "./components/Panier/CartPage";
-import BlogSix from "./components/blog/BlogSix";
 
 function App() {
   useEffect(() => {
