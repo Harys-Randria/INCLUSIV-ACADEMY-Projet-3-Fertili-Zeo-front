@@ -43,27 +43,27 @@ const ProductsList = () => {
             const stockResponse = await axios.get(
               `http://localhost:8080/stock/quantity/${idproduit}`
             );
-    
+
             let stockQuantity;
-    
+
             if (typeof stockResponse.data === "number") {
               stockQuantity = stockResponse.data;
             } else {
               stockQuantity = stockResponse.data.quantity;
             }
-    
+
             // Initialize newQuantity to 0 for each product
             return { ...product, stockQuantity, newQuantity: 0 };
           })
         );
-    
+
         return productsWithStock;
       } catch (error) {
         console.error(
           "Erreur lors de la récupération du stock pour les produits :",
           error.message
         );
-    
+
         return products.map((product) => ({
           ...product,
           stockQuantity: "Erreur de récupération du stock",
@@ -71,34 +71,39 @@ const ProductsList = () => {
         }));
       }
     };
-    
 
     fetchProducts(); // Appel de la fonction fetchProducts au chargement du composant
   }, []); // Les dépendances vides signifient que useEffect ne s'exécute qu'une seule fois
 
   const handleIncreaseQuantity = async (product, newQuantity) => {
     if (isNaN(newQuantity) || newQuantity <= 0) {
-      console.error("La quantité entrée n'est pas un nombre valide ou est inférieure ou égale à zéro");
+      console.error(
+        "La quantité entrée n'est pas un nombre valide ou est inférieure ou égale à zéro"
+      );
       return;
     }
-  
+
     try {
-      const response = await axios.post(`http://localhost:8080/stock/augmenter/${product.idproduit}`, null, {
-        params: {
-          quantity: newQuantity
+      const response = await axios.post(
+        `http://localhost:8080/stock/augmenter/${product.idproduit}`,
+        null,
+        {
+          params: {
+            quantity: newQuantity,
+          },
         }
-      });
-  
+      );
+
       console.log("Stock augmenté avec succès:", response.data);
-  
+
       // Mettre à jour le stock directement dans le state
-      setProducts(prevProducts => {
-        return prevProducts.map(p => {
+      setProducts((prevProducts) => {
+        return prevProducts.map((p) => {
           if (p.idproduit === product.idproduit) {
             return {
               ...p,
               stockQuantity: p.stockQuantity + newQuantity,
-              newQuantity: "" // Réinitialiser à une chaîne vide après l'approvisionnement
+              newQuantity: "", // Réinitialiser à une chaîne vide après l'approvisionnement
             };
           }
           return p;
@@ -109,10 +114,6 @@ const ProductsList = () => {
       // Gérer les erreurs ici
     }
   };
-  
-  
-  
-  
 
   return (
     <div className="container">
@@ -137,7 +138,7 @@ const ProductsList = () => {
             <tr key={product.idproduit}>
               <td>
                 <img
-                  src={`${process.env.PUBLIC_URL}/assets/images/materiels/${product.imageUrl}`}
+                  src={`data:image/jpeg;base64,${product.image}`}
                   width={200}
                   alt={product.name}
                   className="img-fluid blur-up lazyloaded"
@@ -152,43 +153,43 @@ const ProductsList = () => {
               <td>{product.stockQuantity} kg</td>
               <td>
                 <div>
-                <input
-  placeholder="Nouveau Stock"
-  value={product.newQuantity || ""}
-  onChange={(e) => {
-    const newQuantity = parseInt(e.target.value);
-    const updatedProducts = products.map((p) => {
-      if (p.idproduit === product.idproduit) {
-        return {
-          ...p,
-          newQuantity: newQuantity
-        };
-      }
-      return p;
-    });
-    setProducts(updatedProducts);
-  }}
-  style={{
-    width: "10em",
-    minWidth: "60px",
-    height: "1em",
-    minHeight: "40px",
-    boxSizing: "border-box",
-    fontFamily: "Poppins, sans-serif",
-    resize: "vertical",
-    marginBottom: "8px"
-  }}
-/>
-
+                  <input
+                    placeholder="Nouveau Stock"
+                    value={product.newQuantity || ""}
+                    onChange={(e) => {
+                      const newQuantity = parseInt(e.target.value);
+                      const updatedProducts = products.map((p) => {
+                        if (p.idproduit === product.idproduit) {
+                          return {
+                            ...p,
+                            newQuantity: newQuantity,
+                          };
+                        }
+                        return p;
+                      });
+                      setProducts(updatedProducts);
+                    }}
+                    style={{
+                      width: "10em",
+                      minWidth: "60px",
+                      height: "1em",
+                      minHeight: "40px",
+                      boxSizing: "border-box",
+                      fontFamily: "Poppins, sans-serif",
+                      resize: "vertical",
+                      marginBottom: "8px",
+                    }}
+                  />
                 </div>
                 <div>
-                <button
-  onClick={() => handleIncreaseQuantity(product, product.newQuantity || 0)}
-  className="btn btn-success"
->
-  Approvisionner
-</button>
-
+                  <button
+                    onClick={() =>
+                      handleIncreaseQuantity(product, product.newQuantity || 0)
+                    }
+                    className="btn btn-success"
+                  >
+                    Approvisionner
+                  </button>
                 </div>
               </td>
             </tr>
