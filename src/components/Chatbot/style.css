@@ -1,0 +1,28 @@
+.webchatIframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    background-color: #4CAF50; /* Couleur de fond verte */
+  }
+  
+  /* Styles pour les messages */
+  .webchatIframe .bpw-message-content {
+    background-color: #bbcdb0; /* Couleur de fond des messages */
+    color: #000000; /* Couleur du texte des messages */
+  }
+  
+  /* Styles pour le champ de texte de composition */
+  .webchatIframe .bpw-composer-input {
+    background-color: #4ac810; /* Couleur de fond du champ de texte */
+    color: #000000; /* Couleur du texte du champ de texte */
+  }
+  
+  /* Styles pour le bouton d'envoi */
+  .webchatIframe .bpw-composer-send-button {
+    background-color: #33a127; /* Couleur de fond du bouton d'envoi */
+    color: #4CAF50; /* Couleur du texte du bouton d'envoi */
+    border: 1px solid #4CAF50; /* Bordure du bouton d'envoi */
+  }
+  
+  /* Styles pour les autres éléments du chatbot selon vos besoins */
+  

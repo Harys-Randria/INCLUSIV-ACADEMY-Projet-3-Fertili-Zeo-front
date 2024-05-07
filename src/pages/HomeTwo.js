@@ -4,6 +4,7 @@ import HeaderTwo from "../common/header/HeaderTwo";
 import HeroTwo from "../components/hero/HeroTwo";
 import ProductsList from "../components/ProductLists";
 import BlogSix from "../components/blog/BlogSix";
+import BotpressChat from "../components/Chatbot/Chatbot";
 
 const HomeTwo = () => {
   return (
@@ -25,6 +26,7 @@ const HomeTwo = () => {
       {/*<PricingOne />*/}
       {/*<TestimonialTwo />*/}
       {/*<BlogTwo />*/}
+      <BotpressChat /> 
       <FooterOne />
     </>
   );

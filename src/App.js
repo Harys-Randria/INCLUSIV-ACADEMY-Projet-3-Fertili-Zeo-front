@@ -35,6 +35,10 @@ import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
 
 import ProductPage from "./components/Produits/ProductDetails";
+import Payment from "./components/Payments/Payment";
+import second from "./components/Chatbot/Chatbot.jsx"
+import Chatbot from "./components/Chatbot/Chatbot.jsx";
+import Payer from "./components/Payments/Payment";
 
 
 function App() {
@@ -51,7 +55,10 @@ function App() {
           path={`${process.env.PUBLIC_URL}/`}
           exact
           element={<HomeTwo />}
+          
         />
+
+       
         <Route
           path={`${process.env.PUBLIC_URL}/about`}
           exact
@@ -140,6 +147,17 @@ function App() {
           exact
           element={<ProductDetails />}
         />
+         <Route
+          path={`${process.env.PUBLIC_URL}/payment`}
+          exact
+          element={<Payment />}
+        />
+         <Route
+          path={`${process.env.PUBLIC_URL}/chatbot`}
+          exact
+          element={<Chatbot />}
+        />
+
                 <Route
           path={`${process.env.PUBLIC_URL}/produitpage`}
           exact
