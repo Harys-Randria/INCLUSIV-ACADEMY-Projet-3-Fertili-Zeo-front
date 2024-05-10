@@ -12,9 +12,9 @@ const BotpressChat = () => {
 
       script.onload = () => {
         window.botpressWebChat.init({
-          'composerPlaceholder': 'Chat with bot',
-          'botConversationDescription': 'This chatbot was built surprisingly fast with Botpress',
-          'botName': 'Name',
+
+
+          'botName': 'Fertili-Zeo',
           'botId': 'b9d4ec2f-88b6-41c8-a7ea-a778fbf5eabd', // Assurez-vous d'utiliser votre propre botId
           'hostUrl': 'https://cdn.botpress.cloud/webchat/v0',
           'messagingUrl': 'https://messaging.botpress.cloud',
@@ -40,7 +40,7 @@ const BotpressChat = () => {
 
   return (
     <div style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: '999' }}>
-      <button onClick={() => setIsOpen(!isOpen)}>Open Chat</button> {/* Bouton pour ouvrir/fermer le chatbot */}
+      <button onClick={() => setIsOpen(!isOpen)}>Ouvrir le chat</button> {/* Bouton pour ouvrir/fermer le chatbot */}
       {isOpen && ( 
         <div className="absolute inset-4">
           <div className="center-div relative h-full w-full overflow-clip rounded-md border border-zinc-200 bg-white p-2 px-0 py-0">
