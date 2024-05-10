@@ -16,7 +16,7 @@ import PestsWeedsControl from "./pages/PestsWeedsControl";
 import FruitsFlowersGarden from "./pages/FruitsFlowersGarden";
 import Team from "./pages/Team";
 import TeamDetails from "./pages/TeamDetails";
-import PortfolioOne from "./pages/PortfolioOne";
+// import PortfolioOne from "./pages/PortfolioOne";
 import PortfolioTwo from "./pages/PortfolioTwo";
 import Faq from "./pages/Faq";
 import Blog from "./pages/Blog";
@@ -33,13 +33,10 @@ import "./components/contact/styless.css";
 import ProductDetails from "./components/Produits/ProductDetails";
 import ProduitDetails from "./pages/ProduitDetails";
 import Dashboard from "./pages/Dashboard";
-
 import ProductPage from "./components/Produits/ProductDetails";
-import Payment from "./components/Payments/Payment";
-import second from "./components/Chatbot/Chatbot.jsx"
-import Chatbot from "./components/Chatbot/Chatbot.jsx";
-import Payer from "./components/Payments/Payment";
 
+import Panier from "./components/Panier/CartPage";
+import Payment from "./components/Payments/Payment";
 
 function App() {
   useEffect(() => {
@@ -141,27 +138,28 @@ function App() {
           exact
           element={<Dashboard />}
         />
-        
+
         <Route
           path={`${process.env.PUBLIC_URL}/produit`}
           exact
           element={<ProductDetails />}
         />
-         <Route
-          path={`${process.env.PUBLIC_URL}/payment`}
-          exact
-          element={<Payment />}
-        />
-         <Route
-          path={`${process.env.PUBLIC_URL}/chatbot`}
-          exact
-          element={<Chatbot />}
-        />
 
-                <Route
+        <Route
+
           path={`${process.env.PUBLIC_URL}/produitpage`}
           exact
           element={<ProductPage />}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/panier`}
+          element={<Panier />}
+        />
+        <Route
+          exact
+          path={`${process.env.PUBLIC_URL}/payment`}
+          element={<Payment />}
         />
       </Routes>
       <ScrollToTop

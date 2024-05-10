@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({ isAuthenticated }) => {
   return (
     <ul className="main-menu__list">
       <li>
@@ -14,8 +14,7 @@ const Nav = () => {
           A&nbsp;propos <span className="line"></span>
         </Link>
       </li>
-
-      <li className="dropdown">
+      {/* <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Nos&nbsp;offres <span className="line"></span>
         </Link>
@@ -52,10 +51,9 @@ const Nav = () => {
             <Link to={process.env.PUBLIC_URL + `/flowers-garden`}>
               Fruits & Flowers Garden
             </Link> */}
-          {/* </li> */}
-        </ul>
-      </li>
-
+      {/* </li> */}
+      {/* </ul> */}
+      {/* // </li> */}
       {/*<li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Pages <span className="line"></span>
@@ -84,8 +82,7 @@ const Nav = () => {
           </li>
         </ul>
       </li> */}
-
-      <li className="dropdown">
+      {/* <li className="dropdown">
         <Link to={process.env.PUBLIC_URL + `#`}>
           Blog <span className="line"></span>
         </Link>
@@ -102,12 +99,14 @@ const Nav = () => {
             </Link>
           </li>
         </ul>
-      </li>
-      <li>
-        <Link to={process.env.PUBLIC_URL + `/dashboard`}>
-          Dashboard <span className="line"></span>
-        </Link>
-      </li>
+      </li> */}
+      {isAuthenticated && (
+        <li>
+          <Link to={process.env.PUBLIC_URL + `/dashboard`}>
+            Dashboard <span className="line"></span>
+          </Link>
+        </li>
+      )}
     </ul>
   );
 };

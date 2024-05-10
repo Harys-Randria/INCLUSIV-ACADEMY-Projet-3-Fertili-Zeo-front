@@ -18,7 +18,7 @@ export default class BlogCategoryWidget extends React.Component {
         }
 
         return (
-            <div className="blog-category-widget">
+            <div style={{ width: '500px' }} className="blog-category-widget">
                 {/* Filtrage des types */}
                 <div className="sidebar__single sidebar__category wow animated fadeInUp" data-wow-delay="0.2s">
                     <h3 className="sidebar__title">Types</h3>

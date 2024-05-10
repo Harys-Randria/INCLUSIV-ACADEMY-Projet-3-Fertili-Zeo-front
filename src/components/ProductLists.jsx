@@ -41,22 +41,19 @@ const ProductsList = () => {
           products.map(async (product) => {
             const idproduit = product.idproduit;
             const stockResponse = await axios.get(
-              `http://localhost:8080/stock/du_produit/${idproduit}`
+              `http://localhost:8080/stock/quantity/${idproduit}`
             );
 
             let stockQuantity;
-            console.log(stockResponse.type, stockResponse);
 
             if (typeof stockResponse.data === "number") {
-              // Si la réponse est directement un nombre (Long), stockQuantity sera ce nombre
               stockQuantity = stockResponse.data;
             } else {
-              // Si la réponse est un objet JSON, récupérer la quantité de stock du champ approprié
               stockQuantity = stockResponse.data.quantity;
             }
 
-            // Retourner le produit avec la quantité de stock récupérée
-            return { ...product, stockQuantity };
+            // Initialize newQuantity to 0 for each product
+            return { ...product, stockQuantity, newQuantity: 0 };
           })
         );
 
@@ -67,10 +64,10 @@ const ProductsList = () => {
           error.message
         );
 
-        // En cas d'erreur, retourner les produits avec une indication d'erreur pour la quantité de stock
         return products.map((product) => ({
           ...product,
           stockQuantity: "Erreur de récupération du stock",
+          newQuantity: 0, // Initialize newQuantity to 0 in case of error
         }));
       }
     };
@@ -78,7 +75,45 @@ const ProductsList = () => {
     fetchProducts(); // Appel de la fonction fetchProducts au chargement du composant
   }, []); // Les dépendances vides signifient que useEffect ne s'exécute qu'une seule fois
 
-  const handleIncreaseQuantity = (product, action) => {};
+  const handleIncreaseQuantity = async (product, newQuantity) => {
+    if (isNaN(newQuantity) || newQuantity <= 0) {
+      console.error(
+        "La quantité entrée n'est pas un nombre valide ou est inférieure ou égale à zéro"
+      );
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/stock/augmenter/${product.idproduit}`,
+        null,
+        {
+          params: {
+            quantity: newQuantity,
+          },
+        }
+      );
+
+      console.log("Stock augmenté avec succès:", response.data);
+
+      // Mettre à jour le stock directement dans le state
+      setProducts((prevProducts) => {
+        return prevProducts.map((p) => {
+          if (p.idproduit === product.idproduit) {
+            return {
+              ...p,
+              stockQuantity: p.stockQuantity + newQuantity,
+              newQuantity: "", // Réinitialiser à une chaîne vide après l'approvisionnement
+            };
+          }
+          return p;
+        });
+      });
+    } catch (error) {
+      console.error("Erreur lors de l'ajout du stock:", error);
+      // Gérer les erreurs ici
+    }
+  };
 
   return (
     <div className="container">
@@ -86,87 +121,15 @@ const ProductsList = () => {
       <table className="table">
         <thead style={{ width: "auto", minWidth: "40px" }}>
           <tr>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Image
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Nom
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Prix
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Date d'expiration
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Type
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Catégorie
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Description
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Quantité en stock
-            </th>
-            <th
-              style={{
-                fontFamily: "Fredoka One, cursive",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-              }}
-            >
-              Action
-            </th>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Date d'expiration</th>
+            <th>Type</th>
+            <th>Catégorie</th>
+            <th>Description</th>
+            <th>Quantité en stock</th>
+            <th>Action</th>
           </tr>
         </thead>
 
@@ -175,62 +138,57 @@ const ProductsList = () => {
             <tr key={product.idproduit}>
               <td>
                 <img
-                  src={`${process.env.PUBLIC_URL}/assets/images/materiels/${product.imageUrl}`}
+                  src={`data:image/jpeg;base64,${product.image}`}
                   width={200}
                   alt={product.name}
                   className="img-fluid blur-up lazyloaded"
                 />
               </td>
-              <td style={{ fontFamily: "Poppins, sans-serif" }}>
-                {product.name}
-              </td>
-              <td
-                className="fw-bold text-theme"
-                style={{ fontFamily: "Poppins, sans-serif" }}
-              >
-                Prix: {product.price}
-              </td>
-              <td style={{ fontFamily: "Poppins, sans-serif" }}>
-                {product.expirationDate}
-              </td>
-              <td style={{ fontFamily: "Poppins, sans-serif" }}>
-                {product.type}
-              </td>
-              <td style={{ fontFamily: "Poppins, sans-serif" }}>
-                {product.category}
-              </td>
-              <td style={{ fontFamily: "Poppins, sans-serif" }}>
-                {product.description}
-              </td>
-              <td style={{ fontFamily: "Poppins, sans-serif" }}>
-                {product.stockQuantity} pcs
-              </td>
-              <td className="d-flex justify-content-center align-items-center mx-3 ">
+              <td>{product.name}</td>
+              <td className="fw-bold text-theme">Prix: {product.price}</td>
+              <td>{product.expirationDate}</td>
+              <td>{product.type}</td>
+              <td>{product.category}</td>
+              <td>{product.description}</td>
+              <td>{product.stockQuantity} kg</td>
+              <td>
                 <div>
-                  <textarea
+                  <input
                     placeholder="Nouveau Stock"
-                    value={product.quantity}
-                    // onChange={(e) => handleNoteChange(product, e.target.value)}
+                    value={product.newQuantity || ""}
+                    onChange={(e) => {
+                      const newQuantity = parseInt(e.target.value);
+                      const updatedProducts = products.map((p) => {
+                        if (p.idproduit === product.idproduit) {
+                          return {
+                            ...p,
+                            newQuantity: newQuantity,
+                          };
+                        }
+                        return p;
+                      });
+                      setProducts(updatedProducts);
+                    }}
                     style={{
                       width: "10em",
                       minWidth: "60px",
-                      height: "1em", // Ajuster la hauteur du textarea
+                      height: "1em",
                       minHeight: "40px",
                       boxSizing: "border-box",
                       fontFamily: "Poppins, sans-serif",
                       resize: "vertical",
-                      marginBottom: "8px", // Espacement en bas du textarea
+                      marginBottom: "8px",
                     }}
                   />
                 </div>
-
-                <div className="d-flex justify-content-center mb-3 mx-1">
+                <div>
                   <button
-                    onClick={() => handleIncreaseQuantity(product)}
+                    onClick={() =>
+                      handleIncreaseQuantity(product, product.newQuantity || 0)
+                    }
                     className="btn btn-success"
-                    style={{ width: "auto", minWidth: "40px" }}
                   >
-                    Approvisioner
+                    Approvisionner
                   </button>
                 </div>
               </td>

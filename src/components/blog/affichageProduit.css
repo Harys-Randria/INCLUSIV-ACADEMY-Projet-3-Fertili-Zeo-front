@@ -1,10 +1,8 @@
 .product-image {
-  width: 100%; /* Redimensionner l'image pour remplir la largeur du conteneur */
-  height: auto; /* Garder le rapport hauteur/largeur de l'image */
-  object-fit: cover; /* Redimensionner l'image pour couvrir tout le conteneur, sans déformer */
+  width: 100%; /* Redimensionner l'image pour remplir la largeur du conteneur /
+  height: auto; / Garder le rapport hauteur/largeur de l'image /
+  object-fit: cover; / Redimensionner l'image pour couvrir tout le conteneur, sans déformer */
 }
-
-
 
 .tab-button.selected {
   background-color: #055d2b;
@@ -16,3 +14,17 @@
   color: #fff;
 }
 
+.acheter-btn button {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #3cab41;
+  color: #fff;
+  width: 200px;
+  height: 40px;
+}
+
+.acheter-btn button:hover {
+  background-color: #055d2b;
+  color: #fff;
+}
